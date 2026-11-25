@@ -1,31 +1,31 @@
-{% extends "site/base.html" %}{% load finora %}
+{% extends "site/base.html" %}{% load i18n finora %}
 {% block title %}{{ obj.name }} — {{ s.site_name }}{% endblock %}
 {% block description %}{{ obj.intro|default:obj.role }}{% endblock %}
 {% block og_title %}{{ obj.name }}{% endblock %}
 {% block content %}
 {% with m=obj skills=obj.skills|lines exp=obj.experience|lines edu=obj.education|lines ach=obj.achievements|lines videos=obj.videos.all images=obj.images.all %}
 <div class='w dhero'>
-<div class='crumbs' role='navigation' aria-label='Yo‘l'><a href='/'>Bosh sahifa</a><span>/</span><a href='/jamoa'>Jamoa</a><span>/</span><span aria-current='page'>{{ m.name }}</span></div>
+<div class='crumbs' role='navigation' aria-label='{% translate "Yo‘l" %}'><a href='{% url "home" %}'>{% translate "Bosh sahifa" %}</a><span>/</span><a href='{% url "team" %}'>{% translate "Jamoa" %}</a><span>/</span><span aria-current='page'>{{ m.name }}</span></div>
 <div class='mp'><aside class='mcard'><div class='pp'>{% if m.photo %}<img src='{{ m.photo.url }}' alt='{{ m.name }}'>{% else %}{% svg "icon/avatar" %}{% endif %}</div><h1 class='dt1 sm'>{{ m.name }}</h1><p class='role'>{{ m.role }}</p>
 {% if m.telegram or m.linkedin or m.instagram or m.email %}<div class='so'>
 {% if m.telegram %}{% with kind="telegram" %}<a href='{% if "://" in m.telegram %}{{ m.telegram }}{% else %}https://t.me/{{ m.telegram|cut:"@" }}{% endif %}' target='_blank' rel='noopener' aria-label='Telegram' title='Telegram'>{% include "site/partials/social_icon.html" %}</a>{% endwith %}{% endif %}
 {% if m.linkedin %}{% with kind="linkedin" %}<a href='{{ m.linkedin }}' target='_blank' rel='noopener' aria-label='LinkedIn' title='LinkedIn'>{% include "site/partials/social_icon.html" %}</a>{% endwith %}{% endif %}
 {% if m.instagram %}{% with kind="instagram" %}<a href='{{ m.instagram }}' target='_blank' rel='noopener' aria-label='Instagram' title='Instagram'>{% include "site/partials/social_icon.html" %}</a>{% endwith %}{% endif %}
 {% if m.email %}{% with kind="email" %}<a href='mailto:{{ m.email }}' aria-label='Email' title='Email'>{% include "site/partials/social_icon.html" %}</a>{% endwith %}{% endif %}
-</div>{% endif %}<a class='btn p' href='/aloqa'>Bog‘lanish</a></aside>
+</div>{% endif %}<a class='btn p' href='{% url "contact" %}'>{% translate "Bog‘lanish" %}</a></aside>
 <div class='mbody'>{% if m.intro %}<p class='lead big'>{{ m.intro }}</p>{% endif %}
-{% if m.bio %}<section class='dsec first'><div class='eyebrow'>Haqida</div><div class='tx'>{{ m.bio|paras }}</div></section>{% endif %}
-{% if skills %}<section class='dsec'><div class='eyebrow'>Ko‘nikmalar</div><div class='tags'>{% for x in skills %}<span class='pill'>{{ x }}</span>{% endfor %}</div></section>{% endif %}
+{% if m.bio %}<section class='dsec first'><div class='eyebrow'>{% translate "Haqida" %}</div><div class='tx'>{{ m.bio|paras }}</div></section>{% endif %}
+{% if skills %}<section class='dsec'><div class='eyebrow'>{% translate "Ko‘nikmalar" %}</div><div class='tags'>{% for x in skills %}<span class='pill'>{{ x }}</span>{% endfor %}</div></section>{% endif %}
 {% if exp or edu or ach %}<section class='dsec'><div class='grid g2 auto'>
-{% if exp %}<div class='card'><h3>Tajriba</h3><ul class='l'>{% for x in exp %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
-{% if edu %}<div class='card'><h3>Ta‘lim</h3><ul class='l'>{% for x in edu %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
-{% if ach %}<div class='card'><h3>Sertifikat va yutuqlar</h3><ul class='l'>{% for x in ach %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+{% if exp %}<div class='card'><h3>{% translate "Tajriba" %}</h3><ul class='l'>{% for x in exp %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+{% if edu %}<div class='card'><h3>{% translate "Ta'lim" %}</h3><ul class='l'>{% for x in edu %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+{% if ach %}<div class='card'><h3>{% translate "Sertifikat va yutuqlar" %}</h3><ul class='l'>{% for x in ach %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
 </div></section>{% endif %}
-{% if videos %}<section class='dsec'><div class='eyebrow'>Video</div><h2>{{ m.name }} — videolar</h2><div class='vids{% if videos|length == 1 %} one{% endif %}'>{% for v in videos %}{% video v.src m.name %}{% endfor %}</div></section>{% endif %}
-{% if images %}<section class='dsec'><div class='eyebrow'>Galereya</div><h2>Rasmlar</h2><div class='gl'>{% for im in images %}<a href='{{ im.image.url }}' data-lb><img src='{{ im.image.url }}' alt='{{ m.name }} — {{ forloop.counter }}-rasm' loading='lazy'></a>{% endfor %}</div></section>{% endif %}
-{% if not m.intro and not m.bio and not skills %}<p class='sub'>{{ m.name }} haqida batafsil ma’lumot tez orada qo‘shiladi.</p>{% endif %}
+{% if videos %}<section class='dsec'><div class='eyebrow'>{% translate "Video" %}</div><h2>{% blocktranslate with name=m.name %}{{ name }} — videolar{% endblocktranslate %}</h2><div class='vids{% if videos|length == 1 %} one{% endif %}'>{% for v in videos %}{% video v.src m.name %}{% endfor %}</div></section>{% endif %}
+{% if images %}<section class='dsec'><div class='eyebrow'>{% translate "Galereya" %}</div><h2>{% translate "Rasmlar" %}</h2><div class='gl'>{% for im in images %}<a href='{{ im.image.url }}' data-lb><img src='{{ im.image.url }}' alt='{{ m.name }} — {{ forloop.counter }}' loading='lazy'></a>{% endfor %}</div></section>{% endif %}
+{% if not m.intro and not m.bio and not skills %}<p class='sub'>{% blocktranslate with name=m.name %}{{ name }} haqida batafsil ma’lumot tez orada qo‘shiladi.{% endblocktranslate %}</p>{% endif %}
 </div></div></div>
-{% if others %}<section class='alt'><div class='w'><div class='eyebrow'>Jamoa</div><h2>Jamoaning boshqa a’zolari</h2><div class='tg3' style='margin-top:24px'>{% for m in others %}{% include "site/partials/member_card.html" %}{% endfor %}</div></div></section>{% endif %}
+{% if others %}<section class='alt'><div class='w'><div class='eyebrow'>{% translate "Jamoa" %}</div><h2>{% translate "Jamoaning boshqa a’zolari" %}</h2><div class='tg3' style='margin-top:24px'>{% for m in others %}{% include "site/partials/member_card.html" %}{% endfor %}</div></div></section>{% endif %}
 {% endwith %}
 {% include "site/partials/cta.html" %}
 {% endblock %}

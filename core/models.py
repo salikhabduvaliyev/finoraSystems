@@ -321,6 +321,7 @@ class Lead(models.Model):
     message = models.TextField('Xabar', blank=True)
     source = models.CharField('Manba', max_length=30, blank=True)
     page = models.CharField('Sahifa', max_length=300, blank=True)
+    lang = models.CharField('Til', max_length=5, blank=True)
     status = models.CharField('Holat', max_length=10, choices=STATUS, default='new')
     note = models.TextField('Ichki izoh', blank=True, help_text='Faqat adminlar ko‘radi')
     created_at = models.DateTimeField('Sana', auto_now_add=True)

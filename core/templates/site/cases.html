@@ -1,7 +1,8 @@
-{% extends "site/base.html" %}{% load finora %}
-{% block title %}Keyslar — {{ s.site_name }}{% endblock %}
+{% extends "site/base.html" %}{% load i18n finora %}
+{% block title %}{% translate "Keyslar" %} — {{ s.site_name }}{% endblock %}
 {% block content %}
-{% include "site/partials/page_head.html" with eyebrow="Keyslar" heading="Amalga oshirilgan loyihalar" sub="Biz tizimlashtirgan bizneslar va ularning natijalari." %}
+{% translate "Keyslar" as e %}{% translate "Amalga oshirilgan loyihalar" as h %}{% translate "Biz tizimlashtirgan bizneslar va ularning natijalari." as sb %}
+{% include "site/partials/page_head.html" with eyebrow=e heading=h sub=sb %}
 <section style='padding-top:16px'><div class='w grid'>{% for c in cases %}{% include "site/partials/case_card.html" %}{% endfor %}</div></section>
 {% include "site/partials/cta.html" %}
 {% endblock %}

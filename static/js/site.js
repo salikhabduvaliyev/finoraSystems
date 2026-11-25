@@ -3,6 +3,12 @@
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  // Tarjima qilingan matnlar (base.html dagi json_script'dan); topilmasa — o'zbekcha
+  var T = {};
+  try { T = JSON.parse(document.getElementById('fs-i18n').textContent); } catch (e) {}
+  function t(k, d) { return T[k] || d; }
+  function esc(x) { var d = document.createElement('div'); d.textContent = x; return d.innerHTML; }
+
   var nav = $('.nav'), burger = $('#bg'), up = $('#up'), pg = $('#pg'), header = $('header');
 
   // Mobil menyu
@@ -79,7 +85,7 @@
   if (links.length && window.HTMLDialogElement) {
     var dlg = document.createElement('dialog');
     dlg.className = 'lbx';
-    dlg.innerHTML = '<img alt=""><button type="button" aria-label="Yopish">×</button>';
+    dlg.innerHTML = '<img alt=""><button type="button" aria-label="' + esc(t('close', 'Yopish')) + '">×</button>';
     document.body.appendChild(dlg);
     var big = dlg.querySelector('img');
     dlg.querySelector('button').addEventListener('click', function () { dlg.close(); });
@@ -108,22 +114,22 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = form.elements.name, phone = form.elements.phone;
-      if (!name.value.trim()) return fieldError(name, 'Ismingizni yozing — kimga qo‘ng‘iroq qilishni bilishimiz uchun.');
-      if (digits(phone.value).length < 9) return fieldError(phone, 'Telefon raqamini to‘liq yozing, masalan: 90 123-45-67.');
+      if (!name.value.trim()) return fieldError(name, t('name_err', 'Ismingizni yozing — kimga qo‘ng‘iroq qilishni bilishimiz uchun.'));
+      if (digits(phone.value).length < 9) return fieldError(phone, t('phone_err', 'Telefon raqamini to‘liq yozing, masalan: 90 123-45-67.'));
 
       var data = {};
       Array.prototype.forEach.call(form.elements, function (el) { if (el.name) data[el.name] = el.value; });
-      btn.disabled = true; btn.textContent = 'Yuborilmoqda…'; msg.textContent = '';
+      btn.disabled = true; btn.textContent = t('sending', 'Yuborilmoqda…'); msg.textContent = '';
 
       fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (res) {
           if (!res.ok) throw new Error(res.j.error || '');
-          form.innerHTML = '<div class="fdone"><b>Rahmat! Arizangiz qabul qilindi.</b><p>1 ish kuni ichida siz bilan bog‘lanamiz.</p></div>';
+          form.innerHTML = '<div class="fdone"><b>' + esc(t('ok_title', 'Rahmat! Arizangiz qabul qilindi.')) + '</b><p>' + esc(t('ok_text', '1 ish kuni ichida siz bilan bog‘lanamiz.')) + '</p></div>';
         })
         .catch(function (err) {
           btn.disabled = false; btn.textContent = label;
-          say(err.message || 'Ariza yuborilmadi — internet aloqasini tekshirib, qayta urinib ko‘ring.');
+          say(err.message || t('net_err', 'Ariza yuborilmadi — internet aloqasini tekshirib, qayta urinib ko‘ring.'));
         });
     });
   });

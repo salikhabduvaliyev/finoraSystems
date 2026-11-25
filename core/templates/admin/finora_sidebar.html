@@ -1,0 +1,19 @@
+{% if user.is_authenticated and user.is_staff %}{% load finora_admin %}{% admin_stats as st %}{% admin_menu as menu %}{% with p=request.path %}
+<aside class="fs-side" aria-label="Admin menyu">
+  <button class="fs-mnu" type="button" aria-expanded="false" aria-controls="fs-nav" onclick="var a=this.parentNode.classList.toggle('open');this.setAttribute('aria-expanded',a)">☰ Menyu</button>
+  <nav id="fs-nav">
+    <div class="fs-grp">Asosiy</div>
+    <a href="{% url 'admin:index' %}"{% if p == '/admin/' %} class="on" aria-current="page"{% endif %}>Boshqaruv paneli</a>
+    <a href="{% url 'admin:core_lead_changelist' %}"{% if '/admin/core/lead/' in p %} class="on" aria-current="page"{% endif %}>Arizalar{% if st.new %}<span class="fs-badge">{{ st.new }}</span>{% endif %}</a>
+
+    <div class="fs-grp">Kontent</div>
+    {% for m in menu %}<a href="{{ m.url }}"{% if m.url in p %} class="on" aria-current="page"{% endif %}>{{ m.label }}</a>{% endfor %}
+
+    <div class="fs-grp">Tizim</div>
+    <a href="{% url 'admin:core_sitesettings_changelist' %}"{% if '/admin/core/sitesettings/' in p %} class="on" aria-current="page"{% endif %}>Sozlamalar</a>
+    <a href="{% url 'admin:auth_user_changelist' %}"{% if '/admin/auth/' in p %} class="on" aria-current="page"{% endif %}>Adminlar</a>
+    <a href="{% url 'admin:password_change' %}"{% if '/password_change/' in p %} class="on" aria-current="page"{% endif %}>Parolni almashtirish</a>
+    <a href="/" target="_blank" rel="noopener">Saytni ochish ↗</a>
+    <form method="post" action="{% url 'admin:logout' %}">{% csrf_token %}<button type="submit" class="fs-link">Chiqish</button></form>
+  </nav>
+</aside>{% endwith %}{% endif %}

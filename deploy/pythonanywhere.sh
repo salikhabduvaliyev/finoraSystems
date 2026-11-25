@@ -56,6 +56,12 @@ if [ "$("$PY" manage.py shell -c 'from core.models import Service; print(Service
   "$PY" manage.py loaddata initial_content
 fi
 
+step "Tarjimalar (UZ / EN / RU)"
+# Mavjud matnlarni o'zbekcha maydonlarga ko'chirish (faqat bo'shlarini), so'ng EN/RU ni lug'atdan to'ldirish.
+# Ikkalasi ham admin'da qo'lda yozilgan matnlar ustidan yozmaydi.
+"$PY" manage.py update_translation_fields core > /dev/null
+"$PY" manage.py fill_translations
+
 step "Statik fayllar"
 "$PY" manage.py collectstatic --noinput -v 0
 
@@ -67,12 +73,12 @@ fi
 step "Web ilova sozlamalari"
 if [ -z "${API_TOKEN:-}" ]; then
   cat <<EOF
-   API token topilmadi. Uni bir marta yarating:
-     Account → "API Token" bo'limi → "Create a new API token"
-   So'ng YANGI Bash konsol ochib, skriptni qayta ishga tushiring:
-     bash ~/finora/deploy/pythonanywhere.sh
+   API token topilmadi, shuning uchun web ilova sozlamalari o'tkazib yuborildi.
+   - Sayt allaqachon sozlangan bo'lsa: Web bo'limida yashil "Reload" tugmasini bosing — tayyor.
+   - Birinchi joylash bo'lsa: Account → "API Token" → "Create a new API token",
+     so'ng YANGI Bash konsolda skriptni qayta ishga tushiring.
 EOF
-  exit 1
+  exit 0
 fi
 AUTH="Authorization: Token $API_TOKEN"
 

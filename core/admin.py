@@ -1,4 +1,5 @@
 from django.contrib import admin
+from modeltranslation.admin import TabbedTranslationAdmin
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.html import format_html
@@ -8,6 +9,11 @@ from .models import (Case, CaseImage, CaseVideo, Client, Industry, Lead, MemberI
                      Service, SiteSettings, Stat, Step, TeamMember, Value, WhyCard)
 
 admin.site.index_template = 'admin/finora_index.html'
+
+# Guruhlar (Groups) bu loyihada kerak emas — menyuni soddalashtiramiz
+import django.contrib.auth.admin  # noqa: E402,F401  (avval auth admin ro'yxatdan o'tsin)
+from django.contrib.auth.models import Group  # noqa: E402
+admin.site.unregister(Group)
 
 
 def thumb(field, label='Rasm', white=True):
@@ -21,25 +27,37 @@ def thumb(field, label='Rasm', white=True):
     return _thumb
 
 
-class OrderedAdmin(admin.ModelAdmin):
+class FsAdmin(admin.ModelAdmin):
+    """Ro'yxat sahifasi sarlavhasi: "Select … to change" o'rniga bo'lim nomi."""
+
+    def changelist_view(self, request, extra_context=None):
+        extra_context = {'title': self.model._meta.verbose_name_plural, **(extra_context or {})}
+        return super().changelist_view(request, extra_context)
+
+
+class OrderedAdmin(FsAdmin):
     """Tartib raqami va "saytda ko'rsatish" belgisini ro'yxatning o'zida o'zgartirish mumkin."""
     list_editable = ('active', 'sort')
     list_filter = ('active',)
     list_per_page = 50
 
 
+class TrOrderedAdmin(TabbedTranslationAdmin, OrderedAdmin):
+    """Matn maydonlari UZ / EN / RU yorliqlari bilan."""
+
+
 # ---------------------------------------------------------------- Arizalar
 
 @admin.register(Lead)
-class LeadAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone_link', 'service', 'source_label', 'status', 'created_at')
+class LeadAdmin(FsAdmin):
+    list_display = ('name', 'phone_link', 'service', 'source_label', 'lang', 'status', 'created_at')
     list_display_links = ('name',)
     list_editable = ('status',)
-    list_filter = ('status', 'source', 'created_at')
+    list_filter = ('status', 'source', 'lang', 'created_at')
     search_fields = ('name', 'phone', 'service', 'message')
-    readonly_fields = ('name', 'phone_link', 'service', 'message', 'source_label', 'page', 'created_at')
+    readonly_fields = ('name', 'phone_link', 'service', 'message', 'source_label', 'page', 'lang', 'created_at')
     fieldsets = (
-        ('Ariza', {'fields': ('name', 'phone_link', 'service', 'message', 'source_label', 'page', 'created_at')}),
+        ('Ariza', {'fields': ('name', 'phone_link', 'service', 'message', 'source_label', 'page', 'lang', 'created_at')}),
         ('Ishlov berish', {'fields': ('status', 'note')}),
     )
     date_hierarchy = 'created_at'
@@ -59,13 +77,13 @@ class LeadAdmin(admin.ModelAdmin):
 # ---------------------------------------------------------------- Kontent
 
 @admin.register(Service)
-class ServiceAdmin(OrderedAdmin):
+class ServiceAdmin(TrOrderedAdmin):
     list_display = ('title', 'subtitle', 'in_footer', 'active', 'sort')
     search_fields = ('title',)
 
 
 @admin.register(Industry)
-class IndustryAdmin(OrderedAdmin):
+class IndustryAdmin(TrOrderedAdmin):
     list_display = ('title', 'image_thumb', 'on_home', 'in_footer', 'active', 'sort')
     image_thumb = thumb('image')
     search_fields = ('title',)
@@ -119,7 +137,7 @@ class MemberImageInline(ImageInline):
 
 
 @admin.register(Case)
-class CaseAdmin(OrderedAdmin):
+class CaseAdmin(TrOrderedAdmin):
     list_display = ('title', 'logo_thumb', 'client', 'on_home', 'active', 'sort')
     logo_thumb = thumb('logo', 'Logo')
     search_fields = ('title', 'client')
@@ -134,7 +152,7 @@ class CaseAdmin(OrderedAdmin):
 
 
 @admin.register(TeamMember)
-class TeamMemberAdmin(OrderedAdmin):
+class TeamMemberAdmin(TrOrderedAdmin):
     list_display = ('name', 'photo_thumb', 'role', 'on_home', 'active', 'sort')
     photo_thumb = thumb('photo', 'Foto', white=False)
     search_fields = ('name', 'role')
@@ -160,29 +178,29 @@ class PartnerAdmin(OrderedAdmin):
 
 
 @admin.register(Stat)
-class StatAdmin(OrderedAdmin):
+class StatAdmin(TrOrderedAdmin):
     list_display = ('value', 'label', 'highlight', 'active', 'sort')
 
 
 @admin.register(WhyCard)
-class WhyCardAdmin(OrderedAdmin):
+class WhyCardAdmin(TrOrderedAdmin):
     list_display = ('title', 'active', 'sort')
 
 
 @admin.register(Step)
-class StepAdmin(OrderedAdmin):
+class StepAdmin(TrOrderedAdmin):
     list_display = ('title', 'active', 'sort')
 
 
 @admin.register(Value)
-class ValueAdmin(OrderedAdmin):
+class ValueAdmin(TrOrderedAdmin):
     list_display = ('title', 'active', 'sort')
 
 
 # ---------------------------------------------------------------- Sozlamalar
 
 @admin.register(SiteSettings)
-class SiteSettingsAdmin(admin.ModelAdmin):
+class SiteSettingsAdmin(TabbedTranslationAdmin):
     fieldsets = (
         ('Umumiy', {'fields': ('site_name', 'logo', 'meta_description', 'phone', 'email', 'address', 'telegram_username')}),
         ('Ijtimoiy tarmoqlar', {'fields': ('social_telegram', 'social_instagram', 'social_linkedin', 'social_youtube', 'social_facebook')}),

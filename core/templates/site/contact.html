@@ -1,6 +1,7 @@
-{% extends "site/base.html" %}
-{% block title %}Aloqa — {{ s.site_name }}{% endblock %}
+{% extends "site/base.html" %}{% load i18n %}
+{% block title %}{% translate "Aloqa" %} — {{ s.site_name }}{% endblock %}
 {% block content %}
-{% include "site/partials/page_head.html" with eyebrow="Aloqa" heading="Bepul konsultatsiya" sub="Ma'lumot qoldiring, 1 ish kuni ichida bog'lanamiz." %}
+{% translate "Aloqa" as e %}{% translate "Bepul konsultatsiya" as h %}{% translate "Ma'lumot qoldiring, 1 ish kuni ichida bog'lanamiz." as sb %}
+{% include "site/partials/page_head.html" with eyebrow=e heading=h sub=sb %}
 {% include "site/partials/cta.html" with source="aloqa" hide_header=True %}
 {% endblock %}

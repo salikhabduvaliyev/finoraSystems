@@ -5,7 +5,7 @@ import re
 import urllib.request
 from html import escape
 
-from django.utils import timezone
+from django.utils import timezone, translation
 
 from .models import SiteSettings
 
@@ -13,6 +13,11 @@ log = logging.getLogger('core')
 
 
 def notify_lead(lead):
+    with translation.override('uz'):  # admin xabari doim o'zbekcha
+        _send(lead)
+
+
+def _send(lead):
     s = SiteSettings.load()
     token = (s.tg_bot_token or '').strip()
     chats = [c for c in re.split(r'[\s,;]+', s.tg_chat_id or '') if c]
@@ -28,6 +33,7 @@ def notify_lead(lead):
         lead.message and f'💬 <b>Xabar:</b> <i>{escape(lead.message)}</i>',
         f'📍 <b>Manba:</b> {escape(lead.source_label)}',
         lead.page and f'🔗 <b>Sahifa:</b> {escape(lead.page)}',
+        lead.lang and lead.lang != 'uz' and f"🌐 <b>Til:</b> {lead.lang.upper()}",
         f"⏰ <b>Vaqt:</b> {timezone.localtime().strftime('%d.%m.%Y %H:%M')}",
     ] if x)
     payload = {'text': text, 'parse_mode': 'HTML', 'disable_web_page_preview': True}

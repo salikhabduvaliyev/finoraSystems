@@ -1,13 +1,15 @@
-{% extends "site/base.html" %}{% load finora %}
-{% block title %}Sohalar — {{ s.site_name }}{% endblock %}
+{% extends "site/base.html" %}{% load i18n finora %}
+{% block title %}{% translate "Sohalar" %} — {{ s.site_name }}{% endblock %}
 {% block content %}
-{% include "site/partials/page_head.html" with eyebrow="Sohalar" heading="Sohangiz og'rig'iga mos yechim" sub="Har bir soha uchun: muammo → tizim → AI va veb-sayt." %}
+{% translate "Sohalar" as e %}{% translate "Sohangiz og'rig'iga mos yechim" as h %}{% translate "Har bir soha uchun: muammo → tizim → AI va veb-sayt." as sb %}
+{% include "site/partials/page_head.html" with eyebrow=e heading=h sub=sb %}
+{% url 'contact' as contact_url %}
 <section style='padding-top:16px'><div class='w grid g2'>{% for i in industries %}<div class='card' id='soha-{{ i.id }}'>{% fig i %}<div class='em'>{{ i.label }}</div><h3>{{ i.title }}</h3><p>{{ i.short }}</p>
 {% with pains=i.pains|lines solutions=i.solutions|lines %}
-{% if pains %}<div class='lb'>Og'riq nuqtalari</div><ul class='l x'>{% for y in pains %}<li>{{ y }}</li>{% endfor %}</ul>{% endif %}
-{% if solutions %}<div class='lb'>Bizning yechim</div><ul class='l'>{% for y in solutions %}<li>{{ y }}</li>{% endfor %}</ul>{% endif %}
+{% if pains %}<div class='lb'>{% translate "Og'riq nuqtalari" %}</div><ul class='l x'>{% for y in pains %}<li>{{ y }}</li>{% endfor %}</ul>{% endif %}
+{% if solutions %}<div class='lb'>{% translate "Bizning yechim" %}</div><ul class='l'>{% for y in solutions %}<li>{{ y }}</li>{% endfor %}</ul>{% endif %}
 {% endwith %}
-{% if i.ai or i.web %}<div class='ai'>{% if i.ai %}<div class='a1'><b>✦ AI yechim</b><span>{{ i.ai }}</span></div>{% endif %}{% if i.web %}<div class='a2'><b>◐ Veb-sayt</b><span>{{ i.web }}</span></div>{% endif %}</div>{% endif %}
-<a class='btn' href='/aloqa' style='margin-top:16px'>Konsultatsiya olish</a></div>{% endfor %}</div></section>
+{% if i.ai or i.web %}<div class='ai'>{% if i.ai %}<div class='a1'><b>✦ {% translate "AI yechim" %}</b><span>{{ i.ai }}</span></div>{% endif %}{% if i.web %}<div class='a2'><b>◐ {% translate "Veb-sayt" %}</b><span>{{ i.web }}</span></div>{% endif %}</div>{% endif %}
+<a class='btn' href='{{ contact_url }}' style='margin-top:16px'>{% translate "Konsultatsiya olish" %}</a></div>{% endfor %}</div></section>
 {% include "site/partials/cta.html" %}
 {% endblock %}

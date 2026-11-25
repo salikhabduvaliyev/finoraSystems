@@ -1,7 +1,8 @@
 import re
 
 from django import template
-from django.template.loader import render_to_string
+from django.template.loader import render_to_string, select_template
+from django.utils.translation import get_language, gettext as _
 from django.utils.html import conditional_escape, escape, format_html
 from django.utils.safestring import mark_safe
 
@@ -40,10 +41,18 @@ def tel(value):
     return 'tel:' + re.sub(r'[^\d+]', '', str(value or ''))
 
 
+def _svg_html(name):
+    """SVG'ning joriy tildagi nusxasi (svg/mock/en/savdo.svg), bo'lmasa — o'zbekchasi."""
+    folder, _, file = name.rpartition('/')
+    lang = (get_language() or 'uz')[:2]
+    candidates = [f'svg/{folder}/{lang}/{file}.svg'] if lang != 'uz' else []
+    return select_template(candidates + [f'svg/{name}.svg']).render()
+
+
 @register.simple_tag
 def svg(name):
     """templates/svg/ ichidagi tayyor SVG'ni joylaydi (dizayndagi illyustratsiyalar)."""
-    return mark_safe(render_to_string(f'svg/{name}.svg'))
+    return mark_safe(_svg_html(name))
 
 
 @register.simple_tag
@@ -52,7 +61,7 @@ def fig(obj):
     if getattr(obj, 'image', None):
         return format_html("<div class='fig'><img src='{}' alt='{}' loading='lazy'></div>", obj.image.url,
                            getattr(obj, 'title', ''))
-    return mark_safe(f"<div class='fig'>{render_to_string('svg/mock/' + (obj.mock or 'savdo') + '.svg')}</div>")
+    return mark_safe(f"<div class='fig'>{_svg_html('mock/' + (obj.mock or 'savdo'))}</div>")
 
 
 @register.simple_tag
@@ -71,5 +80,5 @@ def video(src, title=''):
         thumb = ''
     return format_html(
         "<div class='vid{}'><button type='button' class='vplay' data-embed='{}' data-title='{}' "
-        "aria-label='Videoni ko‘rish: {}'>{}<span class='pl' aria-hidden='true'></span></button></div>",
-        ' vv' if v.get('vertical') else '', embed, title, title, thumb)
+        "aria-label='{}: {}'>{}<span class='pl' aria-hidden='true'></span></button></div>",
+        ' vv' if v.get('vertical') else '', embed, title, _('Videoni ko‘rish'), title, thumb)

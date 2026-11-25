@@ -127,6 +127,23 @@ So'ng *Web* bo'limida **Reload**.
 
 Admin orqali yuklangan rasm va videolar serverdagi `media/` papkasida qoladi, `git pull` ularga tegmaydi.
 
+## Ko'p tillik (UZ / EN / RU)
+
+| Til | Manzil | Misol |
+|---|---|---|
+| O'zbekcha (asosiy) | `/` | `/keyslar`, `/xizmatlar` |
+| Inglizcha | `/en/` | `/en/cases`, `/en/services` |
+| Ruscha | `/ru/` | `/ru/keysy`, `/ru/uslugi` |
+
+- **Kontent** (xizmatlar, keyslar, jamoa, sozlamalar …) admin'da har bir maydon uchun **UZ · EN · RU** yorliqlari bilan
+  kiritiladi. EN/RU bo'sh bo'lsa, saytda o'zbekchasi chiqadi.
+- **Interfeys matnlari** (menyu, tugmalar, forma xabarlari) — `core/ui_translations.py`. O'zgartirgandan keyin:
+  `python manage.py build_locale` (GNU gettext shart emas).
+- **Boshlang'ich kontent tarjimalari** — `core/content_translations.py`; bo'sh EN/RU maydonlarni to'ldirish:
+  `python manage.py fill_translations`.
+- **Soha illyustratsiyalari** (SVG) ichidagi yozuvlar — `core/svg_i18n.py`; qayta yaratish: `python -m core.svg_i18n`.
+- Admin panel har doim o'zbek tilida.
+
 ## Admin kirish himoyasi (django-axes)
 
 Parol **5 marta** noto'g'ri kiritilsa, shu IP'dan kirish **1 soatga** bloklanadi. Urinishlar admin'da *Axes → Access attempts* bo'limida ko'rinadi.

@@ -1,0 +1,362 @@
+# Finora Systems — avtomatik yaratilgan: python manage.py build_locale
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "ERP, CRM va biznes avtomatlashtirish"
+msgstr "ERP, CRM and business automation"
+
+msgid "Bosh sahifa"
+msgstr "Home"
+
+msgid "Asosiy menyu"
+msgstr "Main menu"
+
+msgid "Til"
+msgstr "Language"
+
+msgid "Konsultatsiya"
+msgstr "Consultation"
+
+msgid "Menyu"
+msgstr "Menu"
+
+msgid "Sahifalar"
+msgstr "Pages"
+
+msgid "Xizmatlar"
+msgstr "Services"
+
+msgid "Sohalar"
+msgstr "Industries"
+
+msgid "Keyslar"
+msgstr "Case studies"
+
+msgid "Jamoa"
+msgstr "Team"
+
+msgid "Aloqa"
+msgstr "Contact"
+
+msgid "Bepul audit olish"
+msgstr "Get a free audit"
+
+msgid "Barcha huquqlar himoyalangan."
+msgstr "All rights reserved."
+
+msgid "Tepaga"
+msgstr "Back to top"
+
+msgid "Sahifa topilmadi"
+msgstr "Page not found"
+
+msgid "Havola eskirgan yoki noto'g'ri yozilgan bo'lishi mumkin."
+msgstr "The link may be outdated or mistyped."
+
+msgid "Bosh sahifaga qaytish"
+msgstr "Back to home"
+
+msgid "Bepul audit"
+msgstr "Free audit"
+
+msgid "Rasmiy hamkor"
+msgstr "Official partner"
+
+msgid "Nega Finora"
+msgstr "Why Finora"
+
+msgid "Oldingi"
+msgstr "Previous"
+
+msgid "Keyingi"
+msgstr "Next"
+
+msgid "Yo'nalish"
+msgstr "Industry"
+
+msgid "Barcha keyslar"
+msgstr "All case studies"
+
+msgid "Ishonch"
+msgstr "Trust"
+
+msgid "Jarayon"
+msgstr "Process"
+
+msgid "To'liq jamoa bilan tanishish"
+msgstr "Meet the whole team"
+
+msgid "Jonli · bugungi savdo"
+msgstr "Live · today's sales"
+
+msgid "Savdo"
+msgstr "Sales"
+
+msgid "mln"
+msgstr "M"
+
+msgid "Buyurtmalar"
+msgstr "Orders"
+
+msgid "Foyda"
+msgstr "Profit"
+
+msgid "Buyurtma tayyor"
+msgstr "Order ready"
+
+msgid "+38%% o'sish"
+msgstr "+38%% growth"
+
+msgid "AI bot javob berdi"
+msgstr "AI bot replied"
+
+msgid "To'liq IT yechimlar"
+msgstr "End-to-end IT solutions"
+
+msgid "Tahlildan ishga tushirish va o'qitishgacha."
+msgstr "From analysis to launch and training."
+
+msgid "Sohangiz og'rig'iga mos yechim"
+msgstr "Solutions for your industry's pain points"
+
+msgid "Har bir soha uchun: muammo → tizim → AI va veb-sayt."
+msgstr "For every industry: problem → system → AI and website."
+
+msgid "Og'riq nuqtalari"
+msgstr "Pain points"
+
+msgid "Bizning yechim"
+msgstr "Our solution"
+
+msgid "AI yechim"
+msgstr "AI solution"
+
+msgid "Veb-sayt"
+msgstr "Website"
+
+msgid "Konsultatsiya olish"
+msgstr "Get a consultation"
+
+msgid "Amalga oshirilgan loyihalar"
+msgstr "Completed projects"
+
+msgid "Biz tizimlashtirgan bizneslar va ularning natijalari."
+msgstr "Businesses we have systematized and their results."
+
+msgid "Natija"
+msgstr "Result"
+
+msgid "Batafsil ko‘rish"
+msgstr "View details"
+
+msgid "Yo‘l"
+msgstr "Breadcrumb"
+
+msgid "Keys"
+msgstr "Case study"
+
+msgid "Mijoz"
+msgstr "Client"
+
+msgid "Muddat"
+msgstr "Duration"
+
+msgid "Yil"
+msgstr "Year"
+
+msgid "Shunday tizim kerak"
+msgstr "I need a system like this"
+
+msgid "Natijalar"
+msgstr "Results"
+
+msgid "Raqamlarda natija"
+msgstr "Results in numbers"
+
+msgid "Vazifa"
+msgstr "Challenge"
+
+msgid "Mijoz nimaga duch kelgan"
+msgstr "What the client was facing"
+
+msgid "Yechim"
+msgstr "Solution"
+
+msgid "Biz nima qildik"
+msgstr "What we did"
+
+msgid "Bajarilgan ishlar"
+msgstr "Work done"
+
+msgid "Loyiha doirasida"
+msgstr "Within the project"
+
+msgid "Loyihadan videolar"
+msgstr "Project videos"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Galereya"
+msgstr "Gallery"
+
+msgid "Loyihadan lavhalar"
+msgstr "Project highlights"
+
+msgid "Video-otziv"
+msgstr "Video testimonial"
+
+msgid "Mijoz fikri"
+msgstr "Testimonial"
+
+msgid "Mijozimiz nima deydi"
+msgstr "What our client says"
+
+msgid "Boshqa loyihalar"
+msgstr "Other projects"
+
+msgid "Videoni ko‘rish"
+msgstr "Watch video"
+
+msgid "Bizning jamoa"
+msgstr "Our team"
+
+msgid "Jamoa bilan bog'lanish"
+msgstr "Contact the team"
+
+msgid "Asoschi"
+msgstr "Founder"
+
+msgid "Ta'lim"
+msgstr "Education"
+
+msgid "Tajriba"
+msgstr "Experience"
+
+msgid "Ekspertiza"
+msgstr "Expertise"
+
+msgid "Qadriyatlar"
+msgstr "Values"
+
+msgid "Biz nimaga ishonamiz"
+msgstr "What we believe in"
+
+msgid "Bog‘lanish"
+msgstr "Contact"
+
+msgid "Haqida"
+msgstr "About"
+
+msgid "Ko‘nikmalar"
+msgstr "Skills"
+
+msgid "Sertifikat va yutuqlar"
+msgstr "Certificates and achievements"
+
+msgid "Rasmlar"
+msgstr "Photos"
+
+msgid "Jamoaning boshqa a’zolari"
+msgstr "Other team members"
+
+msgid "%(name)s — videolar"
+msgstr "%(name)s — videos"
+
+msgid "%(name)s haqida batafsil ma’lumot tez orada qo‘shiladi."
+msgstr "More about %(name)s coming soon."
+
+msgid "Bepul konsultatsiya"
+msgstr "Free consultation"
+
+msgid "Ma'lumot qoldiring, 1 ish kuni ichida bog'lanamiz."
+msgstr "Leave your details and we will contact you within 1 business day."
+
+msgid "Qanday ishlaymiz"
+msgstr "How we work"
+
+msgid "<b>1 ish kuni</b> ichida bog‘lanamiz"
+msgstr "We reply within <b>1 business day</b>"
+
+msgid "<b>Bepul audit</b> va mutaxassis tavsiyalari"
+msgstr "<b>Free audit</b> and expert advice"
+
+msgid "Ma'lumotlaringiz to‘liq <b>maxfiy</b> saqlanadi"
+msgstr "Your data stays fully <b>confidential</b>"
+
+msgid "Ismingiz"
+msgstr "Your name"
+
+msgid "Telefon raqamingiz"
+msgstr "Your phone number"
+
+msgid "Telefon: +998 __ ___ __ __"
+msgstr "Phone: +998 __ ___ __ __"
+
+msgid "Qiziqqan xizmat"
+msgstr "Service you need"
+
+msgid "Boshqa"
+msgstr "Other"
+
+msgid "Qisqacha vazifa"
+msgstr "Briefly describe your task"
+
+msgid "Ariza yuborish"
+msgstr "Send request"
+
+msgid "Yuborilmoqda…"
+msgstr "Sending…"
+
+msgid "Ismingizni yozing — kimga qo‘ng‘iroq qilishni bilishimiz uchun."
+msgstr "Please enter your name so we know who to call."
+
+msgid "Telefon raqamini to‘liq yozing, masalan: 90 123-45-67."
+msgstr "Please enter your full phone number, e.g. 90 123-45-67."
+
+msgid "Ariza yuborilmadi — internet aloqasini tekshirib, qayta urinib ko‘ring."
+msgstr "The request wasn't sent — check your internet connection and try again."
+
+msgid "Rahmat! Arizangiz qabul qilindi."
+msgstr "Thank you! Your request has been received."
+
+msgid "1 ish kuni ichida siz bilan bog‘lanamiz."
+msgstr "We will contact you within 1 business day."
+
+msgid "Yopish"
+msgstr "Close"
+
+msgid "So'rov noto'g'ri."
+msgstr "Invalid request."
+
+msgid "Juda ko'p ariza yuborildi. Birozdan keyin qayta urinib ko'ring yoki bizga qo'ng'iroq qiling."
+msgstr "Too many requests. Please try again later or give us a call."
+
+msgid "Ismingizni yozing."
+msgstr "Please enter your name."
+
+msgid "Telefon raqamini to'liq yozing, masalan: 90 123-45-67."
+msgstr "Please enter your full phone number, e.g. 90 123-45-67."
+
+msgctxt "url"
+msgid "xizmatlar"
+msgstr "services"
+
+msgctxt "url"
+msgid "sohalar"
+msgstr "industries"
+
+msgctxt "url"
+msgid "keyslar"
+msgstr "cases"
+
+msgctxt "url"
+msgid "jamoa"
+msgstr "team"
+
+msgctxt "url"
+msgid "aloqa"
+msgstr "contact"

@@ -1,0 +1,362 @@
+# Finora Systems — avtomatik yaratilgan: python manage.py build_locale
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "ERP, CRM va biznes avtomatlashtirish"
+msgstr "ERP, CRM и автоматизация бизнеса"
+
+msgid "Bosh sahifa"
+msgstr "Главная"
+
+msgid "Asosiy menyu"
+msgstr "Главное меню"
+
+msgid "Til"
+msgstr "Язык"
+
+msgid "Konsultatsiya"
+msgstr "Консультация"
+
+msgid "Menyu"
+msgstr "Меню"
+
+msgid "Sahifalar"
+msgstr "Страницы"
+
+msgid "Xizmatlar"
+msgstr "Услуги"
+
+msgid "Sohalar"
+msgstr "Отрасли"
+
+msgid "Keyslar"
+msgstr "Кейсы"
+
+msgid "Jamoa"
+msgstr "Команда"
+
+msgid "Aloqa"
+msgstr "Контакты"
+
+msgid "Bepul audit olish"
+msgstr "Получить бесплатный аудит"
+
+msgid "Barcha huquqlar himoyalangan."
+msgstr "Все права защищены."
+
+msgid "Tepaga"
+msgstr "Наверх"
+
+msgid "Sahifa topilmadi"
+msgstr "Страница не найдена"
+
+msgid "Havola eskirgan yoki noto'g'ri yozilgan bo'lishi mumkin."
+msgstr "Ссылка устарела или указана с ошибкой."
+
+msgid "Bosh sahifaga qaytish"
+msgstr "Вернуться на главную"
+
+msgid "Bepul audit"
+msgstr "Бесплатный аудит"
+
+msgid "Rasmiy hamkor"
+msgstr "Официальный партнёр"
+
+msgid "Nega Finora"
+msgstr "Почему Finora"
+
+msgid "Oldingi"
+msgstr "Назад"
+
+msgid "Keyingi"
+msgstr "Вперёд"
+
+msgid "Yo'nalish"
+msgstr "Направление"
+
+msgid "Barcha keyslar"
+msgstr "Все кейсы"
+
+msgid "Ishonch"
+msgstr "Доверие"
+
+msgid "Jarayon"
+msgstr "Процесс"
+
+msgid "To'liq jamoa bilan tanishish"
+msgstr "Познакомиться со всей командой"
+
+msgid "Jonli · bugungi savdo"
+msgstr "Онлайн · продажи сегодня"
+
+msgid "Savdo"
+msgstr "Продажи"
+
+msgid "mln"
+msgstr "млн"
+
+msgid "Buyurtmalar"
+msgstr "Заказы"
+
+msgid "Foyda"
+msgstr "Прибыль"
+
+msgid "Buyurtma tayyor"
+msgstr "Заказ готов"
+
+msgid "+38%% o'sish"
+msgstr "Рост +38%%"
+
+msgid "AI bot javob berdi"
+msgstr "AI-бот ответил"
+
+msgid "To'liq IT yechimlar"
+msgstr "Комплексные IT-решения"
+
+msgid "Tahlildan ishga tushirish va o'qitishgacha."
+msgstr "От анализа до запуска и обучения."
+
+msgid "Sohangiz og'rig'iga mos yechim"
+msgstr "Решения для болевых точек вашей отрасли"
+
+msgid "Har bir soha uchun: muammo → tizim → AI va veb-sayt."
+msgstr "Для каждой отрасли: проблема → система → AI и сайт."
+
+msgid "Og'riq nuqtalari"
+msgstr "Болевые точки"
+
+msgid "Bizning yechim"
+msgstr "Наше решение"
+
+msgid "AI yechim"
+msgstr "AI-решение"
+
+msgid "Veb-sayt"
+msgstr "Сайт"
+
+msgid "Konsultatsiya olish"
+msgstr "Получить консультацию"
+
+msgid "Amalga oshirilgan loyihalar"
+msgstr "Реализованные проекты"
+
+msgid "Biz tizimlashtirgan bizneslar va ularning natijalari."
+msgstr "Бизнесы, которые мы систематизировали, и их результаты."
+
+msgid "Natija"
+msgstr "Результат"
+
+msgid "Batafsil ko‘rish"
+msgstr "Подробнее"
+
+msgid "Yo‘l"
+msgstr "Навигация"
+
+msgid "Keys"
+msgstr "Кейс"
+
+msgid "Mijoz"
+msgstr "Клиент"
+
+msgid "Muddat"
+msgstr "Срок"
+
+msgid "Yil"
+msgstr "Год"
+
+msgid "Shunday tizim kerak"
+msgstr "Хочу такую систему"
+
+msgid "Natijalar"
+msgstr "Результаты"
+
+msgid "Raqamlarda natija"
+msgstr "Результаты в цифрах"
+
+msgid "Vazifa"
+msgstr "Задача"
+
+msgid "Mijoz nimaga duch kelgan"
+msgstr "С чем столкнулся клиент"
+
+msgid "Yechim"
+msgstr "Решение"
+
+msgid "Biz nima qildik"
+msgstr "Что мы сделали"
+
+msgid "Bajarilgan ishlar"
+msgstr "Выполненные работы"
+
+msgid "Loyiha doirasida"
+msgstr "В рамках проекта"
+
+msgid "Loyihadan videolar"
+msgstr "Видео проекта"
+
+msgid "Video"
+msgstr "Видео"
+
+msgid "Galereya"
+msgstr "Галерея"
+
+msgid "Loyihadan lavhalar"
+msgstr "Кадры проекта"
+
+msgid "Video-otziv"
+msgstr "Видеоотзыв"
+
+msgid "Mijoz fikri"
+msgstr "Отзыв клиента"
+
+msgid "Mijozimiz nima deydi"
+msgstr "Что говорит наш клиент"
+
+msgid "Boshqa loyihalar"
+msgstr "Другие проекты"
+
+msgid "Videoni ko‘rish"
+msgstr "Смотреть видео"
+
+msgid "Bizning jamoa"
+msgstr "Наша команда"
+
+msgid "Jamoa bilan bog'lanish"
+msgstr "Связаться с командой"
+
+msgid "Asoschi"
+msgstr "Основатель"
+
+msgid "Ta'lim"
+msgstr "Образование"
+
+msgid "Tajriba"
+msgstr "Опыт"
+
+msgid "Ekspertiza"
+msgstr "Экспертиза"
+
+msgid "Qadriyatlar"
+msgstr "Ценности"
+
+msgid "Biz nimaga ishonamiz"
+msgstr "Во что мы верим"
+
+msgid "Bog‘lanish"
+msgstr "Связаться"
+
+msgid "Haqida"
+msgstr "О себе"
+
+msgid "Ko‘nikmalar"
+msgstr "Навыки"
+
+msgid "Sertifikat va yutuqlar"
+msgstr "Сертификаты и достижения"
+
+msgid "Rasmlar"
+msgstr "Фотографии"
+
+msgid "Jamoaning boshqa a’zolari"
+msgstr "Другие участники команды"
+
+msgid "%(name)s — videolar"
+msgstr "%(name)s — видео"
+
+msgid "%(name)s haqida batafsil ma’lumot tez orada qo‘shiladi."
+msgstr "Подробная информация о %(name)s скоро появится."
+
+msgid "Bepul konsultatsiya"
+msgstr "Бесплатная консультация"
+
+msgid "Ma'lumot qoldiring, 1 ish kuni ichida bog'lanamiz."
+msgstr "Оставьте заявку — свяжемся в течение 1 рабочего дня."
+
+msgid "Qanday ishlaymiz"
+msgstr "Как мы работаем"
+
+msgid "<b>1 ish kuni</b> ichida bog‘lanamiz"
+msgstr "Свяжемся в течение <b>1 рабочего дня</b>"
+
+msgid "<b>Bepul audit</b> va mutaxassis tavsiyalari"
+msgstr "<b>Бесплатный аудит</b> и рекомендации эксперта"
+
+msgid "Ma'lumotlaringiz to‘liq <b>maxfiy</b> saqlanadi"
+msgstr "Ваши данные полностью <b>конфиденциальны</b>"
+
+msgid "Ismingiz"
+msgstr "Ваше имя"
+
+msgid "Telefon raqamingiz"
+msgstr "Ваш номер телефона"
+
+msgid "Telefon: +998 __ ___ __ __"
+msgstr "Телефон: +998 __ ___ __ __"
+
+msgid "Qiziqqan xizmat"
+msgstr "Интересующая услуга"
+
+msgid "Boshqa"
+msgstr "Другое"
+
+msgid "Qisqacha vazifa"
+msgstr "Кратко опишите задачу"
+
+msgid "Ariza yuborish"
+msgstr "Отправить заявку"
+
+msgid "Yuborilmoqda…"
+msgstr "Отправляем…"
+
+msgid "Ismingizni yozing — kimga qo‘ng‘iroq qilishni bilishimiz uchun."
+msgstr "Укажите имя — чтобы мы знали, кому звонить."
+
+msgid "Telefon raqamini to‘liq yozing, masalan: 90 123-45-67."
+msgstr "Укажите номер телефона полностью, например: 90 123-45-67."
+
+msgid "Ariza yuborilmadi — internet aloqasini tekshirib, qayta urinib ko‘ring."
+msgstr "Заявка не отправлена — проверьте подключение к интернету и попробуйте ещё раз."
+
+msgid "Rahmat! Arizangiz qabul qilindi."
+msgstr "Спасибо! Ваша заявка принята."
+
+msgid "1 ish kuni ichida siz bilan bog‘lanamiz."
+msgstr "Мы свяжемся с вами в течение 1 рабочего дня."
+
+msgid "Yopish"
+msgstr "Закрыть"
+
+msgid "So'rov noto'g'ri."
+msgstr "Некорректный запрос."
+
+msgid "Juda ko'p ariza yuborildi. Birozdan keyin qayta urinib ko'ring yoki bizga qo'ng'iroq qiling."
+msgstr "Слишком много заявок. Попробуйте позже или позвоните нам."
+
+msgid "Ismingizni yozing."
+msgstr "Укажите ваше имя."
+
+msgid "Telefon raqamini to'liq yozing, masalan: 90 123-45-67."
+msgstr "Укажите номер телефона полностью, например: 90 123-45-67."
+
+msgctxt "url"
+msgid "xizmatlar"
+msgstr "uslugi"
+
+msgctxt "url"
+msgid "sohalar"
+msgstr "otrasli"
+
+msgctxt "url"
+msgid "keyslar"
+msgstr "keysy"
+
+msgctxt "url"
+msgid "jamoa"
+msgstr "komanda"
+
+msgctxt "url"
+msgid "aloqa"
+msgstr "kontakty"

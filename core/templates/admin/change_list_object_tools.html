@@ -1,0 +1,1 @@
+{% load admin_urls %}{% block object-tools-items %}{% if has_add_permission %}<li><a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="addlink">+ Yangi {{ cl.opts.verbose_name }} qo‘shish</a></li>{% endif %}{% endblock %}

@@ -1,11 +1,36 @@
 {% extends "admin/index.html" %}{% load finora_admin %}
+{% block nav-sidebar %}{% include "admin/finora_sidebar.html" %}{% endblock %}
+{% block content_title %}<h1>Boshqaruv paneli</h1>{% endblock %}
 {% block content %}
-{% admin_stats as st %}
+{% admin_stats as st %}{% admin_dashboard as d %}
 <div class="fs-tiles">
   <a class="fs-tile hl" href="{% url 'admin:core_lead_changelist' %}?status__exact=new"><b>{{ st.new }}</b><span>Yangi ariza</span></a>
   <a class="fs-tile" href="{% url 'admin:core_lead_changelist' %}?status__exact=progress"><b>{{ st.progress }}</b><span>Jarayonda</span></a>
   <a class="fs-tile" href="{% url 'admin:core_lead_changelist' %}"><b>{{ st.all }}</b><span>Jami arizalar</span></a>
-  <a class="fs-tile" href="/" target="_blank" rel="noopener"><b>↗</b><span>Saytni ochish</span></a>
 </div>
-{{ block.super }}
+
+<section class="fs-panel">
+  <div class="fs-ph"><h2>So‘nggi arizalar</h2><a href="{% url 'admin:core_lead_changelist' %}">Hammasi →</a></div>
+  {% if d.recent %}
+  <div class="fs-tw"><table class="fs-table">
+    <thead><tr><th>Sana</th><th>Ism</th><th>Telefon</th><th>Xizmat</th><th>Holat</th><th></th></tr></thead>
+    <tbody>{% for l in d.recent %}
+      <tr><td class="fs-mut">{{ l.created_at|date:"d.m.Y H:i" }}</td>
+        <td><a href="{% url 'admin:core_lead_change' l.pk %}"><b>{{ l.name }}</b></a></td>
+        <td><a href="tel:{{ l.phone|cut:' ' }}">{{ l.phone }}</a></td>
+        <td class="fs-mut">{{ l.service|default:"—" }}</td>
+        <td><span class="fs-st fs-st-{{ l.status }}">{{ l.get_status_display }}</span></td>
+        <td class="fs-ar"><a class="fs-btn sm" href="{% url 'admin:core_lead_change' l.pk %}">Ochish</a></td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+  {% else %}
+  <div class="fs-empty"><p>Hali ariza yo‘q. Saytdagi formalar to‘ldirilganda shu yerda paydo bo‘ladi.</p><a class="fs-btn" href="/aloqa" target="_blank" rel="noopener">Formani sinab ko‘rish</a></div>
+  {% endif %}
+</section>
+
+<section class="fs-panel">
+  <div class="fs-ph"><h2>Kontent</h2></div>
+  <div class="fs-cgrid">{% for c in d.content %}<a class="fs-cbox" href="{{ c.url }}"><b>{{ c.count }}</b><span>{{ c.label }}</span></a>{% endfor %}</div>
+</section>
 {% endblock %}
+{% block sidebar %}{% endblock %}

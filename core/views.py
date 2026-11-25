@@ -5,6 +5,8 @@ from urllib.parse import urlparse
 from django.core.cache import cache
 from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
+from django.utils import translation
+from django.utils.translation import gettext as _
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -98,20 +100,26 @@ def api_lead(request):
     try:
         data = json.loads(request.body or b'{}')
     except ValueError:
-        return JsonResponse({'error': "So'rov noto'g'ri."}, status=400)
+        return JsonResponse({'error': _("So'rov noto'g'ri.")}, status=400)
     clip = lambda k, n: str(data.get(k) or '').strip()[:n]
+    lang = clip('lang', 5) if clip('lang', 5) in {'uz', 'en', 'ru'} else 'uz'
+    with translation.override(lang):
+        return _save_lead(request, data, clip, lang)
+
+
+def _save_lead(request, data, clip, lang):
 
     if data.get('website'):  # bot to'ldirgan yashirin maydon
         return JsonResponse({'ok': True})
     if _rate_limited(_client_ip(request)):
-        return JsonResponse({'error': "Juda ko'p ariza yuborildi. Birozdan keyin qayta urinib ko'ring yoki bizga qo'ng'iroq qiling."}, status=429)
+        return JsonResponse({'error': _("Juda ko'p ariza yuborildi. Birozdan keyin qayta urinib ko'ring yoki bizga qo'ng'iroq qiling.")}, status=429)
 
     name, phone = clip('name', 80), clip('phone', 20)
     digits = re.sub(r'\D', '', phone)
     if not name:
-        return JsonResponse({'error': 'Ismingizni yozing.'}, status=400)
+        return JsonResponse({'error': _('Ismingizni yozing.')}, status=400)
     if len(digits) < 9:
-        return JsonResponse({'error': "Telefon raqamini to'liq yozing, masalan: 90 123-45-67."}, status=400)
+        return JsonResponse({'error': _("Telefon raqamini to'liq yozing, masalan: 90 123-45-67.")}, status=400)
     if len(digits) == 9:
         phone = '+998 ' + phone
     elif not phone.startswith('+'):
@@ -119,6 +127,6 @@ def api_lead(request):
 
     referer = urlparse(request.META.get('HTTP_REFERER', '')).path[:300]
     lead = Lead.objects.create(name=name, phone=phone, service=clip('service', 150), message=clip('message', 2000),
-                               source=clip('source', 30), page=referer)
+                               source=clip('source', 30), page=referer, lang=lang)
     notify_lead(lead)
     return JsonResponse({'ok': True})

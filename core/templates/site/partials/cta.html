@@ -1,33 +1,34 @@
-{% load finora %}{% with source=source|default:"cta" %}<section><div class='w'>
+{% load i18n finora %}{% get_current_language as LANG %}{% with source=source|default:"cta" %}<section><div class='w'>
 <div class='ct'>
   <div class='ct-info'>
-    {% if hide_header %}<h2>Qanday ishlaymiz</h2>{% else %}<div class='eyebrow' style='color:#00f5ff'>Konsultatsiya</div>
-    <h2>{{ s.cta_title|default:"Bepul konsultatsiya" }}</h2>
-    <p>{{ s.cta_text|default:"Ma'lumot qoldiring, 1 ish kuni ichida o'zimiz bog'lanamiz." }}</p>{% endif %}
+    {% if hide_header %}<h2>{% translate "Qanday ishlaymiz" %}</h2>{% else %}<div class='eyebrow' style='color:#00f5ff'>{% translate "Konsultatsiya" %}</div>
+    <h2>{{ s.cta_title|default:_("Bepul konsultatsiya") }}</h2>
+    <p>{{ s.cta_text }}</p>{% endif %}
     <div class='ct-list'>
-      <div class='ct-item'><i aria-hidden='true'>✓</i> <span><b>1 ish kuni</b> ichida bog‘lanamiz</span></div>
-      <div class='ct-item'><i aria-hidden='true'>✓</i> <span><b>Bepul audit</b> va mutaxassis tavsiyalari</span></div>
-      <div class='ct-item'><i aria-hidden='true'>✓</i> <span>Ma'lumotlaringiz to‘liq <b>maxfiy</b> saqlanadi</span></div>
+      <div class='ct-item'><i aria-hidden='true'>✓</i> <span>{% blocktranslate %}<b>1 ish kuni</b> ichida bog‘lanamiz{% endblocktranslate %}</span></div>
+      <div class='ct-item'><i aria-hidden='true'>✓</i> <span>{% blocktranslate %}<b>Bepul audit</b> va mutaxassis tavsiyalari{% endblocktranslate %}</span></div>
+      <div class='ct-item'><i aria-hidden='true'>✓</i> <span>{% blocktranslate %}Ma'lumotlaringiz to‘liq <b>maxfiy</b> saqlanadi{% endblocktranslate %}</span></div>
     </div>
     {% if s.phone %}<a class='tel' href='{{ s.phone|tel }}'>📞 {{ s.phone }}</a>{% endif %}
   </div>
   <form class='form' data-lead novalidate>
     <input type='hidden' name='source' value='{{ source }}'>
-    <label class='vh' for='f-name-{{ source }}'>Ismingiz</label>
-    <input id='f-name-{{ source }}' name='name' placeholder='Ismingiz' autocomplete='name' maxlength='80' required>
-    <label class='vh' for='f-phone-{{ source }}'>Telefon raqamingiz</label>
-    <input id='f-phone-{{ source }}' name='phone' type='tel' inputmode='tel' placeholder='Telefon: +998 __ ___ __ __' autocomplete='tel' maxlength='20' required>
-    <label class='vh' for='f-svc-{{ source }}'>Qiziqqan xizmat</label>
+    <input type='hidden' name='lang' value='{{ LANG }}'>
+    <label class='vh' for='f-name-{{ source }}'>{% translate "Ismingiz" %}</label>
+    <input id='f-name-{{ source }}' name='name' placeholder='{% translate "Ismingiz" %}' autocomplete='name' maxlength='80' required>
+    <label class='vh' for='f-phone-{{ source }}'>{% translate "Telefon raqamingiz" %}</label>
+    <input id='f-phone-{{ source }}' name='phone' type='tel' inputmode='tel' placeholder='{% translate "Telefon: +998 __ ___ __ __" %}' autocomplete='tel' maxlength='20' required>
+    <label class='vh' for='f-svc-{{ source }}'>{% translate "Qiziqqan xizmat" %}</label>
     <select id='f-svc-{{ source }}' name='service'>
-      <option value=''>Qiziqqan xizmat</option>
+      <option value=''>{% translate "Qiziqqan xizmat" %}</option>
       {% for x in all_services %}<option value='{{ x.title }}'>{{ x.title }}</option>{% endfor %}
-      <option value='Boshqa'>Boshqa</option>
+      <option value='{% translate "Boshqa" %}'>{% translate "Boshqa" %}</option>
     </select>
-    <label class='vh' for='f-msg-{{ source }}'>Qisqacha vazifa</label>
-    <textarea id='f-msg-{{ source }}' name='message' rows='3' placeholder='Qisqacha vazifa' maxlength='2000'></textarea>
+    <label class='vh' for='f-msg-{{ source }}'>{% translate "Qisqacha vazifa" %}</label>
+    <textarea id='f-msg-{{ source }}' name='message' rows='3' placeholder='{% translate "Qisqacha vazifa" %}' maxlength='2000'></textarea>
     <input class='hp' name='website' tabindex='-1' autocomplete='off' aria-hidden='true'>
     <p class='fmsg' role='status' aria-live='polite'></p>
-    <button class='btn p' type='submit'>Ariza yuborish</button>
+    <button class='btn p' type='submit'>{% translate "Ariza yuborish" %}</button>
   </form>
 </div>
 </div></section>{% endwith %}

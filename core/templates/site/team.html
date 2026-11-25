@@ -1,14 +1,15 @@
-{% extends "site/base.html" %}{% load finora %}
-{% block title %}Jamoa — {{ s.site_name }}{% endblock %}
+{% extends "site/base.html" %}{% load i18n finora %}
+{% block title %}{% translate "Jamoa" %} — {{ s.site_name }}{% endblock %}
 {% block content %}
-{% include "site/partials/page_head.html" with eyebrow="Bizning jamoa" heading=s.team_title sub=s.team_sub %}
-<section style='padding-top:16px'><div class='w'><div class='tg3'>{% for m in team %}{% include "site/partials/member_card.html" %}{% endfor %}</div><div style='text-align:center;margin-top:32px'><a class='btn p' href='/aloqa'>Jamoa bilan bog'lanish</a></div></div></section>
+{% translate "Bizning jamoa" as e %}
+{% include "site/partials/page_head.html" with eyebrow=e heading=s.team_title sub=s.team_sub %}
+<section style='padding-top:16px'><div class='w'><div class='tg3'>{% for m in team %}{% include "site/partials/member_card.html" %}{% endfor %}</div><div style='text-align:center;margin-top:32px'><a class='btn p' href='{% url "contact" %}'>{% translate "Jamoa bilan bog'lanish" %}</a></div></div></section>
 {% if s.founder_name %}{% with edu=s.founder_education|lines exp=s.founder_experience|lines pills=s.founder_expertise|lines %}
-<section class='alt'><div class='w'><div class='eyebrow'>Asoschi</div><h2>{{ s.founder_name }}</h2><p class='sub' style='margin-bottom:20px'>{{ s.founder_bio }}</p><div class='grid'>
-{% if edu %}<div class='card'><h3>Ta'lim</h3><ul class='l'>{% for x in edu %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
-{% if exp %}<div class='card'><h3>Tajriba</h3><ul class='l'>{% for x in exp %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
-{% if pills %}<div class='card'><h3>Ekspertiza</h3><div>{% for x in pills %}<span class='pill'>{{ x }}</span>{% endfor %}</div></div>{% endif %}
+<section class='alt'><div class='w'><div class='eyebrow'>{% translate "Asoschi" %}</div><h2>{{ s.founder_name }}</h2><p class='sub' style='margin-bottom:20px'>{{ s.founder_bio }}</p><div class='grid'>
+{% if edu %}<div class='card'><h3>{% translate "Ta'lim" %}</h3><ul class='l'>{% for x in edu %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+{% if exp %}<div class='card'><h3>{% translate "Tajriba" %}</h3><ul class='l'>{% for x in exp %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+{% if pills %}<div class='card'><h3>{% translate "Ekspertiza" %}</h3><div>{% for x in pills %}<span class='pill'>{{ x }}</span>{% endfor %}</div></div>{% endif %}
 </div></div></section>{% endwith %}{% endif %}
-{% if values %}<section><div class='w'><div class='eyebrow'>Qadriyatlar</div><h2>Biz nimaga ishonamiz</h2><div class='grid' style='margin-top:24px'>{% for v in values %}<div class='card'><h3>{{ v.title }}</h3><p>{{ v.text }}</p></div>{% endfor %}</div></div></section>{% endif %}
+{% if values %}<section><div class='w'><div class='eyebrow'>{% translate "Qadriyatlar" %}</div><h2>{% translate "Biz nimaga ishonamiz" %}</h2><div class='grid' style='margin-top:24px'>{% for v in values %}<div class='card'><h3>{{ v.title }}</h3><p>{{ v.text }}</p></div>{% endfor %}</div></div></section>{% endif %}
 {% include "site/partials/cta.html" %}
 {% endblock %}

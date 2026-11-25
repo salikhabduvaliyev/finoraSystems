@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [h.strip() for h in os.environ.get(
 CSRF_TRUSTED_ORIGINS = [o.strip() for o in os.environ.get('DJANGO_CSRF_ORIGINS', '').split(',') if o.strip()]
 
 INSTALLED_APPS = [
+    'modeltranslation',  # ko'p tilli kontent — django.contrib.admin dan oldin bo'lishi shart
     'core',  # admin shablonlarini almashtirish uchun django.contrib.admin dan oldin
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'core.middleware.AdminUzbekMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -95,6 +98,18 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'uz'
+LANGUAGES = [
+    ('uz', "O'zbekcha"),
+    ('en', 'English'),
+    ('ru', 'Русский'),
+]
+LOCALE_PATHS = [BASE_DIR / 'locale']
+
+# django-modeltranslation: kontent maydonlari har bir til uchun alohida
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('uz',)  # tarjima bo'sh bo'lsa — o'zbekchasi chiqadi
+# Admin'dagi UZ/EN/RU yorliqlari uchun jQuery UI — tashqi CDN'siz, loyihaning o'zidan
+JQUERY_UI_URL = '/static/vendor/jquery-ui.min.js'
 TIME_ZONE = 'Asia/Tashkent'
 USE_I18N = True
 USE_TZ = True
