@@ -1,0 +1,139 @@
+/* =====================================================================
+   Finora admin — YORUG' MAVZU (admin-brand.css dan keyin yuklanadi)
+   Oq fon, to'q matn, brend rangidagi urg'ular. Tuzilma admin-brand.css da.
+   ===================================================================== */
+:root, html[data-theme="light"], html[data-theme="dark"], html[data-theme="auto"] {
+  color-scheme: light;
+  --fs-bg: #f3f6fb; --fs-bg2: #ffffff; --fs-card: #ffffff; --fs-line: #e3e9f2; --fs-line2: #cfd8e6;
+  --fs-cy: #00d4e0; --fs-teal: #07808b; --fs-gr: #1f9d6b; --fs-tx: #0f1b2d; --fs-mt: #5f6f86; --fs-dg: #d6336c;
+
+  --primary: #07808b; --secondary: #0b1426; --accent: #00d4e0; --primary-fg: #ffffff;
+  --body-fg: #0f1b2d; --body-bg: #f3f6fb; --body-quiet-color: #5f6f86; --body-medium-color: #3c4a5e; --body-loud-color: #0b1426;
+  --header-color: #e9f1fb; --header-branding-color: #00f5ff; --header-bg: #060b17; --header-link-color: #e9f1fb;
+  --breadcrumbs-fg: #5f6f86; --breadcrumbs-link-fg: #07808b; --breadcrumbs-bg: transparent;
+  --link-fg: #07808b; --link-hover-color: #055c64; --link-selected-fg: #07808b;
+  --hairline-color: #e3e9f2; --border-color: #cfd8e6;
+  --error-fg: #d6336c;
+  --message-success-bg: #e9f9f1; --message-warning-bg: #fff8e6; --message-error-bg: #fdecf2;
+  --darkened-bg: #f6f8fc; --selected-bg: #e3f8fa; --selected-row: #e8fafb;
+  --button-fg: #0f1b2d; --button-bg: #ffffff; --button-hover-bg: #f3f6fb;
+  --default-button-bg: #00d4e0; --default-button-hover-bg: #00e5ee;
+  --close-button-bg: #94a3b8; --close-button-hover-bg: #64748b;
+  --delete-button-bg: #d6336c; --delete-button-hover-bg: #b02455;
+  --object-tools-fg: #001418; --object-tools-bg: #00d4e0; --object-tools-hover-bg: #00e5ee;
+}
+body { background: var(--fs-bg); color: var(--fs-tx); }
+
+/* Tepadagi panel — to'q (oq logotip ko'rinishi uchun) */
+#header { background: #060b17; border-bottom: 0; }
+#user-tools { color: #8fa3bf; }
+#user-tools a, #logout-form button { color: #e9f1fb; }
+#user-tools a:hover, #logout-form button:hover { color: #00f5ff; }
+
+/* Chap menyu */
+.fs-side { background: #ffffff; border-right: 1px solid var(--fs-line); }
+.fs-side nav a, .fs-link { color: #3c4a5e; }
+.fs-side nav a:hover, .fs-link:hover { background: #f3f6fb; color: var(--fs-tx); }
+.fs-side nav a.on { background: #e3f8fa; color: var(--fs-teal); font-weight: 600; }
+.fs-grp { color: #8a97ab; }
+.fs-badge { background: var(--fs-cy); color: #001418; }
+.fs-mnu { background: #ffffff; color: var(--fs-tx); border-color: var(--fs-line2); }
+
+/* Sarlavhalar, panellar */
+#content h1, #content h2, .fs-ph h2 { color: var(--fs-tx); }
+.module, fieldset.module, .inline-group, #changelist .changelist-form-container, .fs-panel, #changelist-filter {
+  background: #ffffff; border-color: var(--fs-line); box-shadow: 0 1px 2px #0f1b2d0a;
+}
+.module h2, .module caption, .inline-group h2, fieldset.module h2, fieldset.module > summary h2, fieldset.collapse summary { color: var(--fs-teal); }
+
+/* Tugmalar */
+.button, input[type=submit], input[type=button], a.button, .fs-btn { background: #ffffff; color: var(--fs-tx); border-color: var(--fs-line2); }
+.button:hover, input[type=submit]:hover, input[type=button]:hover, .fs-btn:hover { background: #f3f6fb; border-color: var(--fs-teal); }
+.button.default, input[type=submit].default, .submit-row input.default, .login .submit-row input,
+.object-tools a, .object-tools a:link, .object-tools a:visited { background: var(--fs-cy); border-color: var(--fs-cy); color: #001418 !important; }
+.button.default:hover, .submit-row input.default:hover, .object-tools a:hover { background: #00e5ee; }
+.object-tools a.viewsitelink, .object-tools a.historylink { background: #ffffff; border-color: var(--fs-line2); color: var(--fs-tx) !important; }
+.submit-row a.deletelink { border-color: #f3b5ca; color: var(--fs-dg) !important; }
+.submit-row a.deletelink:hover { background: #fdecf2; }
+
+/* Forma maydonlari */
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], input[type=tel],
+input[type=search], textarea, select, .vTextField, .vLargeTextField, .vURLField, .vIntegerField {
+  background: #ffffff; color: var(--fs-tx); border-color: var(--fs-line2);
+}
+input:focus, textarea:focus, select:focus { border-color: var(--fs-teal) !important; box-shadow: 0 0 0 3px #00d4e033; }
+input[type=file]::file-selector-button { background: #f3f6fb; color: var(--fs-tx); border-color: var(--fs-line2); }
+p.file-upload a, .inline-group .add-row a { color: var(--fs-teal); }
+.aligned label, form .aligned label, .required label, label.required { color: var(--fs-tx); }
+.inline-related h3 { background: #f6f8fc; color: var(--fs-tx); }
+input[type=checkbox] { accent-color: var(--fs-teal); }
+
+/* Xabarlar */
+ul.messagelist li { color: #0f7a4f; border-color: #bfe9d3; background-color: #e9f9f1; }
+ul.messagelist li.warning { color: #8a5a00; border-color: #f5dca0; background-color: #fff8e6; }
+ul.messagelist li.error, .errornote { color: #b02455; border-color: #f3b5ca; background-color: #fdecf2; }
+
+/* Jadvallar */
+thead th, tfoot td, thead th a, thead th a:link, thead th a:visited { color: #6b7a90; background: #f8fafd; }
+#result_list tbody tr:hover td, #result_list tbody tr:hover th, .fs-table tbody tr:hover td { background: #f8fafd; }
+#result_list th a, #result_list td a, .fs-table a { color: var(--fs-tx); }
+#result_list th a:hover, .fs-table a:hover { color: var(--fs-teal); }
+#changelist #toolbar, #changelist .actions { border-color: var(--fs-line); }
+#changelist-filter h2 { color: var(--fs-tx); }
+#changelist-filter li a { color: #3c4a5e; }
+#changelist-filter li.selected a, #changelist-filter li a:hover { color: var(--fs-teal); background: #e3f8fa; }
+.paginator a:link, .paginator a:visited { background: #ffffff; color: var(--fs-tx); }
+.paginator .this-page { color: var(--fs-teal); }
+
+/* Kalit (switch) */
+#result_list input[type=checkbox][name$="-active"], #result_list input[type=checkbox][name$="-on_home"],
+#result_list input[type=checkbox][name$="-in_footer"], #result_list input[type=checkbox][name$="-highlight"],
+#result_list input[type=checkbox][name$="-dark"] { background: #e3e9f2; border-color: #cfd8e6; }
+#result_list input[type=checkbox][name$="-active"]::after, #result_list input[type=checkbox][name$="-on_home"]::after,
+#result_list input[type=checkbox][name$="-in_footer"]::after, #result_list input[type=checkbox][name$="-highlight"]::after,
+#result_list input[type=checkbox][name$="-dark"]::after { background: #ffffff; box-shadow: 0 1px 2px #0f1b2d33; }
+#result_list input[type=checkbox]:checked[name$="-active"], #result_list input[type=checkbox]:checked[name$="-on_home"],
+#result_list input[type=checkbox]:checked[name$="-in_footer"], #result_list input[type=checkbox]:checked[name$="-highlight"],
+#result_list input[type=checkbox]:checked[name$="-dark"] { background: var(--fs-teal); border-color: var(--fs-teal); }
+#result_list input[type=checkbox]:checked[name$="-active"]::after, #result_list input[type=checkbox]:checked[name$="-on_home"]::after,
+#result_list input[type=checkbox]:checked[name$="-in_footer"]::after, #result_list input[type=checkbox]:checked[name$="-highlight"]::after,
+#result_list input[type=checkbox]:checked[name$="-dark"]::after { background: #ffffff; }
+
+/* Dashboard */
+.fs-tile { background: #ffffff; color: var(--fs-tx) !important; border-color: var(--fs-line); box-shadow: 0 1px 2px #0f1b2d0a; }
+.fs-tile:hover, .fs-cbox:hover { border-color: var(--fs-teal); }
+.fs-tile span, .fs-cbox span, .fs-mut, .fs-empty { color: var(--fs-mt); }
+.fs-tile.hl { background: linear-gradient(135deg, #00f5ff, #12b6c9 55%, #3ddc97); color: #001418 !important; border-color: transparent; }
+.fs-tile.hl span { color: #04323a; }
+.fs-cbox { background: #f8fafd; color: var(--fs-tx) !important; }
+.fs-ph a { color: var(--fs-teal); }
+.fs-st-new { background: #e3f8fa; color: #066c75; }
+.fs-st-progress { background: #fff4db; color: #8a5a00; }
+.fs-st-done { background: #e6f7ef; color: #0f7a4f; }
+.fs-st-spam { background: #eef1f6; color: #5f6f86; }
+.fs-back { color: var(--fs-mt) !important; }
+.fs-back:hover { color: var(--fs-teal) !important; }
+
+/* Dashboard jadvali — gorizontal aylantirishsiz sig'sin */
+.fs-table td, .fs-table th { white-space: normal; }
+.fs-table td:first-child, .fs-table td:nth-child(3), .fs-table td:nth-child(5), .fs-table td:last-child { white-space: nowrap; }
+.fs-table td:nth-child(4) { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dashboard #content { max-width: 1200px; }
+
+/* UZ / EN / RU yorliqlari */
+.ui-tabs .ui-tabs-nav { border-bottom-color: var(--fs-line) !important; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs .ui-tabs-nav .ui-tabs-anchor { background: #f3f6fb !important; color: var(--fs-mt) !important; border-color: var(--fs-line); }
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a { background: var(--fs-cy) !important; color: #001418 !important; border-color: var(--fs-cy); }
+
+/* Kirish sahifasi */
+body.login { background: radial-gradient(600px 320px at 80% 0, #00d4e01f, transparent), var(--fs-bg); }
+.login #container { background: #ffffff; border-color: var(--fs-line); box-shadow: 0 20px 50px #0f1b2d14; }
+.login #header { background: #060b17; padding: 18px 30px; }
+.login .form-row label { color: var(--fs-tx); }
+
+/* Joylashuv tuzatishlari */
+.dashboard #content { width: auto !important; max-width: 1200px; }
+#result_list thead th { white-space: normal; line-height: 1.3; vertical-align: bottom; max-width: 140px; }
+#result_list thead th .text { white-space: normal; }
+#changelist .changelist-form-container { overflow-x: auto; }
+#changelist-filter { flex-basis: 210px; }
