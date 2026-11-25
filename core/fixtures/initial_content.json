@@ -1,0 +1,950 @@
+[
+ {
+  "model": "core.service",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "title": "ERP joriy etish",
+   "subtitle": "Odoo va МойСклад",
+   "items": "Ombor va savdo\nIshlab chiqarish\nMaosh va hisobotlar",
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.service",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "title": "CRM va savdo bo'limi",
+   "subtitle": "amoCRM",
+   "items": "Savdo voronkalari\nSkript va KPI\nSotuvchilarni o'qitish",
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.service",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "title": "Biznes jarayonlar",
+   "subtitle": "Tizimlashtirish",
+   "items": "Jarayon xaritasi\nReglament\nAvtomatlashtirish",
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.service",
+  "pk": 4,
+  "fields": {
+   "sort": 40,
+   "active": true,
+   "title": "Face ID",
+   "subtitle": "Davomat va nazorat",
+   "items": "Xodimlar davomati\nKirish nazorati\nERP integratsiya",
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.service",
+  "pk": 5,
+  "fields": {
+   "sort": 50,
+   "active": true,
+   "title": "AI botlar",
+   "subtitle": "Sayt va Telegram",
+   "items": "Savdo boti\nQo'llab-quvvatlash\nCRM bilan ulash",
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.service",
+  "pk": 6,
+  "fields": {
+   "sort": 60,
+   "active": true,
+   "title": "Maxsus dasturlar",
+   "subtitle": "Mobil ilova, platforma",
+   "items": "To'lov va POS API\nMobil ilova (iOS/Android)\nLMS va portal",
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.industry",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "title": "Savdo va ombor",
+   "label": "Savdo",
+   "short": "Plitka, qurilish materiallari, ulgurji va chakana savdo.",
+   "mock": "savdo",
+   "image": "industries/mwvwsmhk-83fef92222.png",
+   "pains": "Qoldiq va ombor hisobi o'zaro mos kelmaydi\nBuyurtmalar Telegram va qo'ng'iroqlarda yo'qolib ketadi",
+   "solutions": "Odoo / МойСклад: yagona ombor va savdo hisobi\namoCRM voronka: har bir mijoz nazoratda\nAvtomatik buyurtma, nasiya va qarzdorlik hisobi",
+   "ai": "Savdo boti katalog, narx va buyurtmani 24/7 qabul qiladi",
+   "web": "Onlayn katalog va buyurtma sayti (plitka vizualizatsiyasi bilan)",
+   "on_home": true,
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.industry",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "title": "Ishlab chiqarish",
+   "label": "Ishlab chiqarish",
+   "short": "Zavod va sexlar: hom ashyo, retsept, ichki o'tkazma, tannarx.",
+   "mock": "ishlab",
+   "image": "industries/mwvx4unm-a51ae439b5.png",
+   "pains": "Hom ashyo sarfi va tannarx noma'lum\nSexlar o'rtasidagi ichki o'tkazma qog'ozda yuradi",
+   "solutions": "Ishlab chiqarish buyurtmalari va retseptlar (BoM)\nIchki talabnoma sahifasi: ombor → sex\nTannarx va chiqindi hisobi real vaqtda",
+   "ai": "Ovozli so'rov bilan kunlik ishlab chiqarish hisoboti beruvchi AI agent",
+   "web": "Zavod korporativ sayti va B2B buyurtma portali",
+   "on_home": true,
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.industry",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "title": "Ta'lim",
+   "label": "Ta'lim",
+   "short": "Universitetlar, o'quv markazlari va kurs sotuvchi kompaniyalar.",
+   "mock": "talim",
+   "image": "",
+   "pains": "To'lov va davomat qo'lda yuritiladi\nKurs sotuvi Instagram va Telegramda tarqoq",
+   "solutions": "LMS: kurs yuklash, sotish va sertifikat\nCRM voronka va qabul bo'limi\nClick/Payme to'lov va davomat nazorati",
+   "ai": "AI yordamchi talabaga savol-javob va kurs tavsiyasini beradi",
+   "web": "Kurs sotuvchi sayt va talaba shaxsiy kabineti",
+   "on_home": true,
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.industry",
+  "pk": 4,
+  "fields": {
+   "sort": 40,
+   "active": true,
+   "title": "Klinika",
+   "label": "Klinika",
+   "short": "Xususiy klinikalar va shifoxonalar.",
+   "mock": "klinika",
+   "image": "industries/mwvx5f8u-40fe036361.png",
+   "pains": "Navbat qog'ozda, bemor uzoq kutadi\nShifokor yuklamasi va tushum ko'rinmaydi",
+   "solutions": "Onlayn navbat va shifokor jadvali\nBemor kartasi va xizmatlar hisobi\nKassa va shifokor ulushi hisobi",
+   "ai": "AI qabul boti: yozilish, eslatma va savollarga javob",
+   "web": "Klinika sayti: shifokorlar, narxlar, onlayn yozilish",
+   "on_home": true,
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.industry",
+  "pk": 5,
+  "fields": {
+   "sort": 50,
+   "active": true,
+   "title": "Turizm",
+   "label": "Turizm",
+   "short": "Tur operatorlar va sayohat agentliklari.",
+   "mock": "turizm",
+   "image": "",
+   "pains": "Bronlar Excel va xabarlarda adashadi\nHamkorlar bilan hisob-kitob chalkash",
+   "solutions": "Bronlash va paketlar boshqaruvi\nMijozlar bazasi va CRM\nAgent va hamkor hisob-kitobi",
+   "ai": "AI maslahatchi yo'nalish tanlaydi va narxni hisoblaydi",
+   "web": "Tur paketlar sayti, onlayn bron va to'lov",
+   "on_home": true,
+   "in_footer": false
+  }
+ },
+ {
+  "model": "core.industry",
+  "pk": 6,
+  "fields": {
+   "sort": 60,
+   "active": true,
+   "title": "Transport",
+   "label": "Transport",
+   "short": "Avtobus parklari va yo'lovchi tashish tizimlari.",
+   "mock": "transport",
+   "image": "",
+   "pains": "Avtobus joyi va yo'lovchi soni noma'lum\nHaydovchi nazorati va hodisalar dalilsiz",
+   "solutions": "MDVR: video va GPS nazorat\nAPC: yo'lovchi sanash va hisobot\nLED tablo va marshrut axboroti",
+   "ai": "AI tahlil xavfli holat va haydovchi xatti-harakatini aniqlaydi",
+   "web": "Monitoring dashboard va yo'lovchi axborot sayti",
+   "on_home": true,
+   "in_footer": true
+  }
+ },
+ {
+  "model": "core.case",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "title": "Plitka tarmog'i uchun yagona Odoo tizimi",
+   "client": "Kerama City",
+   "logo": "",
+   "description": "Bir nechta filial va omborlar bitta ERPga jamlandi: savdo, ombor va hisobotlar bir joyda ko'rinadi.",
+   "direction": "Savdo va ombor",
+   "tags": "Odoo 19\nERP",
+   "year": "",
+   "duration": "",
+   "result": "___% tezroq hisobot",
+   "mock": "savdo",
+   "image": "",
+   "on_home": true,
+   "challenge": "",
+   "solution": "",
+   "works": "",
+   "metrics": "",
+   "t_text": "",
+   "t_author": "",
+   "t_role": "",
+   "t_photo": "",
+   "t_video_url": "",
+   "t_video_file": "cases/videos/mww0fxzh-cd117bd62c.mp4"
+  }
+ },
+ {
+  "model": "core.case",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "title": "Savdo bo'limi tizimga solindi",
+   "client": "Romax",
+   "logo": "cases/logos/client-romax.png",
+   "description": "amoCRM jarayonlari qayta ko'rib chiqildi, sotuvchilar uchun skript va o'qitish tayyorlandi.",
+   "direction": "Savdo va ishlab chiqarish",
+   "tags": "amoCRM\nB2B",
+   "year": "",
+   "duration": "",
+   "result": "",
+   "mock": "ishlab",
+   "image": "cases/mwvxhh4d-a365a3650f.png",
+   "on_home": true,
+   "challenge": "",
+   "solution": "",
+   "works": "",
+   "metrics": "",
+   "t_text": "",
+   "t_author": "",
+   "t_role": "",
+   "t_photo": "",
+   "t_video_url": "",
+   "t_video_file": "cases/videos/mwvxk7sl-efbdfd143b.mp4"
+  }
+ },
+ {
+  "model": "core.case",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "title": "Jamoat transporti uchun MDVR va APC yechimi",
+   "client": "Avtobus parki",
+   "logo": "",
+   "description": "Avtobuslarda video nazorat, yo'lovchi sanash va LED tablo tizimi yagona monitoringga ulandi.",
+   "direction": "Transport",
+   "tags": "MDVR · APC\nITS",
+   "year": "",
+   "duration": "",
+   "result": "___ ta avtobus",
+   "mock": "transport",
+   "image": "",
+   "on_home": true,
+   "challenge": "",
+   "solution": "",
+   "works": "",
+   "metrics": "",
+   "t_text": "",
+   "t_author": "",
+   "t_role": "",
+   "t_photo": "",
+   "t_video_url": "",
+   "t_video_file": ""
+  }
+ },
+ {
+  "model": "core.case",
+  "pk": 4,
+  "fields": {
+   "sort": 40,
+   "active": true,
+   "title": "Plitka savdosi МойСклад'da avtomatlashtirildi",
+   "client": "Plitka savdosi",
+   "logo": "",
+   "description": "Savdo jarayoni sozlandi, hujjatlar uchun maxsus chop etish shablonlari yaratildi.",
+   "direction": "Savdo va ombor",
+   "tags": "МойСклад\nAvtomatlashtirish",
+   "year": "",
+   "duration": "",
+   "result": "",
+   "mock": "savdo",
+   "image": "",
+   "on_home": true,
+   "challenge": "",
+   "solution": "",
+   "works": "",
+   "metrics": "",
+   "t_text": "",
+   "t_author": "",
+   "t_role": "",
+   "t_photo": "",
+   "t_video_url": "",
+   "t_video_file": ""
+  }
+ },
+ {
+  "model": "core.case",
+  "pk": 5,
+  "fields": {
+   "sort": 50,
+   "active": true,
+   "title": "Maosh avtomatlashtirish",
+   "client": "Ishlab chiqarish korxonasi",
+   "logo": "",
+   "description": "30 xodim uchun avans, bonus va reja bo'yicha hisob.",
+   "direction": "Ishlab chiqarish",
+   "tags": "МойСклад\nOylik moduli",
+   "year": "",
+   "duration": "",
+   "result": "___ soat tejaldi",
+   "mock": "ishlab",
+   "image": "",
+   "on_home": false,
+   "challenge": "",
+   "solution": "",
+   "works": "",
+   "metrics": "",
+   "t_text": "",
+   "t_author": "",
+   "t_role": "",
+   "t_photo": "",
+   "t_video_url": "",
+   "t_video_file": ""
+  }
+ },
+ {
+  "model": "core.case",
+  "pk": 6,
+  "fields": {
+   "sort": 60,
+   "active": true,
+   "title": "Korea–O'zbekiston LMS",
+   "client": "Upsight",
+   "logo": "cases/logos/client-upsight-korea-universities-group.png",
+   "description": "Professorlar kurs yuklaydi, talabalar sotib oladi.",
+   "direction": "Ta'lim",
+   "tags": "LMS",
+   "year": "",
+   "duration": "",
+   "result": "___ ta kurs",
+   "mock": "talim",
+   "image": "",
+   "on_home": false,
+   "challenge": "",
+   "solution": "",
+   "works": "",
+   "metrics": "",
+   "t_text": "",
+   "t_author": "",
+   "t_role": "",
+   "t_photo": "",
+   "t_video_url": "",
+   "t_video_file": ""
+  }
+ },
+ {
+  "model": "core.case",
+  "pk": 7,
+  "fields": {
+   "sort": 70,
+   "active": true,
+   "title": "Klinika ERP",
+   "client": "Klinika",
+   "logo": "",
+   "description": "Qabul, mijozlar bazasi va kassa hisobi.",
+   "direction": "Klinika",
+   "tags": "ERP",
+   "year": "",
+   "duration": "",
+   "result": "___ ta bemor",
+   "mock": "klinika",
+   "image": "",
+   "on_home": false,
+   "challenge": "",
+   "solution": "",
+   "works": "",
+   "metrics": "",
+   "t_text": "",
+   "t_author": "",
+   "t_role": "",
+   "t_photo": "",
+   "t_video_url": "",
+   "t_video_file": ""
+  }
+ },
+ {
+  "model": "core.case",
+  "pk": 8,
+  "fields": {
+   "sort": 80,
+   "active": true,
+   "title": "Loyiha va montaj nazorati",
+   "client": "Davr Solar",
+   "logo": "cases/logos/client-davr-solar.png",
+   "description": "Quyosh paneli loyihalari, montaj bosqichlari va ombor hisobi yagona tizimda.",
+   "direction": "Energetika",
+   "tags": "CRM\nLoyiha boshqaruvi",
+   "year": "",
+   "duration": "",
+   "result": "___ ta obyekt",
+   "mock": "energiya",
+   "image": "",
+   "on_home": false,
+   "challenge": "",
+   "solution": "",
+   "works": "",
+   "metrics": "",
+   "t_text": "",
+   "t_author": "",
+   "t_role": "",
+   "t_photo": "",
+   "t_video_url": "",
+   "t_video_file": ""
+  }
+ },
+ {
+  "model": "core.casevideo",
+  "pk": 1,
+  "fields": {
+   "url": "",
+   "file": "videos/mww0fxxi-881f2c397d.mp4",
+   "sort": 0,
+   "case": 1
+  }
+ },
+ {
+  "model": "core.teammember",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "name": "Abdulhamid Mahmudjonov",
+   "role": "Asoschi · Project Manager",
+   "photo": "team/founder.jpg",
+   "on_home": true,
+   "intro": "",
+   "bio": "2020 yildan beri biznes jarayonlarini tizimlashtirish, CRM/ERP avtomatlashtirish va loyiha boshqaruvi bo'yicha ishlaydi. Mahalliy va xalqaro kompaniyalar bilan hamkorlik qilgan.",
+   "skills": "CRM / ERP joriy etish\nBiznes jarayonlar va KPI\nМойСклад rasmiy hamkori\nOdoo\namoCRM",
+   "experience": "Propix Group: asoschi va Project Manager\nHamroh Nasiya Savdo: ichki boshqaruv tizimi (ERP)\n5+ yil jamoa boshqaruvi",
+   "education": "TATU: Dasturiy injiniring (2018–2022)",
+   "achievements": "",
+   "telegram": "@finoraceo",
+   "linkedin": "",
+   "instagram": "",
+   "email": ""
+  }
+ },
+ {
+  "model": "core.teammember",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "name": "Avazbek Azamov",
+   "role": "Marketing - CRM mutaxassisi",
+   "photo": "team/mwvwv6tq-e786116ed8.jpg",
+   "on_home": true,
+   "intro": "",
+   "bio": "",
+   "skills": "",
+   "experience": "3+",
+   "education": "",
+   "achievements": "",
+   "telegram": "@AzamovAvazbe",
+   "linkedin": "",
+   "instagram": "",
+   "email": ""
+  }
+ },
+ {
+  "model": "core.teammember",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "name": "Abduvaliyev Salohiddin",
+   "role": "AI va avtomatlashtirish muhandisi",
+   "photo": "team/mwwcgbfh-f448639a08.jpg",
+   "on_home": true,
+   "intro": "",
+   "bio": "",
+   "skills": "",
+   "experience": "",
+   "education": "",
+   "achievements": "",
+   "telegram": "",
+   "linkedin": "",
+   "instagram": "",
+   "email": ""
+  }
+ },
+ {
+  "model": "core.teammember",
+  "pk": 4,
+  "fields": {
+   "sort": 40,
+   "active": true,
+   "name": "Otabek Odilov",
+   "role": "Brand face - Mobilograf",
+   "photo": "team/mwvwy990-760004744e.png",
+   "on_home": true,
+   "intro": "",
+   "bio": "",
+   "skills": "",
+   "experience": "",
+   "education": "",
+   "achievements": "",
+   "telegram": "@otabek_odiliy",
+   "linkedin": "",
+   "instagram": "",
+   "email": ""
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "name": "KIUF",
+   "logo": "clients/client-kiuf.png",
+   "dark": false,
+   "row": "1"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "name": "Upsight Korea Universities Group",
+   "logo": "clients/client-upsight-korea-universities-group.png",
+   "dark": false,
+   "row": "1"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "name": "Hamroh",
+   "logo": "clients/client-hamroh.png",
+   "dark": false,
+   "row": "1"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 4,
+  "fields": {
+   "sort": 40,
+   "active": true,
+   "name": "Movarounnahr",
+   "logo": "clients/client-movarounnahr.png",
+   "dark": false,
+   "row": "1"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 5,
+  "fields": {
+   "sort": 50,
+   "active": true,
+   "name": "Romax",
+   "logo": "clients/client-romax.png",
+   "dark": false,
+   "row": "1"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 6,
+  "fields": {
+   "sort": 60,
+   "active": true,
+   "name": "Akademiya",
+   "logo": "clients/client-akademiya.png",
+   "dark": false,
+   "row": "1"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 7,
+  "fields": {
+   "sort": 70,
+   "active": true,
+   "name": "Smart English",
+   "logo": "clients/client-smart-english.png",
+   "dark": false,
+   "row": "1"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 8,
+  "fields": {
+   "sort": 80,
+   "active": true,
+   "name": "Upsight",
+   "logo": "clients/client-upsight.png",
+   "dark": true,
+   "row": "2"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 9,
+  "fields": {
+   "sort": 90,
+   "active": true,
+   "name": "Water Tech",
+   "logo": "clients/client-water-tech.png",
+   "dark": true,
+   "row": "2"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 10,
+  "fields": {
+   "sort": 100,
+   "active": true,
+   "name": "Hamkor",
+   "logo": "clients/client-hamkor.png",
+   "dark": true,
+   "row": "2"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 11,
+  "fields": {
+   "sort": 110,
+   "active": true,
+   "name": "Rost Fri",
+   "logo": "clients/client-rost-fri.png",
+   "dark": false,
+   "row": "2"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 12,
+  "fields": {
+   "sort": 120,
+   "active": true,
+   "name": "Davr Solar",
+   "logo": "clients/client-davr-solar.png",
+   "dark": true,
+   "row": "2"
+  }
+ },
+ {
+  "model": "core.client",
+  "pk": 13,
+  "fields": {
+   "sort": 140,
+   "active": true,
+   "name": "khat'decor",
+   "logo": "clients/client-khat-decor.png",
+   "dark": false,
+   "row": "2"
+  }
+ },
+ {
+  "model": "core.partner",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "name": "МойСклад",
+   "logo": "partners/partner-moysklad.png",
+   "color": "#0b5ed7"
+  }
+ },
+ {
+  "model": "core.partner",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "name": "amoCRM",
+   "logo": "partners/partner-amocrm.png",
+   "color": "#2f9be8"
+  }
+ },
+ {
+  "model": "core.partner",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "name": "Odoo",
+   "logo": "partners/partner-odoo.png",
+   "color": "#a0558f"
+  }
+ },
+ {
+  "model": "core.stat",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "value": "100+",
+   "label": "bajarilgan loyiha",
+   "icon": "b",
+   "highlight": true
+  }
+ },
+ {
+  "model": "core.stat",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "value": "7+ yil",
+   "label": "amaliy tajriba",
+   "icon": "t",
+   "highlight": false
+  }
+ },
+ {
+  "model": "core.stat",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "value": "8",
+   "label": "soha bo'yicha tayyor yechim",
+   "icon": "c",
+   "highlight": false
+  }
+ },
+ {
+  "model": "core.stat",
+  "pk": 4,
+  "fields": {
+   "sort": 40,
+   "active": true,
+   "value": "30 kun",
+   "label": "birinchi natijagacha",
+   "icon": "g",
+   "highlight": false
+  }
+ },
+ {
+  "model": "core.whycard",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "title": "Biznesni tushunamiz",
+   "text": "Avval jarayon, raqam va mas'uliyatni o'rganamiz, shundan keyingina dastur tanlaymiz yoki yozamiz.",
+   "icon": "0"
+  }
+ },
+ {
+  "model": "core.whycard",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "title": "Har bosqich tekshiriladi",
+   "text": "Ishlamayotgan narsani topshirmaymiz: har bosqich sinovdan o'tadi va siz bilan kelishiladi.",
+   "icon": "1"
+  }
+ },
+ {
+  "model": "core.whycard",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "title": "Rasmiy hamkorlik",
+   "text": "МойСклад, amoCRM va Odoo bo'yicha rasmiy hamkormiz: litsenziya, sozlash va qo'llab-quvvatlash bir joyda.",
+   "icon": "2"
+  }
+ },
+ {
+  "model": "core.step",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "title": "Tanishuv va audit",
+   "text": "Biznesingiz qanday ishlashini, bugungi raqamlar va og'riq nuqtalarini birga ko'rib chiqamiz."
+  }
+ },
+ {
+  "model": "core.step",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "title": "Diagnostika",
+   "text": "Jarayon, hisobot va hujjatlarni tahlil qilib, vaqt va pul qayerda yo'qolayotganini aniqlaymiz."
+  }
+ },
+ {
+  "model": "core.step",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "title": "Texnik topshiriq",
+   "text": "Kim nima qiladi, ko'rsatkich qanday hisoblanadi, muddat va narx: hammasi hujjatga tushadi."
+  }
+ },
+ {
+  "model": "core.step",
+  "pk": 4,
+  "fields": {
+   "sort": 40,
+   "active": true,
+   "title": "Arxitektura va prototip",
+   "text": "Tizim tuzilmasini chizamiz va asosiy ekranlarni ko'rsatamiz. Tasdiqlamay qurmaymiz."
+  }
+ },
+ {
+  "model": "core.step",
+  "pk": 5,
+  "fields": {
+   "sort": 50,
+   "active": true,
+   "title": "Sozlash va ishlab chiqish",
+   "text": "Odoo, МойСклад, amoCRM sozlanadi, kerak joyda maxsus modul va integratsiya yoziladi."
+  }
+ },
+ {
+  "model": "core.step",
+  "pk": 6,
+  "fields": {
+   "sort": 60,
+   "active": true,
+   "title": "Ma'lumotlarni ko'chirish",
+   "text": "Eski tizim va Excel'dagi ma'lumotlar ko'chiriladi, to'g'riligi qayta tekshiriladi."
+  }
+ },
+ {
+  "model": "core.step",
+  "pk": 7,
+  "fields": {
+   "sort": 70,
+   "active": true,
+   "title": "O'qitish va ishga tushirish",
+   "text": "Xodimlar lavozimiga qarab o'qitiladi, har biriga qisqa yo'riqnoma topshiriladi."
+  }
+ },
+ {
+  "model": "core.step",
+  "pk": 8,
+  "fields": {
+   "sort": 80,
+   "active": true,
+   "title": "Nazorat va rivojlantirish",
+   "text": "Dastlabki oylarda yonida bo'lamiz, xatolarni tuzatamiz va yangi imkoniyatlar qo'shamiz."
+  }
+ },
+ {
+  "model": "core.value",
+  "pk": 1,
+  "fields": {
+   "sort": 10,
+   "active": true,
+   "title": "Natija",
+   "text": "Tizim ishga tushguncha mas'uliyat bizda."
+  }
+ },
+ {
+  "model": "core.value",
+  "pk": 2,
+  "fields": {
+   "sort": 20,
+   "active": true,
+   "title": "Tushunarlilik",
+   "text": "Texnik tilni biznes tiliga o'giramiz."
+  }
+ },
+ {
+  "model": "core.value",
+  "pk": 3,
+  "fields": {
+   "sort": 30,
+   "active": true,
+   "title": "Hamkorlik",
+   "text": "Mijoz jamoasini o'qitamiz va yonida bo'lamiz."
+  }
+ },
+ {
+  "model": "core.sitesettings",
+  "pk": 1,
+  "fields": {
+   "site_name": "Finora Systems",
+   "logo": "",
+   "meta_description": "Finora Systems — ERP, CRM va biznes avtomatlashtirish bo'yicha IT yechimlar. Odoo, МойСклад va amoCRM rasmiy hamkori.",
+   "phone": "+998 99 303 34 84",
+   "email": "email@domen.uz",
+   "address": "Farg'ona, O'zbekiston",
+   "telegram_username": "@finorasystemss",
+   "social_telegram": "@finorasystemss",
+   "social_instagram": "https://www.instagram.com/finora_systems?knvt=MW1tcGM4eTNjdjNsdw==",
+   "social_linkedin": "",
+   "social_youtube": "",
+   "social_facebook": "",
+   "hero_tag": "IT yechimlar · ERP · Avtomatlashtirish",
+   "hero_title": "Biznesingizni *yagona tizimga* jamlaymiz",
+   "hero_lead": "Finora Systems — ERP, CRM va avtomatlashtirish bo'yicha mutaxassislar jamoasi. Hisob-kitobdan hisobotgacha hammasi bitta joyda.",
+   "partners_label": "★ Rasmiy hamkorlar",
+   "why_title": "Dasturni emas, ishlaydigan tizimni sotamiz",
+   "why_sub": "Biznes jarayonini ham, texnologiyani ham tushunamiz. Tizim sizning ishingizga moslanadi, aksincha emas.",
+   "ind_title": "Sohangizga mos yechim",
+   "ind_sub": "Har bir soha uchun tayyor modullar va amaliy tajriba.",
+   "cases_title": "Biz tizimlashtirgan bizneslar",
+   "clients_title": "Hamkor mijozlar",
+   "clients_sub": "Biz bilan ishlagan kompaniyalar va tashkilotlar.",
+   "steps_title": "Ishlash tartibimiz",
+   "steps_sub": "8 bosqich: har biri hujjat yoki ishlaydigan natija bilan yopiladi.",
+   "team_title": "Jamoamiz mutaxassislari",
+   "team_sub": "Biznes va texnologiyani birga biladigan odamlar.",
+   "cta_title": "Bepul konsultatsiya",
+   "cta_text": "Ma'lumot qoldiring, 1 ish kuni ichida bog'lanamiz.",
+   "founder_name": "Abdulhamid Mahmudjonov",
+   "founder_bio": "2020 yildan beri biznes jarayonlarini tizimlashtirish, CRM/ERP avtomatlashtirish va loyiha boshqaruvi bo'yicha ishlaydi. Mahalliy va xalqaro kompaniyalar bilan hamkorlik qilgan.",
+   "founder_education": "TATU: Dasturiy injiniring (2018–2022)",
+   "founder_experience": "Propix Group: asoschi va Project Manager\nHamroh Nasiya Savdo: ichki boshqaruv tizimi (ERP)\n5+ yil jamoa boshqaruvi",
+   "founder_expertise": "CRM / ERP joriy etish\nBiznes jarayonlar va KPI\nМойСклад rasmiy hamkori\nOdoo\namoCRM",
+   "footer_about": "Finora Systems — ERP, CRM va biznes avtomatlashtirish bo'yicha IT yechimlar. Jarayonni tartibga solamiz, tizimni quramiz va jamoani o'rgatamiz.",
+   "footer_bottom": "МойСклад · amoCRM · Odoo rasmiy hamkori",
+   "tg_bot_token": "",
+   "tg_chat_id": ""
+  }
+ }
+]

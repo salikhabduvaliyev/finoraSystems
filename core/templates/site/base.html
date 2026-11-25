@@ -1,0 +1,27 @@
+{% load static finora %}<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<title>{% block title %}{{ s.site_name|default:"Finora Systems" }} — ERP, CRM va biznes avtomatlashtirish{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="{% block description %}{{ s.meta_description }}{% endblock %}">
+<meta name="theme-color" content="#060b17">
+<meta property="og:title" content="{% block og_title %}{{ s.site_name }}{% endblock %}">
+<meta property="og:description" content="{{ s.meta_description }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ logo_url }}">
+<link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+<link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head><body>
+{% include "svg/defs.svg" %}
+<div id='pg'></div><header><div class="w nav"><a href="/" aria-label="{{ s.site_name }} — bosh sahifa"><img src="{{ logo_url }}" alt="{{ s.site_name }}"></a>
+<nav aria-label="Asosiy menyu">{% for href, label, on in nav %}<a href="{{ href }}"{% if on %} class="on" aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}</nav>
+<a class="btn p" href="/aloqa" style="padding:9px 18px">Konsultatsiya</a><button class="bg" id="bg" aria-label="Menyu" aria-expanded="false">☰</button></div></header>
+<main id="app"><div class="page">{% block content %}{% endblock %}</div></main>
+<footer><div class='w'><div class='fg'><div class='fb'><img src='{{ logo_url }}' alt='{{ s.site_name }}'><p>{{ s.footer_about }}</p>
+{% if socials %}<div class='so'>{% for kind, name, url in socials %}<a href='{{ url }}' target='_blank' rel='noopener' aria-label='{{ name }}' title='{{ name }}'>{% include "site/partials/social_icon.html" %}</a>{% endfor %}</div>{% endif %}</div>
+<div class='fcol'><h4>Sahifalar</h4>{% for href, label, on in nav %}<a href='{{ href }}'>{{ label }}</a>{% endfor %}</div>
+{% if footer_services %}<div class='fcol'><h4>Xizmatlar</h4>{% for x in footer_services %}<a href='/xizmatlar#xizmat-{{ x.id }}'>{{ x.title }}</a>{% endfor %}</div>{% endif %}
+{% if footer_industries %}<div class='fcol'><h4>Sohalar</h4>{% for x in footer_industries %}<a href='/sohalar#soha-{{ x.id }}'>{{ x.title }}</a>{% endfor %}</div>{% endif %}
+<div class='fcol'><h4>Aloqa</h4>{% if s.address %}<span>📍 {{ s.address }}</span>{% endif %}{% if s.phone %}<a href='{{ s.phone|tel }}'>📞 {{ s.phone }}</a>{% endif %}{% if s.email %}<a href='mailto:{{ s.email }}'>✉ {{ s.email }}</a>{% endif %}{% if tg_handle %}<a href='https://t.me/{{ tg_handle }}' target='_blank' rel='noopener'>✈ Telegram: @{{ tg_handle }}</a>{% endif %}<a class='btn p' href='/aloqa' style='margin-top:12px;color:#001418'>Bepul audit olish</a></div></div>
+<div class='fbt'><span>© {% now "Y" %} {{ s.site_name }}. Barcha huquqlar himoyalangan.</span><span>{{ s.footer_bottom }}</span></div></div></footer><button id='up' aria-label='Tepaga'>↑</button>
+<script src="{% static 'js/site.js' %}" defer></script>
+</body></html>

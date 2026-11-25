@@ -1,0 +1,1 @@
+{% load finora %}<a class='pcard' href='{{ m.get_absolute_url }}'><div class='pp'>{% if m.photo %}<img src='{{ m.photo.url }}' alt='{{ m.name }}' loading='lazy'>{% else %}{% svg "icon/avatar" %}{% endif %}</div><h3>{{ m.name }}</h3><p>{{ m.role }}</p></a>

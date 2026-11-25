@@ -1,0 +1,26 @@
+{% extends "site/base.html" %}{% load finora %}
+{% block content %}
+<div class='hero'><div class='w hg'><div><span class='tag'>{{ s.hero_tag }}</span><h1>{{ s.hero_title|accent }}</h1><p class='lead'>{{ s.hero_lead }}</p><div class='cta'><a class='btn p' href='/aloqa'>Bepul audit</a><a class='btn' href='/keyslar'>Keyslar</a></div></div>
+{% include "site/partials/hero_dash.html" %}</div>
+<div class='w'><div class='sr'>{% for st in stats %}<div class='sb{% if st.highlight %} hl{% endif %}'><div><b>{{ st.value }}</b><small>{{ st.label }}</small></div>{% with "icon/stat_"|add:st.icon as n %}{% svg n %}{% endwith %}</div>{% endfor %}
+{% if partners %}<div class='pt'><div class='ptl'>{{ s.partners_label }}</div><div class='pc'>{% for p in partners %}<div class='pch'>{% if p.logo %}<img src='{{ p.logo.url }}' alt='{{ p.name }}'>{% else %}<b style='color:{{ p.color }}'>{{ p.name }}</b>{% endif %}<em>✓ Rasmiy hamkor</em></div>{% endfor %}</div></div>{% endif %}</div></div></div>
+
+{% if why %}<section><div class='w'><div class='eyebrow'>Nega Finora</div><h2>{{ s.why_title }}</h2><p class='sub'>{{ s.why_sub }}</p><div class='grid'>{% for c in why %}<div class='card'><div style='height:68px;margin-bottom:14px'>{% with "icon/why_"|add:c.icon as n %}{% svg n %}{% endwith %}</div><h3>{{ c.title }}</h3><p>{{ c.text }}</p><div class='em' style='margin:16px 0 0;color:#6f8db8'>[{{ forloop.counter|pad2 }}]</div></div>{% endfor %}</div><div style='text-align:center;margin-top:28px'><a class='btn p' href='/aloqa'>Bepul audit olish</a></div></div></section>{% endif %}
+
+{% if industries %}<section class='alt'><div class='w'><div class='eyebrow'>Sohalar</div><h2>{{ s.ind_title }}</h2><p class='sub'>{{ s.ind_sub }}</p><div class='grid'>{% for i in industries %}<a class='card' href='/sohalar#soha-{{ i.id }}'>{% fig i %}<h3>{{ i.title }}</h3><p>{{ i.short }}</p></a>{% endfor %}</div></div></section>{% endif %}
+
+{% if carousel %}<section><div class='w'><div class='cw'><div><div class='eyebrow'>Keyslar</div><h2 style='margin:8px 0 0'>{{ s.cases_title }}</h2></div><div class='cb'><button type='button' aria-label='Oldingi' data-scroll='-1'>←</button><button type='button' aria-label='Keyingi' data-scroll='1'>→</button></div></div>
+<div class='cs' id='cs'>{% for c in carousel %}<a class='cc' href='{{ c.get_absolute_url }}'><h3>{{ c.title }}</h3><p>{{ c.description }}</p><div class='yo'>Yo'nalish</div><div class='dv'>{{ c.direction }}</div><div class='tg'>{% for t in c.tags|lines %}<span>{{ t }}</span>{% endfor %}</div><div class='bt'>{% if c.logo %}<div class='lg2'><img src='{{ c.logo.url }}' alt='{{ c.client }}'></div>{% else %}<div class='nm'>{{ c.client }}</div>{% endif %}<i>[{{ forloop.counter|pad2 }}]</i></div></a>{% endfor %}</div>
+<div style='text-align:center;margin-top:22px'><a class='btn' href='/keyslar'>Barcha keyslar</a></div></div></section>{% endif %}
+
+{% if clients_row1 or clients_row2 %}<section class='alt'><div class='w'><div class='eyebrow'>Ishonch</div><h2>{{ s.clients_title }}</h2><p class='sub'>{{ s.clients_sub }}</p></div>
+{% if clients_row1 %}<div class='mq'><div class='mt'>{% for c in clients_row1 %}{% include "site/partials/client_chip.html" %}{% endfor %}{% for c in clients_row1 %}{% include "site/partials/client_chip.html" %}{% endfor %}</div></div>{% endif %}
+{% if clients_row2 %}<div class='mq'><div class='mt rev'>{% for c in clients_row2 %}{% include "site/partials/client_chip.html" %}{% endfor %}{% for c in clients_row2 %}{% include "site/partials/client_chip.html" %}{% endfor %}</div></div>{% endif %}
+</section>{% endif %}
+
+{% if steps %}<section><div class='w'><div class='eyebrow'>Jarayon</div><h2>{{ s.steps_title }}</h2><p class='sub'>{{ s.steps_sub }}</p><div class='tl'>{% for st in steps %}<div class='ts'><div class='n'>{{ forloop.counter|pad2 }}</div><h3>{{ st.title }}</h3><p>{{ st.text }}</p></div>{% endfor %}</div></div></section>{% endif %}
+
+{% if team %}<section class='alt'><div class='w'><div class='eyebrow'>Jamoa</div><h2>{{ s.team_title }}</h2><p class='sub'>{{ s.team_sub }}</p><div class='tg3'>{% for m in team %}{% include "site/partials/member_card.html" %}{% endfor %}</div><div style='text-align:center;margin-top:32px'><a class='btn p' href='/jamoa'>To'liq jamoa bilan tanishish</a></div></div></section>{% endif %}
+
+{% include "site/partials/cta.html" %}
+{% endblock %}

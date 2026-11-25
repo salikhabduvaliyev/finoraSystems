@@ -1,0 +1,6 @@
+{% extends "site/base.html" %}
+{% block title %}Aloqa — {{ s.site_name }}{% endblock %}
+{% block content %}
+{% include "site/partials/page_head.html" with eyebrow="Aloqa" heading="Bepul konsultatsiya" sub="Ma'lumot qoldiring, 1 ish kuni ichida bog'lanamiz." %}
+{% include "site/partials/cta.html" with source="aloqa" hide_header=True %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "site/base.html" %}{% load finora %}
+{% block title %}Keyslar — {{ s.site_name }}{% endblock %}
+{% block content %}
+{% include "site/partials/page_head.html" with eyebrow="Keyslar" heading="Amalga oshirilgan loyihalar" sub="Biz tizimlashtirgan bizneslar va ularning natijalari." %}
+<section style='padding-top:16px'><div class='w grid'>{% for c in cases %}{% include "site/partials/case_card.html" %}{% endfor %}</div></section>
+{% include "site/partials/cta.html" %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "admin/index.html" %}{% load finora_admin %}
+{% block content %}
+{% admin_stats as st %}
+<div class="fs-tiles">
+  <a class="fs-tile hl" href="{% url 'admin:core_lead_changelist' %}?status__exact=new"><b>{{ st.new }}</b><span>Yangi ariza</span></a>
+  <a class="fs-tile" href="{% url 'admin:core_lead_changelist' %}?status__exact=progress"><b>{{ st.progress }}</b><span>Jarayonda</span></a>
+  <a class="fs-tile" href="{% url 'admin:core_lead_changelist' %}"><b>{{ st.all }}</b><span>Jami arizalar</span></a>
+  <a class="fs-tile" href="/" target="_blank" rel="noopener"><b>↗</b><span>Saytni ochish</span></a>
+</div>
+{{ block.super }}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% load static %}<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kirish vaqtincha bloklangan — Finora admin</title><meta name="robots" content="noindex">
+<link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+<style>
+:root{color-scheme:dark}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:16px;box-sizing:border-box;
+  background:radial-gradient(600px 320px at 80% 0,#00f5ff1a,transparent),#060b17;color:#e9f1fb;
+  font:15px/1.6 Inter,system-ui,Segoe UI,Arial,sans-serif}
+.box{max-width:440px;background:#0e1a30;border:1px solid #1b2c48;border-radius:20px;padding:30px}
+img{height:40px;display:block;margin-bottom:18px}
+h1{font-size:21px;margin:0 0 10px}
+p{color:#8fa3bf;margin:0 0 12px}
+b{color:#e9f1fb}
+a{color:#00f5ff}
+</style></head><body>
+<main class="box">
+<img src="{% static 'img/logo.png' %}" alt="Finora Systems">
+<h1>Kirish vaqtincha bloklandi</h1>
+<p>Parol <b>{{ failure_limit }} marta</b> noto‘g‘ri kiritildi. Xavfsizlik uchun bu qurilmadan kirish <b>1 soatga</b> to‘xtatildi.</p>
+<p>1 soatdan keyin qayta urinib ko‘ring. Parolni unutgan bo‘lsangiz, server konsolida <code>python manage.py changepassword admin</code> buyrug‘i bilan yangilang.</p>
+<p><a href="/">Saytga qaytish</a></p>
+</main>
+</body></html>

@@ -1,0 +1,7 @@
+{% extends "site/base.html" %}{% load finora %}
+{% block title %}Xizmatlar — {{ s.site_name }}{% endblock %}
+{% block content %}
+{% include "site/partials/page_head.html" with eyebrow="Xizmatlar" heading="To'liq IT yechimlar" sub="Tahlildan ishga tushirish va o'qitishgacha." %}
+<section style='padding-top:16px'><div class='w grid g2'>{% for x in services %}<div class='card' id='xizmat-{{ x.id }}'><div class='em'>{{ x.subtitle }}</div><h3>{{ x.title }}</h3><ul class='l'>{% for y in x.items|lines %}<li>{{ y }}</li>{% endfor %}</ul></div>{% endfor %}</div></section>
+{% include "site/partials/cta.html" %}
+{% endblock %}

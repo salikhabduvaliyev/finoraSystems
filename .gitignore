@@ -1,0 +1,16 @@
+# Maxfiy va serverga xos fayllar — GitHub'ga yuklanmaydi
+.env
+db.sqlite3
+db.sqlite3-*
+staticfiles/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Eski Node.js versiyasi va yordamchi fayllar
+_node_arxiv/
+*.zip
+Finora Systems*.html

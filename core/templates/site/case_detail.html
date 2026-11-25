@@ -1,0 +1,26 @@
+{% extends "site/base.html" %}{% load finora %}
+{% block title %}{{ obj.title }} — {{ s.site_name }}{% endblock %}
+{% block description %}{{ obj.description|default:s.meta_description }}{% endblock %}
+{% block og_title %}{{ obj.title }}{% endblock %}
+{% block content %}
+{% with c=obj tags=obj.tags|lines works=obj.works|lines metrics=obj.metric_list videos=obj.videos.all images=obj.images.all %}
+<div class='w dhero'>
+<div class='crumbs' role='navigation' aria-label='Yo‘l'><a href='/'>Bosh sahifa</a><span>/</span><a href='/keyslar'>Keyslar</a><span>/</span><span aria-current='page'>{{ c.title }}</span></div>
+<div class='dh'><div><div class='eyebrow'>{{ c.direction|default:"Keys" }}</div><h1 class='dt1'>{{ c.title }}</h1>{% if c.description %}<p class='lead'>{{ c.description }}</p>{% endif %}{% if tags %}<div class='tags'>{% for t in tags %}<span class='pill'>{{ t }}</span>{% endfor %}</div>{% endif %}</div>
+<aside class='meta'>{% if c.logo %}<div class='mlogo'><img src='{{ c.logo.url }}' alt='{{ c.client|default:"Mijoz" }} logotipi'></div>{% elif c.client %}<div class='mlogo txt'>{{ c.client }}</div>{% endif %}
+{% if c.client or c.direction or c.duration or c.year %}<dl>{% if c.client %}<div><dt>Mijoz</dt><dd>{{ c.client }}</dd></div>{% endif %}{% if c.direction %}<div><dt>Yo'nalish</dt><dd>{{ c.direction }}</dd></div>{% endif %}{% if c.duration %}<div><dt>Muddat</dt><dd>{{ c.duration }}</dd></div>{% endif %}{% if c.year %}<div><dt>Yil</dt><dd>{{ c.year }}</dd></div>{% endif %}</dl>{% endif %}
+{% if c.result %}<div class='mres'><small>Natija</small><b>{{ c.result }}</b></div>{% endif %}<a class='btn p' href='/aloqa'>Shunday tizim kerak</a></aside></div>
+<div class='cover'>{% fig c %}</div></div>
+
+<div class='w dbody'>
+{% if metrics %}<section class='dsec'><div class='eyebrow'>Natijalar</div><h2>Raqamlarda natija</h2><div class='mtx'>{% for m in metrics %}<div class='sb{% if forloop.first %} hl{% endif %}'><div><b>{{ m.value }}</b><small>{{ m.text }}</small></div></div>{% endfor %}</div></section>{% endif %}
+{% if c.challenge or c.solution %}<section class='dsec'><div class='cs2'>{% if c.challenge %}<div class='card tx'><div class='em'>Vazifa</div><h3>Mijoz nimaga duch kelgan</h3>{{ c.challenge|paras }}</div>{% endif %}{% if c.solution %}<div class='card tx sol'><div class='em'>Yechim</div><h3>Biz nima qildik</h3>{{ c.solution|paras }}</div>{% endif %}</div></section>{% endif %}
+{% if works %}<section class='dsec'><div class='eyebrow'>Bajarilgan ishlar</div><h2>Loyiha doirasida</h2><div class='card'><ul class='l cols'>{% for x in works %}<li>{{ x }}</li>{% endfor %}</ul></div></section>{% endif %}
+{% if videos %}<section class='dsec'><div class='eyebrow'>Video</div><h2>Loyihadan videolar</h2><div class='vids{% if videos|length == 1 %} one{% endif %}'>{% for v in videos %}{% video v.src "Loyihadan video" %}{% endfor %}</div></section>{% endif %}
+{% if images %}<section class='dsec'><div class='eyebrow'>Galereya</div><h2>Loyihadan lavhalar</h2><div class='gl'>{% for im in images %}<a href='{{ im.image.url }}' data-lb><img src='{{ im.image.url }}' alt='{{ c.title }} — {{ forloop.counter }}-rasm' loading='lazy'></a>{% endfor %}</div></section>{% endif %}
+{% if c.t_text or c.testimonial_video %}<section class='dsec'><div class='eyebrow'>Mijoz fikri</div><h2>Mijozimiz nima deydi</h2><div class='tm{% if not c.testimonial_video %} nov{% endif %}'>{% if c.testimonial_video %}{% video c.testimonial_video "Video-otziv" %}{% endif %}<figure>{% if c.t_text %}<blockquote>{{ c.t_text|paras }}</blockquote>{% endif %}<figcaption>{% if c.t_photo %}<img src='{{ c.t_photo.url }}' alt=''>{% else %}<span class='ini' aria-hidden='true'>{{ c.t_author|default:c.client|default:"?"|first }}</span>{% endif %}<span><b>{{ c.t_author|default:c.client }}</b>{% if c.t_role %}<small>{{ c.t_role }}</small>{% endif %}</span>{% if c.logo %}<img class='tlogo' src='{{ c.logo.url }}' alt='{{ c.client }}'>{% endif %}</figcaption></figure></div></section>{% endif %}
+</div>
+{% if others %}<section class='alt'><div class='w'><div class='cw'><div><div class='eyebrow'>Keyslar</div><h2 style='margin:8px 0 0'>Boshqa loyihalar</h2></div><a class='btn' href='/keyslar'>Barcha keyslar</a></div><div class='grid'>{% for c in others %}{% include "site/partials/case_card.html" %}{% endfor %}</div></div></section>{% endif %}
+{% endwith %}
+{% include "site/partials/cta.html" %}
+{% endblock %}

@@ -1,0 +1,47 @@
+/* Finora — Django admin brend ranglari (yorug' va to'q rejim) */
+:root, html[data-theme="light"] {
+  --primary: #0a9a9f; --secondary: #060b17; --accent: #00f5ff; --primary-fg: #fff;
+  --header-color: #e9f1fb; --header-branding-color: #00f5ff; --header-bg: #060b17; --header-link-color: #e9f1fb;
+  --breadcrumbs-bg: #0b1426; --breadcrumbs-fg: #8fa3bf; --breadcrumbs-link-fg: #00f5ff;
+  --link-fg: #08727a; --link-hover-color: #054d52; --link-selected-fg: #08727a;
+  --button-bg: #0a9a9f; --button-hover-bg: #08727a;
+  --default-button-bg: #060b17; --default-button-hover-bg: #13233d;
+  --selected-row: #e3fbfc; --object-tools-bg: #0a9a9f; --object-tools-hover-bg: #08727a;
+}
+html[data-theme="dark"] {
+  --primary: #00f5ff; --primary-fg: #001418; --secondary: #0b1426;
+  --body-bg: #060b17; --body-fg: #e9f1fb; --body-quiet-color: #8fa3bf; --body-medium-color: #b6c6dc; --body-loud-color: #fff;
+  --darkened-bg: #0b1426; --selected-bg: #0e1a30; --selected-row: #0e2a44;
+  --hairline-color: #1b2c48; --border-color: #264066;
+  --link-fg: #00f5ff; --link-hover-color: #5ff9ff; --link-selected-fg: #00f5ff;
+  --button-bg: #0a9a9f; --button-hover-bg: #08727a; --button-fg: #fff;
+  --default-button-bg: #00c2cc; --default-button-hover-bg: #00f5ff;
+  --close-button-bg: #264066; --close-button-hover-bg: #33507a;
+  --object-tools-bg: #0a9a9f; --object-tools-hover-bg: #08727a;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] {
+    --primary: #00f5ff; --primary-fg: #001418; --secondary: #0b1426;
+    --body-bg: #060b17; --body-fg: #e9f1fb; --body-quiet-color: #8fa3bf; --body-medium-color: #b6c6dc; --body-loud-color: #fff;
+    --darkened-bg: #0b1426; --selected-bg: #0e1a30; --selected-row: #0e2a44;
+    --hairline-color: #1b2c48; --border-color: #264066;
+    --link-fg: #00f5ff; --link-hover-color: #5ff9ff; --link-selected-fg: #00f5ff;
+    --button-bg: #0a9a9f; --button-hover-bg: #08727a; --button-fg: #fff;
+    --default-button-bg: #00c2cc; --default-button-hover-bg: #00f5ff;
+    --close-button-bg: #264066; --close-button-hover-bg: #33507a;
+    --object-tools-bg: #0a9a9f; --object-tools-hover-bg: #08727a;
+  }
+}
+.fs-brand { display: inline-flex; align-items: center; gap: 10px; }
+.fs-brand img { height: 30px; display: block; }
+.fs-brand span { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #8fa3bf; }
+#header { border-bottom: 1px solid #1b2c48; }
+.submit-row input.default, .button.default { color: #001418 !important; font-weight: 700; }
+.fs-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0 0 24px; max-width: 900px; }
+.fs-tile { display: block; padding: 16px 18px; border-radius: 14px; border: 1px solid var(--hairline-color); background: var(--darkened-bg); color: var(--body-fg) !important; text-decoration: none !important; }
+.fs-tile:hover { border-color: var(--primary); }
+.fs-tile b { display: block; font-size: 28px; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.fs-tile span { color: var(--body-quiet-color); font-size: 13px; }
+.fs-tile.hl { background: linear-gradient(135deg, #00f5ff, #12b6c9 55%, #3ddc97); border-color: transparent; color: #001418 !important; }
+.fs-tile.hl span { color: #04323a; }
+@media (max-width: 767px) { .fs-tiles { grid-template-columns: 1fr 1fr; } }
