@@ -17,7 +17,23 @@ Sayt: http://127.0.0.1:8765 · Admin: http://127.0.0.1:8765/admin/
 
 ---
 
-## PythonAnywhere'ga joylash (GitHub orqali)
+## PythonAnywhere'ga joylash — tez yo'l (bitta buyruq)
+
+1. PythonAnywhere → **Account → API Token → Create a new API token** (bir marta).
+2. **Consoles → Bash** ni oching va yozing:
+
+```bash
+git clone https://github.com/salikhabduvaliyev/finoraSystems.git ~/finora && bash ~/finora/deploy/pythonanywhere.sh
+```
+
+Skript hammasini o'zi qiladi: virtual muhit, kutubxonalar, `.env`, baza va kontent, statik fayllar,
+web ilova, WSGI, static/media yo'llari, Reload. Faqat admin login va parolni so'raydi.
+
+**Yangilash:** `bash ~/finora/deploy/pythonanywhere.sh` (git pull'ni ham o'zi qiladi).
+
+---
+
+## PythonAnywhere'ga joylash — qo'lda (har bir qadam)
 
 `USERNAME` o'rniga PythonAnywhere login'ingizni yozing. Barcha buyruqlar **Consoles → Bash** da bajariladi.
 
