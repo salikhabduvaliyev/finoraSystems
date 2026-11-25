@@ -196,6 +196,9 @@ T = {
     'МойСклад rasmiy hamkori': ('Official MoySklad partner', 'Официальный партнёр МойСклад'),
     'Asoschi · Project Manager': ('Founder · Project Manager', 'Основатель · Project Manager'),
     'TATU: Dasturiy injiniring (2018–2022)': ('TUIT: Software Engineering (2018–2022)', 'ТУИТ: Программная инженерия (2018–2022)'),
+    'TATU: Dasturiy injiniring (2021–2025)': ('TUIT: Software Engineering (2021–2025)', 'ТУИТ: Программная инженерия (2021–2025)'),
+    "Codial o'quv markazi (2023. Python Backend Developer)": (
+        'Codial training center (2023, Python Backend Developer)', 'Учебный центр Codial (2023, Python Backend Developer)'),
     "2020 yildan beri biznes jarayonlarini tizimlashtirish, CRM/ERP avtomatlashtirish va loyiha boshqaruvi bo'yicha ishlaydi. Mahalliy va xalqaro kompaniyalar bilan hamkorlik qilgan.": (
         'Since 2020 he has worked on business process systematization, CRM/ERP automation and project management, partnering with local and international companies.',
         'С 2020 года занимается систематизацией бизнес-процессов, автоматизацией CRM/ERP и управлением проектами. Сотрудничал с местными и международными компаниями.'),

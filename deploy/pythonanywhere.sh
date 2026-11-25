@@ -17,10 +17,22 @@ API="https://www.pythonanywhere.com/api/v0/user/$USER"
 
 step() { echo; echo "==> $*"; }
 
+# Butun skript funksiya ichida: bash uni oldin to'liq o'qiydi, shuning uchun git pull
+# skriptning o'zini yangilasa ham ish buzilmaydi.
+main() {
 cd "$APP_DIR"
 
 step "Kodni yangilash (git pull)"
-git pull --ff-only || echo "   (git pull o'tkazib yuborildi)"
+git fetch -q origin
+# Serverda admin orqali yuklangan, keyin GitHub'ga ham qo'shilgan fayllar: aynan bir xil bo'lsa,
+# git versiyasi bilan almashtiriladi (aks holda git pull "ustidan yozilmaydi" deb to'xtaydi).
+# Farq qiladigan fayllarga tegilmaydi.
+git diff --name-only --diff-filter=A HEAD origin/main | while read -r f; do
+  if [ -f "$f" ] && [ "$(git hash-object "$f")" = "$(git rev-parse "origin/main:$f")" ]; then
+    rm "$f"
+  fi
+done
+git merge --ff-only -q origin/main || echo "   (git pull o'tkazib yuborildi — serverda farq qiladigan fayllar bor)"
 
 step "Python versiyasini tanlash"
 PYBIN=""
@@ -119,3 +131,6 @@ echo
 echo "Tayyor!  Sayt:  https://$DOMAIN"
 echo "         Admin: https://$DOMAIN/admin/"
 echo "Telegram bildirishnoma uchun: Admin → Sayt sozlamalari → bot token va chat ID'larni kiriting."
+}
+
+main "$@"

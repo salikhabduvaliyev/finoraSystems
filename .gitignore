@@ -14,3 +14,4 @@ venv/
 _node_arxiv/
 *.zip
 Finora Systems*.html
+*.sqlite3
