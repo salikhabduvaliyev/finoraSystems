@@ -76,7 +76,8 @@ EOF
 fi
 AUTH="Authorization: Token $API_TOKEN"
 
-if [ "$(curl -s -o /dev/null -w '%{http_code}' -H "$AUTH" "$API/webapps/$DOMAIN/")" = "404" ]; then
+# Eslatma: yo'q ilova uchun API 404 emas, 403 qaytaradi — shuning uchun ro'yxatdan tekshiramiz
+if ! curl -sf -H "$AUTH" "$API/webapps/" | grep -q "\"domain_name\": *\"$DOMAIN\""; then
   curl -sf -H "$AUTH" -X POST "$API/webapps/" \
     -d "domain_name=$DOMAIN" -d "python_version=python${PYVER/./}" > /dev/null
   echo "   web ilova yaratildi: $DOMAIN"
