@@ -6,7 +6,7 @@ from django.utils.html import format_html
 
 from .media import parse_video
 from .models import (Case, CaseImage, CaseVideo, Client, Industry, IndustryImage, IndustryVideo, Lead, MemberImage,
-                     MemberVideo, Partner, Presentation,
+                     MemberVideo, Partner, Presentation, ServiceVideo,
                      Service, SiteSettings, Stat, Step, TeamMember, Value, WhyCard)
 
 admin.site.index_template = 'admin/finora_index.html'
@@ -81,6 +81,7 @@ class LeadAdmin(FsAdmin):
 class ServiceAdmin(TrOrderedAdmin):
     list_display = ('title', 'subtitle', 'in_footer', 'active', 'sort')
     search_fields = ('title',)
+    fieldsets = ((None, {'fields': ('title', 'subtitle', 'items', ('in_footer', 'active'), 'sort')}),)
 
 
 @admin.register(Industry)
@@ -94,9 +95,9 @@ class IndustryAdmin(TrOrderedAdmin):
     )
 
 
-class VideoInline(admin.TabularInline):
+class VideoInline(TranslationTabularInline):
     extra = 0
-    fields = ('url', 'file', 'preview', 'sort')
+    fields = ('title', 'url', 'file', 'cover', 'preview', 'sort')
     readonly_fields = ('preview',)
 
     @admin.display(description="Ko'rish")
@@ -147,7 +148,25 @@ class PresentationInline(TranslationTabularInline):
     fields = ('title', 'file', 'url', 'sort')
 
 
-IndustryAdmin.inlines = [PresentationInline, IndustryVideoInline, IndustryImageInline]
+class ServiceVideoInline(VideoInline):
+    model = ServiceVideo
+
+
+IndustryAdmin.inlines = [IndustryVideoInline, IndustryImageInline]
+ServiceAdmin.inlines = [PresentationInline, ServiceVideoInline]
+
+
+@admin.register(Presentation)
+class PresentationAdmin(TabbedTranslationAdmin, FsAdmin):
+    """Barcha taqdimotlar bitta ro'yxatda (xizmatga biriktirilmaganlari ham ko'rinadi)."""
+    list_display = ('title', 'service', 'kind', 'sort')
+    list_editable = ('service', 'sort')
+    list_filter = ('service',)
+    fields = ('title', 'service', 'file', 'url', 'sort')
+
+    @admin.display(description='Turi')
+    def kind(self, obj):
+        return obj.ext or 'Havola'
 
 
 class MemberVideoInline(VideoInline):

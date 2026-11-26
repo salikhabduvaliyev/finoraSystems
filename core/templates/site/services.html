@@ -3,6 +3,38 @@
 {% block content %}
 {% translate "Xizmatlar" as e %}{% translate "To'liq IT yechimlar" as h %}{% translate "Tahlildan ishga tushirish va o'qitishgacha." as sb %}
 {% include "site/partials/page_head.html" with eyebrow=e heading=h sub=sb %}
-<section style='padding-top:16px'><div class='w grid g2'>{% for x in services %}<div class='card' id='xizmat-{{ x.id }}'><div class='em'>{{ x.subtitle }}</div><h3>{{ x.title }}</h3><ul class='l'>{% for y in x.items|lines %}<li>{{ y }}</li>{% endfor %}</ul></div>{% endfor %}</div></section>
+<section style='padding-top:16px'><div class='w grid g2'>{% for x in services %}<div class='card svc' id='xizmat-{{ x.id }}'><div class='em'>{{ x.subtitle }}</div><h3>{{ x.title }}</h3><ul class='l'>{% for y in x.items|lines %}<li>{{ y }}</li>{% endfor %}</ul>
+{% with np=x.presentations.all|length nv=x.videos.all|length %}{% if np or nv %}<div class='svc-m'>
+  {% if np %}<a class='chip' href='#materiallar' data-goto='svc-{{ x.id }}'><span aria-hidden='true'>📄</span> {% translate "Taqdimot" %} · {{ np }}</a>{% endif %}
+  {% if nv %}<a class='chip' href='#materiallar' data-goto='svc-{{ x.id }}'><span aria-hidden='true'>▶</span> {% translate "Video" %} · {{ nv }}</a>{% endif %}
+</div>{% endif %}{% endwith %}
+</div>{% endfor %}</div></section>
+
+{% if presentations or videos %}<section class='alt' id='materiallar'><div class='w'>
+<div class='eyebrow'>{% translate "Materiallar" %}</div><h2>{% translate "Taqdimotlar va videolar" %}</h2>
+<p class='sub'>{% translate "Xizmatlarimiz bo‘yicha taqdimotlar va video sharhlar — qulay vaqtda tanishib chiqing." %}</p>
+{% if media_services|length > 1 %}<div class='mfilter' role='group' aria-label='{% translate "Xizmat bo‘yicha saralash" %}'>
+  <button type='button' class='on' data-f='all' aria-pressed='true'>{% translate "Hammasi" %}</button>
+  {% for x in media_services %}<button type='button' data-f='svc-{{ x.id }}' aria-pressed='false'>{{ x.title }}</button>{% endfor %}
+</div>{% endif %}
+
+{% if presentations %}<h3 class='mh'>{% translate "Taqdimotlar" %}</h3><div class='dgrid'>
+{% for d in presentations %}<div class='dcard' data-svc='svc-{{ d.service_id|default:"none" }}'>
+  <span class='doc-ic' aria-hidden='true'>{% if d.file %}{{ d.ext }}{% else %}↗{% endif %}</span>
+  <div class='dc-t'><b>{{ d.title }}</b>{% if d.service %}<small>{{ d.service.title }}</small>{% endif %}</div>
+  <div class='dc-a'>
+    {% if d.is_pdf %}<button type='button' class='btn sm p' data-play='pdf' data-src='{{ d.file.url }}' data-title='{{ d.title }}'>{% translate "Ko‘rish" %}</button><a class='btn sm' href='{{ d.file.url }}' download>{% translate "Yuklab olish" %}</a>
+    {% elif d.file %}<a class='btn sm p' href='{{ d.file.url }}' download>{% translate "Yuklab olish" %}</a>
+    {% elif d.embed_url %}<button type='button' class='btn sm p' data-play='pdf' data-src='{{ d.embed_url }}' data-title='{{ d.title }}'>{% translate "Ko‘rish" %}</button><a class='btn sm' href='{{ d.url }}' target='_blank' rel='noopener'>{% translate "Ochish" %}</a>
+    {% else %}<a class='btn sm p' href='{{ d.url }}' target='_blank' rel='noopener'>{% translate "Ochish" %}</a>{% endif %}
+  </div>
+</div>{% endfor %}
+</div>{% endif %}
+
+{% if videos %}<h3 class='mh'>{% translate "Videolar" %}</h3><div class='vgrid'>
+{% for v in videos %}<div class='vwrap' data-svc='svc-{{ v.service_id }}'>{% video_card v.src v.title v.cover %}<small class='vsvc'>{{ v.service.title }}</small></div>{% endfor %}
+</div>{% endif %}
+</div></section>{% endif %}
+
 {% include "site/partials/cta.html" %}
 {% endblock %}

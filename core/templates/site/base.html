@@ -11,7 +11,7 @@
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ logo_url }}">
 {% for l in languages %}<link rel="alternate" hreflang="{{ l.code }}" href="{{ request.scheme }}://{{ request.get_host }}{{ l.url }}">
 {% endfor %}<link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
-<link rel="stylesheet" href="{% static 'css/site.css' %}?v=5">
+<link rel="stylesheet" href="{% static 'css/site.css' %}?v=6">
 </head><body>
 {% include "svg/defs.svg" %}
 <div id='pg'></div><header><div class="w nav"><a href="{% url 'home' %}" aria-label="{{ s.site_name }} — {% translate 'Bosh sahifa' %}"><img src="{{ logo_url }}" alt="{{ s.site_name }}"></a>
@@ -27,5 +27,5 @@
 <div class='fcol'><h4>{% translate "Aloqa" %}</h4>{% if s.address %}<span>📍 {{ s.address }}</span>{% endif %}{% if s.phone %}<a href='{{ s.phone|tel }}'>📞 {{ s.phone }}</a>{% endif %}{% if s.email %}<a href='mailto:{{ s.email }}'>✉ {{ s.email }}</a>{% endif %}{% if tg_handle %}<a href='https://t.me/{{ tg_handle }}' target='_blank' rel='noopener'>✈ Telegram: @{{ tg_handle }}</a>{% endif %}<a class='btn p' href='{% url "contact" %}' style='margin-top:12px;color:#001418'>{% translate "Bepul audit olish" %}</a></div></div>
 <div class='fbt'><span>© {% now "Y" %} {{ s.site_name }}. {% translate "Barcha huquqlar himoyalangan." %}</span><span>{{ s.footer_bottom }}</span></div></div></footer><button id='up' aria-label='{% translate "Tepaga" %}'>↑</button>
 {{ js_t|json_script:"fs-i18n" }}
-<script src="{% static 'js/site.js' %}?v=4" defer></script>
+<script src="{% static 'js/site.js' %}?v=5" defer></script>
 </body></html>

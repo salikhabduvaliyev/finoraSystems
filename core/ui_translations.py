@@ -111,6 +111,18 @@ UI = {
     'Boshqa sohalar': ('Other industries', 'Другие отрасли'),
     'Barcha sohalar': ('All industries', 'Все отрасли'),
 
+    # ---- Xizmatlar: materiallar
+    'Materiallar': ('Resources', 'Материалы'),
+    'Taqdimotlar va videolar': ('Presentations and videos', 'Презентации и видео'),
+    'Xizmatlarimiz bo‘yicha taqdimotlar va video sharhlar — qulay vaqtda tanishib chiqing.': (
+        'Presentations and video overviews of our services — explore them at your convenience.',
+        'Презентации и видеообзоры наших услуг — изучайте в удобное время.'),
+    'Xizmat bo‘yicha saralash': ('Filter by service', 'Фильтр по услуге'),
+    'Hammasi': ('All', 'Все'),
+    'Taqdimot': ('Presentation', 'Презентация'),
+    'Videolar': ('Videos', 'Видео'),
+    'Ko‘rish': ('View', 'Смотреть'),
+
     # ---- Jamoa
     'Bizning jamoa': ('Our team', 'Наша команда'),
     "Jamoa bilan bog'lanish": ('Contact the team', 'Связаться с командой'),

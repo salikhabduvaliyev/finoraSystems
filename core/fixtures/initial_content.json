@@ -162,9 +162,9 @@
    "web_en": "Online catalog and ordering website (with tile visualization)",
    "web_ru": "Онлайн-каталог и сайт заказов (с визуализацией плитки)",
    "description": "",
-   "description_uz": null,
-   "description_en": null,
-   "description_ru": null,
+   "description_uz": "",
+   "description_en": "",
+   "description_ru": "",
    "on_home": true,
    "in_footer": true
   }
@@ -953,10 +953,29 @@
   "model": "core.casevideo",
   "pk": 1,
   "fields": {
+   "title": "",
+   "title_uz": null,
+   "title_en": null,
+   "title_ru": null,
    "url": "",
    "file": "videos/mww0fxxi-881f2c397d.mp4",
+   "cover": "",
    "sort": 0,
    "case": 1
+  }
+ },
+ {
+  "model": "core.presentation",
+  "pk": 1,
+  "fields": {
+   "service": null,
+   "title": "Akfa",
+   "title_uz": "Akfa",
+   "title_en": null,
+   "title_ru": null,
+   "file": "presentations/Akfa_ERP.pdf",
+   "url": "",
+   "sort": 0
   }
  },
  {

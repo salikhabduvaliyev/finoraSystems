@@ -218,3 +218,67 @@ dialog.lbx button{position:fixed;top:16px;right:16px;width:46px;height:46px;bord
   .pn-i.nx{grid-column:1}
   .doc-v{height:70vh}
 }
+
+/* ---- Ixcham video kartochkalari (bosilganda oynada ochiladi) ---- */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.vwrap{display:flex;flex-direction:column;gap:6px}
+.vwrap[hidden],.dcard[hidden]{display:none}
+.vcard{display:flex;flex-direction:column;gap:10px;width:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer;font:inherit}
+.vthumb{position:relative;display:block;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0b1730;border:1px solid var(--line);transition:border-color .2s,transform .2s,box-shadow .2s}
+.vthumb img,.vthumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.vcard:hover .vthumb,.vcard:focus-visible .vthumb{border-color:var(--cy);transform:translateY(-3px);box-shadow:0 14px 34px #00f5ff22}
+.vcard:hover .vthumb img{transform:scale(1.05)}
+.vthumb.vt-instagram{background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 35%,#d6249f 60%,#285aeb 95%)}
+.vthumb.vt-vimeo{background:linear-gradient(135deg,#0d2b45,#1ab7ea)}
+.vthumb .igb{top:50%;margin-top:-29px;opacity:.35}
+.vpi{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:#000a;border:2px solid #fff;backdrop-filter:blur(4px);transition:transform .2s,background .2s}
+.vpi:after{content:'';position:absolute;left:20px;top:15px;border-style:solid;border-width:10px 0 10px 16px;border-color:transparent transparent transparent #fff}
+.vcard:hover .vpi{transform:scale(1.1);background:var(--cy);border-color:var(--cy)}
+.vcard:hover .vpi:after{border-left-color:#001418}
+.vbadge{position:absolute;left:10px;top:10px;padding:3px 9px;border-radius:99px;background:#000b;color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.03em}
+.vtitle{font-weight:600;font-size:15px;line-height:1.35;color:var(--tx)}
+.vsvc{color:var(--mt);font-size:12.5px;margin-top:-4px}
+.tm-v{max-width:440px;width:100%}
+
+/* ---- Video / taqdimot oynasi ---- */
+dialog.pmodal{padding:0;border:0;background:none;max-width:none;max-height:none;overflow:visible}
+dialog.pmodal::backdrop{background:#020610e6;backdrop-filter:blur(4px)}
+.pm-box{display:flex;flex-direction:column;gap:10px}
+.pm-h{display:flex;align-items:center;gap:12px;color:#fff}
+.pm-t{flex:1;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pm-x{flex:none;width:42px;height:42px;border-radius:12px;border:1px solid #ffffff33;background:#ffffff14;color:#fff;font-size:22px;cursor:pointer}
+.pm-x:hover{background:var(--cy);color:#001418;border-color:var(--cy)}
+.pm-f{position:relative;background:#000;border-radius:16px;overflow:hidden}
+.pm-f iframe,.pm-f video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.pmodal.is-h .pm-f{width:min(960px,92vw);aspect-ratio:16/9}
+.pmodal.is-v .pm-f{height:min(80vh,760px);aspect-ratio:9/16;max-width:92vw;margin:0 auto}
+.pmodal.is-v .pm-box{align-items:center}
+.pmodal.is-v .pm-h{width:100%}
+.pmodal.is-doc .pm-f{width:min(1100px,94vw);height:min(86vh,900px);background:#fff}
+
+/* ---- Xizmatlar: materiallar bo'limi ---- */
+.svc-m{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:#00f5ff14;color:var(--cy);font-size:13px;font-weight:600;border:1px solid #00f5ff33}
+.chip:hover{background:#00f5ff26}
+.mfilter{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.mfilter button{padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--mt);font:inherit;font-size:14px;cursor:pointer}
+.mfilter button:hover{color:var(--tx);border-color:#264066}
+.mfilter button.on{background:var(--cy);border-color:var(--cy);color:#001418;font-weight:700}
+.mh{font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--mt);margin:8px 0 14px}
+.mh+.dgrid,.mh+.vgrid{margin-bottom:34px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:12px}
+.dcard{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.dcard:hover{border-color:#264066}
+.dc-t{flex:1;min-width:150px}
+.dc-t b{display:block;font-size:15px;line-height:1.35}
+.dc-t small{color:var(--mt);font-size:12.5px}
+.dc-a{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.btn.sm.p{padding:8px 14px}
+@media(max-width:600px){
+  .vgrid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .vtitle{font-size:13.5px}
+  .vpi{width:42px;height:42px;margin:-21px 0 0 -21px}
+  .vpi:after{left:16px;top:11px;border-width:9px 0 9px 14px}
+  .dcard{flex-wrap:wrap}
+  .dc-a{width:100%;justify-content:flex-start}
+}

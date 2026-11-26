@@ -4,14 +4,14 @@
 {% block og_title %}{{ obj.title }}{% endblock %}
 {% block content %}
 {% url 'contact' as contact_url %}{% url 'industries' as industries_url %}
-{% with i=obj pains=obj.pains|lines solutions=obj.solutions|lines videos=obj.videos.all images=obj.images.all docs=obj.presentations.all %}
+{% with i=obj pains=obj.pains|lines solutions=obj.solutions|lines videos=obj.videos.all images=obj.images.all %}
 <div class='w dhero'>
 <div class='crumbs' role='navigation' aria-label='{% translate "Yo‘l" %}'><a href='{% url "home" %}'>{% translate "Bosh sahifa" %}</a><span>/</span><a href='{{ industries_url }}'>{% translate "Sohalar" %}</a><span>/</span><span aria-current='page'>{{ i.title }}</span></div>
 <div class='split'>
   <div class='split-tx'>
     <div class='eyebrow'>{{ i.label|default:_("Soha") }}</div><h1 class='dt1'>{{ i.title }}</h1>{% if i.short %}<p class='lead'>{{ i.short }}</p>{% endif %}
     {% if solutions %}<ul class='l hl-list'>{% for y in solutions|slice:":3" %}<li>{{ y }}</li>{% endfor %}</ul>{% endif %}
-    <div class='cta'><a class='btn p' href='{{ contact_url }}'>{% translate "Konsultatsiya olish" %}</a>{% if docs %}<a class='btn' href='#taqdimot'>{% translate "Taqdimotni ko‘rish" %}</a>{% elif videos %}<a class='btn' href='#video'>{% translate "Videoni ko‘rish" %}</a>{% endif %}</div>
+    <div class='cta'><a class='btn p' href='{{ contact_url }}'>{% translate "Konsultatsiya olish" %}</a>{% if videos %}<a class='btn' href='#video'>{% translate "Videoni ko‘rish" %}</a>{% endif %}</div>
   </div>
   <div class='split-img'><div class='cover'>{% fig i %}</div></div>
 </div></div>
@@ -26,16 +26,7 @@
 
 {% if i.ai or i.web %}<section class='dsec'><div class='eyebrow'>{% translate "Qo‘shimcha imkoniyatlar" %}</div><h2>{% translate "AI va veb-sayt" %}</h2><div class='ai big'>{% if i.ai %}<div class='a1'><b>✦ {% translate "AI yechim" %}</b><span>{{ i.ai }}</span></div>{% endif %}{% if i.web %}<div class='a2'><b>◐ {% translate "Veb-sayt" %}</b><span>{{ i.web }}</span></div>{% endif %}</div></section>{% endif %}
 
-{% if docs %}<section class='dsec' id='taqdimot'><div class='eyebrow'>{% translate "Taqdimotlar" %}</div><h2>{% translate "Yechim taqdimoti" %}</h2><div class='docs'>
-{% for d in docs %}<div class='doc'>
-  <div class='doc-h'><span class='doc-ic' aria-hidden='true'>{% if d.file %}{{ d.ext }}{% else %}↗{% endif %}</span><b>{{ d.title }}</b>
-    <span class='doc-a'>{% if d.file %}<a class='btn sm' href='{{ d.file.url }}' target='_blank' rel='noopener'>{% translate "Yangi oynada ochish" %}</a><a class='btn sm' href='{{ d.file.url }}' download>{% translate "Yuklab olish" %}</a>{% else %}<a class='btn sm' href='{{ d.url }}' target='_blank' rel='noopener'>{% translate "Ochish" %}</a>{% endif %}</span></div>
-  {% if d.is_pdf %}<iframe class='doc-v' src='{{ d.file.url }}#view=FitH' title='{{ d.title }}' loading='lazy'></iframe>
-  {% elif d.embed_url %}<iframe class='doc-v' src='{{ d.embed_url }}' title='{{ d.title }}' loading='lazy' allowfullscreen></iframe>{% endif %}
-</div>{% endfor %}
-</div></section>{% endif %}
-
-{% if videos %}{% translate "Video" as vt %}<section class='dsec' id='video'><div class='eyebrow'>{{ vt }}</div><h2>{% translate "Sohaga oid videolar" %}</h2><div class='vids{% if videos|length == 1 %} one{% endif %}'>{% for v in videos %}{% video v.src i.title %}{% endfor %}</div></section>{% endif %}
+{% if videos %}{% translate "Video" as vt %}<section class='dsec' id='video'><div class='eyebrow'>{{ vt }}</div><h2>{% translate "Sohaga oid videolar" %}</h2><div class='vgrid'>{% for v in videos %}{% video_card v.src v.title v.cover %}{% endfor %}</div></section>{% endif %}
 
 {% if images %}<section class='dsec'><div class='eyebrow'>{% translate "Galereya" %}</div><h2>{% translate "Rasmlar" %}</h2><div class='gl'>{% for im in images %}<a href='{{ im.image.url }}' data-lb><img src='{{ im.image.url }}' alt='{{ i.title }} — {{ forloop.counter }}' loading='lazy'></a>{% endfor %}</div></section>{% endif %}
 </div>

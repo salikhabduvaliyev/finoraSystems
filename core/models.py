@@ -139,10 +139,13 @@ class Case(Ordered):
 
 
 class VideoBase(models.Model):
+    title = models.CharField('Nomi', max_length=200, blank=True, help_text="Kartochkada ko'rinadi")
     url = models.CharField('Video havolasi', max_length=300, blank=True,
                            help_text='YouTube, Instagram (Reels yoki post) yoki Vimeo havolasi')
     file = models.FileField('yoki video fayl', upload_to='videos/', blank=True, validators=[video_file_validator],
                             help_text="MP4, WEBM yoki MOV. Katta videolarni YouTube'ga joylab havolasini qo'ying.")
+    cover = models.ImageField('Muqova (ixtiyoriy)', upload_to='videos/covers/', blank=True,
+                              help_text="Instagram va yuklangan videolar uchun tavsiya etiladi (YouTube'da avtomatik)")
     sort = models.PositiveIntegerField('Tartib', default=0)
 
     class Meta:
@@ -160,6 +163,10 @@ class VideoBase(models.Model):
     @property
     def src(self):
         return self.file.url if self.file else self.url
+
+    @property
+    def info(self):
+        return parse_video(self.src)
 
     def __str__(self):
         return self.url or (self.file.name if self.file else 'video')
@@ -193,6 +200,13 @@ class CaseImage(ImageBase):
         pass
 
 
+class ServiceVideo(VideoBase):
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='videos')
+
+    class Meta(VideoBase.Meta):
+        pass
+
+
 class IndustryVideo(VideoBase):
     industry = models.ForeignKey(Industry, on_delete=models.CASCADE, related_name='videos')
 
@@ -211,8 +225,9 @@ doc_validator = FileExtensionValidator(['pdf', 'ppt', 'pptx'])
 
 
 class Presentation(models.Model):
-    """Soha taqdimoti: PDF sahifada ochiladi, PPT/PPTX yuklab olinadi, yoki tashqi havola (Google Slides, Canva)."""
-    industry = models.ForeignKey(Industry, on_delete=models.CASCADE, related_name='presentations')
+    """Xizmat taqdimoti: PDF ko'rish oynasida ochiladi, PPT/PPTX yuklab olinadi, yoki tashqi havola (Google Slides, Canva)."""
+    service = models.ForeignKey('Service', on_delete=models.SET_NULL, null=True, blank=True, related_name='presentations',
+                                verbose_name='Xizmat')
     title = models.CharField('Nomi', max_length=200)
     file = models.FileField('Fayl (PDF, PPT, PPTX)', upload_to='presentations/', blank=True, validators=[doc_validator],
                             help_text="PDF saytda to'g'ridan-to'g'ri ochiladi")

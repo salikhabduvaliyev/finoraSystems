@@ -3,6 +3,7 @@ import re
 from urllib.parse import urlparse
 
 from django.core.cache import cache
+from django.db.models import Q
 from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
 from django.utils import translation
@@ -11,8 +12,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 from .media import slugify_uz
-from .models import (Case, Client, Industry, Lead, Partner, Service, Stat, Step, TeamMember, Value,
-                     WhyCard)
+from .models import (Case, Client, Industry, Lead, Partner, Presentation, Service, ServiceVideo, Stat, Step,
+                     TeamMember, Value, WhyCard)
 from .notify import notify_lead
 
 
@@ -36,7 +37,17 @@ def home(request):
 
 
 def services(request):
-    return render(request, 'site/services.html', {'services': active(Service)})
+    services = list(active(Service).prefetch_related('presentations', 'videos'))
+    presentations = Presentation.objects.select_related('service').filter(
+        Q(service__isnull=True) | Q(service__active=True))
+    videos = ServiceVideo.objects.select_related('service').filter(service__active=True)
+    with_media = {p.service_id for p in presentations} | {v.service_id for v in videos}
+    return render(request, 'site/services.html', {
+        'services': services,
+        'presentations': presentations,
+        'videos': videos,
+        'media_services': [x for x in services if x.pk in with_media],
+    })
 
 
 def industries(request):

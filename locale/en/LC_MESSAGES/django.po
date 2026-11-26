@@ -278,6 +278,30 @@ msgstr "Other industries"
 msgid "Barcha sohalar"
 msgstr "All industries"
 
+msgid "Materiallar"
+msgstr "Resources"
+
+msgid "Taqdimotlar va videolar"
+msgstr "Presentations and videos"
+
+msgid "Xizmatlarimiz bo‘yicha taqdimotlar va video sharhlar — qulay vaqtda tanishib chiqing."
+msgstr "Presentations and video overviews of our services — explore them at your convenience."
+
+msgid "Xizmat bo‘yicha saralash"
+msgstr "Filter by service"
+
+msgid "Hammasi"
+msgstr "All"
+
+msgid "Taqdimot"
+msgstr "Presentation"
+
+msgid "Videolar"
+msgstr "Videos"
+
+msgid "Ko‘rish"
+msgstr "View"
+
 msgid "Bizning jamoa"
 msgstr "Our team"
 

@@ -21,7 +21,7 @@
 {% if edu %}<div class='card'><h3>{% translate "Ta'lim" %}</h3><ul class='l'>{% for x in edu %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
 {% if ach %}<div class='card'><h3>{% translate "Sertifikat va yutuqlar" %}</h3><ul class='l'>{% for x in ach %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
 </div></section>{% endif %}
-{% if videos %}<section class='dsec'><div class='eyebrow'>{% translate "Video" %}</div><h2>{% blocktranslate with name=m.name %}{{ name }} — videolar{% endblocktranslate %}</h2><div class='vids{% if videos|length == 1 %} one{% endif %}'>{% for v in videos %}{% video v.src m.name %}{% endfor %}</div></section>{% endif %}
+{% if videos %}<section class='dsec'><div class='eyebrow'>{% translate "Video" %}</div><h2>{% blocktranslate with name=m.name %}{{ name }} — videolar{% endblocktranslate %}</h2><div class='vgrid'>{% for v in videos %}{% video_card v.src v.title v.cover %}{% endfor %}</div></section>{% endif %}
 {% if images %}<section class='dsec'><div class='eyebrow'>{% translate "Galereya" %}</div><h2>{% translate "Rasmlar" %}</h2><div class='gl'>{% for im in images %}<a href='{{ im.image.url }}' data-lb><img src='{{ im.image.url }}' alt='{{ m.name }} — {{ forloop.counter }}' loading='lazy'></a>{% endfor %}</div></section>{% endif %}
 {% if not m.intro and not m.bio and not skills %}<p class='sub'>{% blocktranslate with name=m.name %}{{ name }} haqida batafsil ma’lumot tez orada qo‘shiladi.{% endblocktranslate %}</p>{% endif %}
 </div></div></div>

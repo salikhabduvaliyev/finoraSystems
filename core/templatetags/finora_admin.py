@@ -2,12 +2,13 @@ from django import template
 from django.db.models import Count
 from django.urls import reverse
 
-from ..models import (Case, Client, Industry, Lead, Partner, Service, Stat, Step, TeamMember, Value, WhyCard)
+from ..models import (Case, Client, Industry, Lead, Partner, Presentation, Service, Stat, Step, TeamMember, Value,
+                      WhyCard)
 
 register = template.Library()
 
 # Admin menyusidagi kontent bo'limlari (tartib bilan)
-CONTENT = [Service, Industry, Case, TeamMember, Client, Partner, Stat, WhyCard, Step, Value]
+CONTENT = [Service, Presentation, Industry, Case, TeamMember, Client, Partner, Stat, WhyCard, Step, Value]
 
 
 def _changelist(model):

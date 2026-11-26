@@ -99,6 +99,51 @@
     });
   }
 
+  // Video va taqdimot oynasi (modal): kartochka bosilganda ochiladi, yopilganda video to'xtaydi
+  var players = $$('[data-play]');
+  if (players.length && window.HTMLDialogElement) {
+    var pm = document.createElement('dialog');
+    pm.className = 'pmodal';
+    pm.innerHTML = '<div class="pm-box"><div class="pm-h"><b class="pm-t"></b><button type="button" class="pm-x" aria-label="' +
+      esc(t('close', 'Yopish')) + '">×</button></div><div class="pm-f"></div></div>';
+    document.body.appendChild(pm);
+    var frame = pm.querySelector('.pm-f'), ttl = pm.querySelector('.pm-t');
+    var stop = function () { frame.innerHTML = ''; };
+    pm.querySelector('.pm-x').addEventListener('click', function () { pm.close(); });
+    pm.addEventListener('click', function (e) { if (e.target === pm) pm.close(); });
+    pm.addEventListener('close', stop);
+    players.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var mode = b.dataset.play, src = b.dataset.src;
+        pm.className = 'pmodal ' + (mode === 'pdf' ? 'is-doc' : b.dataset.vertical === '1' ? 'is-v' : 'is-h');
+        ttl.textContent = b.dataset.title || '';
+        var el;
+        if (mode === 'video') {
+          el = document.createElement('video');
+          el.src = src; el.controls = true; el.autoplay = true; el.setAttribute('playsinline', '');
+        } else {
+          el = document.createElement('iframe');
+          el.src = src; el.title = b.dataset.title || 'Video';
+          el.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+          el.setAttribute('allowfullscreen', '');
+        }
+        frame.innerHTML = ''; frame.appendChild(el);
+        pm.showModal();
+      });
+    });
+  }
+
+  // Xizmatlar sahifasi: materiallarni xizmat bo'yicha saralash
+  var chips = $$('.mfilter button');
+  function applyFilter(f) {
+    chips.forEach(function (c) { var on = c.dataset.f === f; c.classList.toggle('on', on); c.setAttribute('aria-pressed', on); });
+    $$('[data-svc]').forEach(function (el) { el.hidden = !(f === 'all' || el.dataset.svc === f); });
+  }
+  chips.forEach(function (c) { c.addEventListener('click', function () { applyFilter(c.dataset.f); }); });
+  $$('[data-goto]').forEach(function (a) {
+    a.addEventListener('click', function () { if (chips.length) applyFilter(a.dataset.goto); });
+  });
+
   // Ariza formalari
   function digits(v) { return String(v || '').replace(/\D/g, ''); }
   $$('form[data-lead]').forEach(function (form) {

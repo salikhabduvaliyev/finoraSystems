@@ -87,3 +87,25 @@ def video(src, title=''):
         "<div class='vid{}'><button type='button' class='vplay' data-embed='{}' data-title='{}' "
         "aria-label='{}: {}'>{}<span class='pl' aria-hidden='true'></span></button></div>",
         ' vv' if v.get('vertical') else '', embed, title, _('Videoni ko‘rish'), title, thumb)
+
+
+@register.inclusion_tag('site/partials/video_card.html')
+def video_card(src, title='', cover=None):
+    """Ixcham video kartochkasi: muqova + nom; bosilganda video oynada (modal) ochiladi."""
+    v = parse_video(src)
+    if not v:
+        return {'v': None}
+    kind = v['kind']
+    thumb, play, mode = '', '', 'iframe'
+    if kind == 'youtube':
+        thumb = f"https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg"
+        play = f"https://www.youtube-nocookie.com/embed/{v['id']}?autoplay=1&rel=0"
+    elif kind == 'instagram':
+        play = v['embed']
+    elif kind == 'vimeo':
+        play = f"https://player.vimeo.com/video/{v['id']}?autoplay=1"
+    else:
+        play, mode = v['src'], 'video'
+    labels = {'youtube': 'YouTube', 'instagram': 'Instagram', 'vimeo': 'Vimeo', 'file': 'Video'}
+    return {'v': v, 'kind': kind, 'title': title, 'cover': cover.url if cover else '', 'thumb': thumb,
+            'play': play, 'mode': mode, 'label': labels[kind], 'vertical': bool(v.get('vertical'))}

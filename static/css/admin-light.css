@@ -137,3 +137,7 @@ body.login { background: radial-gradient(600px 320px at 80% 0, #00d4e01f, transp
 #result_list thead th .text { white-space: normal; }
 #changelist .changelist-form-container { overflow-x: auto; }
 #changelist-filter { flex-basis: 210px; }
+
+/* O'chirish tugmasi — oq fonda qizil yozuv */
+.submit-row a.deletelink, .submit-row a.deletelink:link, .submit-row a.deletelink:visited { background: #ffffff !important; color: #d6336c !important; border: 1px solid #f3b5ca !important; }
+.submit-row a.deletelink:hover { background: #fdecf2 !important; }
