@@ -32,6 +32,13 @@ git diff --name-only --diff-filter=A HEAD origin/main | while read -r f; do
     rm "$f"
   fi
 done
+# API orqali to'g'ridan-to'g'ri yuklangan (kuzatiladigan) fayllar: git'dagi yangi versiya bilan bir xil
+# bo'lsa, HEAD holatiga qaytariladi — merge baribir aynan shu mazmunni qo'yadi.
+git diff --name-only | while read -r f; do
+  if git cat-file -e "origin/main:$f" 2>/dev/null && [ "$(git hash-object "$f")" = "$(git rev-parse "origin/main:$f")" ]; then
+    git checkout -q HEAD -- "$f"
+  fi
+done
 git merge --ff-only -q origin/main || echo "   (git pull o'tkazib yuborildi — serverda farq qiladigan fayllar bor)"
 
 step "Python versiyasini tanlash"
