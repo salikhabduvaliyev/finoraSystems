@@ -299,3 +299,20 @@ a.card.svc:hover h3{color:var(--cy)}
 .sv-chips span{padding:7px 12px;border-radius:99px;background:#ffffff10;border:1px solid #ffffff1f;font-size:13.5px;color:#cfe0f5}
 .feat-v .vthumb{border-radius:22px;box-shadow:0 30px 70px #00f5ff1f}
 .feat-v .vtitle{font-size:16px}
+
+/* ---- Mijozlardan otzivlar — ixcham blok ---- */
+.tm2{max-width:520px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px}
+.tm2.has-q{max-width:none;display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:28px;align-items:center;padding:14px 26px 14px 14px}
+.tm2-v .vthumb{border-radius:14px}
+.tm2-b{display:flex;flex-direction:column;gap:14px}
+.tm2:not(.has-q) .tm2-b{padding:12px 6px 4px}
+.tm2 blockquote{margin:0;position:relative;padding-left:22px;border-left:3px solid var(--cy)}
+.tm2 blockquote p{margin:0 0 8px;font-size:16.5px;line-height:1.6;color:#dbe8f6}
+.tm2-a{display:flex;align-items:center;gap:12px}
+.tm2-p{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none}
+.tm2-p.ini{display:grid;place-items:center;background:linear-gradient(135deg,#0a9a9f,#00f5ff55);font-weight:800;font-size:17px}
+.tm2-n{display:flex;flex-direction:column;min-width:0;line-height:1.3}
+.tm2-n b{font-size:15px}
+.tm2-n small{color:var(--mt);font-size:13px}
+.tm2-logo{margin-left:auto;height:34px;max-width:110px;object-fit:contain;background:#fff;border-radius:9px;padding:5px 9px}
+@media(max-width:760px){.tm2.has-q{grid-template-columns:1fr;padding:12px}.tm2{max-width:none}}

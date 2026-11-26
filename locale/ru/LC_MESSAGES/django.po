@@ -212,8 +212,8 @@ msgstr "Видеоотзыв"
 msgid "Mijoz fikri"
 msgstr "Отзыв клиента"
 
-msgid "Mijozimiz nima deydi"
-msgstr "Что говорит наш клиент"
+msgid "Mijozlardan otzivlar"
+msgstr "Отзывы клиентов"
 
 msgid "Boshqa loyihalar"
 msgstr "Другие проекты"

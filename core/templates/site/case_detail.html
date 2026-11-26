@@ -35,7 +35,16 @@
 {% if works %}<section class='dsec'><div class='eyebrow'>{% translate "Bajarilgan ishlar" %}</div><h2>{% translate "Loyiha doirasida" %}</h2><div class='card'><ul class='l cols'>{% for x in works %}<li>{{ x }}</li>{% endfor %}</ul></div></section>{% endif %}
 {% if videos %}{% translate "Loyihadan videolar" as vt %}<section class='dsec' id='video'><div class='eyebrow'>{% translate "Video" %}</div><h2>{{ vt }}</h2><div class='vgrid'>{% for v in videos %}{% video_card v.src v.title v.cover %}{% endfor %}</div></section>{% endif %}
 {% if images %}<section class='dsec'><div class='eyebrow'>{% translate "Galereya" %}</div><h2>{% translate "Loyihadan lavhalar" %}</h2><div class='gl'>{% for im in images %}<a href='{{ im.image.url }}' data-lb><img src='{{ im.image.url }}' alt='{{ c.title }} — {{ forloop.counter }}' loading='lazy'></a>{% endfor %}</div></section>{% endif %}
-{% if c.t_text or c.testimonial_video %}{% translate "Video-otziv" as tvt %}<section class='dsec'{% if not videos %} id='video'{% endif %}><div class='eyebrow'>{% translate "Mijoz fikri" %}</div><h2>{% translate "Mijozimiz nima deydi" %}</h2><div class='tm{% if not c.testimonial_video %} nov{% endif %}'>{% if c.testimonial_video %}<div class='tm-v'>{% video_card c.testimonial_video tvt %}</div>{% endif %}<figure>{% if c.t_text %}<blockquote>{{ c.t_text|paras }}</blockquote>{% endif %}<figcaption>{% if c.t_photo %}<img src='{{ c.t_photo.url }}' alt=''>{% else %}<span class='ini' aria-hidden='true'>{{ c.t_author|default:c.client|default:"?"|first }}</span>{% endif %}<span><b>{{ c.t_author|default:c.client }}</b>{% if c.t_role %}<small>{{ c.t_role }}</small>{% endif %}</span>{% if c.logo %}<img class='tlogo' src='{{ c.logo.url }}' alt='{{ c.client }}'>{% endif %}</figcaption></figure></div></section>{% endif %}
+{% if c.t_text or c.testimonial_video %}<section class='dsec'{% if not videos %} id='video'{% endif %}><div class='eyebrow'>{% translate "Mijoz fikri" %}</div><h2>{% translate "Mijozlardan otzivlar" %}</h2>
+<div class='tm2{% if c.t_text and c.testimonial_video %} has-q{% endif %}'>
+  {% if c.testimonial_video %}<div class='tm2-v'>{% video_card c.testimonial_video '' %}</div>{% endif %}
+  <div class='tm2-b'>
+    {% if c.t_text %}<blockquote>{{ c.t_text|paras }}</blockquote>{% endif %}
+    <div class='tm2-a'>{% if c.t_photo %}<img class='tm2-p' src='{{ c.t_photo.url }}' alt=''>{% else %}<span class='tm2-p ini' aria-hidden='true'>{{ c.t_author|default:c.client|default:"?"|first }}</span>{% endif %}
+      <span class='tm2-n'><b>{{ c.t_author|default:c.client }}</b>{% if c.t_role %}<small>{{ c.t_role }}</small>{% elif c.t_author and c.client %}<small>{{ c.client }}</small>{% endif %}</span>
+      {% if c.logo %}<img class='tm2-logo' src='{{ c.logo.url }}' alt='{{ c.client }}'>{% endif %}</div>
+  </div>
+</div></section>{% endif %}
 
 {% if prev_case or next_case %}<nav class='pn' aria-label='{% translate "Keyslar" %}'>
   {% if prev_case %}<a class='pn-i' href='{{ prev_case.get_absolute_url }}'><small>← {% translate "Oldingi keys" %}</small><b>{{ prev_case.title }}</b></a>{% endif %}

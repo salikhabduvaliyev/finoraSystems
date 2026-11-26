@@ -85,7 +85,7 @@ UI = {
     'Loyihadan lavhalar': ('Project highlights', 'Кадры проекта'),
     'Video-otziv': ('Video testimonial', 'Видеоотзыв'),
     'Mijoz fikri': ('Testimonial', 'Отзыв клиента'),
-    'Mijozimiz nima deydi': ('What our client says', 'Что говорит наш клиент'),
+    'Mijozlardan otzivlar': ('Client testimonials', 'Отзывы клиентов'),
     'Boshqa loyihalar': ('Other projects', 'Другие проекты'),
     'Videoni ko‘rish': ('Watch video', 'Смотреть видео'),
 

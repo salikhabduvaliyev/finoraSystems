@@ -212,8 +212,8 @@ msgstr "Video testimonial"
 msgid "Mijoz fikri"
 msgstr "Testimonial"
 
-msgid "Mijozimiz nima deydi"
-msgstr "What our client says"
+msgid "Mijozlardan otzivlar"
+msgstr "Client testimonials"
 
 msgid "Boshqa loyihalar"
 msgstr "Other projects"
