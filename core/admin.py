@@ -1,11 +1,12 @@
 from django.contrib import admin
-from modeltranslation.admin import TabbedTranslationAdmin
+from modeltranslation.admin import TabbedTranslationAdmin, TranslationTabularInline
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.html import format_html
 
 from .media import parse_video
-from .models import (Case, CaseImage, CaseVideo, Client, Industry, Lead, MemberImage, MemberVideo, Partner,
+from .models import (Case, CaseImage, CaseVideo, Client, Industry, IndustryImage, IndustryVideo, Lead, MemberImage,
+                     MemberVideo, Partner, Presentation,
                      Service, SiteSettings, Stat, Step, TeamMember, Value, WhyCard)
 
 admin.site.index_template = 'admin/finora_index.html'
@@ -89,7 +90,7 @@ class IndustryAdmin(TrOrderedAdmin):
     search_fields = ('title',)
     fieldsets = (
         (None, {'fields': ('title', 'label', 'short', ('mock', 'image'), ('on_home', 'in_footer', 'active'), 'sort')}),
-        ('Sohalar sahifasi uchun', {'fields': ('pains', 'solutions', 'ai', 'web')}),
+        ('Soha sahifasi — batafsil', {'fields': ('description', 'pains', 'solutions', 'ai', 'web')}),
     )
 
 
@@ -105,6 +106,10 @@ class VideoInline(admin.TabularInline):
             return '—'
         if v['kind'] == 'youtube':
             return format_html("<a href='https://youtu.be/{0}' target='_blank'><img src='https://i.ytimg.com/vi/{0}/mqdefault.jpg' style='height:54px;border-radius:6px'></a>", v['id'])
+        if v['kind'] == 'instagram':
+            return format_html("<a href='{}' target='_blank' style='display:inline-block;padding:6px 10px;border-radius:8px;"
+                               "background:linear-gradient(45deg,#fd5949,#d6249f,#285aeb);color:#fff;font-weight:700'>▶ Instagram</a>",
+                               obj.url)
         if v['kind'] == 'file':
             return format_html("<video src='{}' style='height:54px;border-radius:6px' controls preload='metadata'></video>", v['src'])
         return format_html("<a href='{}' target='_blank'>Vimeo</a>", obj.url)
@@ -128,6 +133,23 @@ class CaseImageInline(ImageInline):
     model = CaseImage
 
 
+class IndustryVideoInline(VideoInline):
+    model = IndustryVideo
+
+
+class IndustryImageInline(ImageInline):
+    model = IndustryImage
+
+
+class PresentationInline(TranslationTabularInline):
+    model = Presentation
+    extra = 0
+    fields = ('title', 'file', 'url', 'sort')
+
+
+IndustryAdmin.inlines = [PresentationInline, IndustryVideoInline, IndustryImageInline]
+
+
 class MemberVideoInline(VideoInline):
     model = MemberVideo
 
@@ -144,7 +166,7 @@ class CaseAdmin(TrOrderedAdmin):
     list_filter = ('active', 'on_home', 'direction')
     inlines = [CaseVideoInline, CaseImageInline]
     fieldsets = (
-        ('Asosiy', {'fields': ('title', ('client', 'logo'), 'description', ('direction', 'year', 'duration'),
+        ('Asosiy', {'fields': ('title', ('client', 'logo'), 'description', 'industry', ('direction', 'year', 'duration'),
                                'tags', 'result', ('mock', 'image'), ('on_home', 'active'), 'sort')}),
         ('Keys sahifasi — batafsil', {'fields': ('challenge', 'solution', 'works', 'metrics')}),
         ('Mijoz fikri (otziv)', {'fields': ('t_text', ('t_author', 't_role'), 't_photo', 't_video_url', 't_video_file')}),

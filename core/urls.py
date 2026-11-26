@@ -17,6 +17,7 @@ site_patterns = [
     path('', views.home, name='home'),
     re_path(format_lazy('^{}/?$', seg('xizmatlar')), views.services, name='services'),
     re_path(format_lazy('^{}/?$', seg('sohalar')), views.industries, name='industries'),
+    re_path(format_lazy('^{}' + DETAIL, seg('sohalar')), views.industry_detail, name='industry_detail'),
     re_path(format_lazy('^{}/?$', seg('keyslar')), views.cases, name='cases'),
     re_path(format_lazy('^{}' + DETAIL, seg('keyslar')), views.case_detail, name='case_detail'),
     re_path(format_lazy('^{}/?$', seg('jamoa')), views.team, name='team'),

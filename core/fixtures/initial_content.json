@@ -161,6 +161,10 @@
    "web_uz": "Onlayn katalog va buyurtma sayti (plitka vizualizatsiyasi bilan)",
    "web_en": "Online catalog and ordering website (with tile visualization)",
    "web_ru": "Онлайн-каталог и сайт заказов (с визуализацией плитки)",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
    "on_home": true,
    "in_footer": true
   }
@@ -201,6 +205,10 @@
    "web_uz": "Zavod korporativ sayti va B2B buyurtma portali",
    "web_en": "Corporate factory website and B2B ordering portal",
    "web_ru": "Корпоративный сайт завода и B2B-портал заказов",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
    "on_home": true,
    "in_footer": true
   }
@@ -241,6 +249,10 @@
    "web_uz": "Kurs sotuvchi sayt va talaba shaxsiy kabineti",
    "web_en": "Course sales website and student portal",
    "web_ru": "Сайт продажи курсов и личный кабинет студента",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
    "on_home": true,
    "in_footer": true
   }
@@ -281,6 +293,10 @@
    "web_uz": "Klinika sayti: shifokorlar, narxlar, onlayn yozilish",
    "web_en": "Clinic website: doctors, prices, online booking",
    "web_ru": "Сайт клиники: врачи, цены, онлайн-запись",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
    "on_home": true,
    "in_footer": true
   }
@@ -321,6 +337,10 @@
    "web_uz": "Tur paketlar sayti, onlayn bron va to'lov",
    "web_en": "Tour packages website, online booking and payment",
    "web_ru": "Сайт турпакетов, онлайн-бронирование и оплата",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
    "on_home": true,
    "in_footer": true
   }
@@ -361,6 +381,10 @@
    "web_uz": "Monitoring dashboard va yo'lovchi axborot sayti",
    "web_en": "Monitoring dashboard and passenger information website",
    "web_ru": "Панель мониторинга и информационный сайт для пассажиров",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
    "on_home": true,
    "in_footer": true
   }
@@ -388,6 +412,7 @@
    "direction_uz": "Savdo va ombor",
    "direction_en": "Retail and warehouse",
    "direction_ru": "Торговля и склад",
+   "industry": 1,
    "tags": "Odoo 19\nERP",
    "tags_uz": "Odoo 19\nERP",
    "tags_en": null,
@@ -457,6 +482,7 @@
    "direction_uz": "Savdo va ishlab chiqarish",
    "direction_en": "Sales and manufacturing",
    "direction_ru": "Торговля и производство",
+   "industry": null,
    "tags": "amoCRM\nB2B",
    "tags_uz": "amoCRM\nB2B",
    "tags_en": null,
@@ -526,6 +552,7 @@
    "direction_uz": "Transport",
    "direction_en": "Transport",
    "direction_ru": "Транспорт",
+   "industry": 6,
    "tags": "MDVR · APC\r\nITS",
    "tags_uz": "MDVR · APC\r\nITS",
    "tags_en": "",
@@ -595,6 +622,7 @@
    "direction_uz": "Savdo va ombor",
    "direction_en": "Retail and warehouse",
    "direction_ru": "Торговля и склад",
+   "industry": 1,
    "tags": "Moysklad \r\nAvtomatlashtirish",
    "tags_uz": "Moysklad \r\nAvtomatlashtirish",
    "tags_en": "Moysklad\r\nAutomation",
@@ -664,6 +692,7 @@
    "direction_uz": "Ishlab chiqarish",
    "direction_en": "Manufacturing",
    "direction_ru": "Производство",
+   "industry": 2,
    "tags": "МойСклад\nOylik moduli",
    "tags_uz": "МойСклад\nOylik moduli",
    "tags_en": "МойСклад\nPayroll module",
@@ -733,6 +762,7 @@
    "direction_uz": "Ta'lim",
    "direction_en": "Education",
    "direction_ru": "Образование",
+   "industry": 3,
    "tags": "LMS",
    "tags_uz": "LMS",
    "tags_en": null,
@@ -802,6 +832,7 @@
    "direction_uz": "Klinika",
    "direction_en": "Clinics",
    "direction_ru": "Клиники",
+   "industry": 4,
    "tags": "ERP",
    "tags_uz": "ERP",
    "tags_en": null,
@@ -871,6 +902,7 @@
    "direction_uz": "Energetika",
    "direction_en": "Energy",
    "direction_ru": "Энергетика",
+   "industry": null,
    "tags": "CRM\nLoyiha boshqaruvi",
    "tags_uz": "CRM\nLoyiha boshqaruvi",
    "tags_en": "CRM\nProject management",

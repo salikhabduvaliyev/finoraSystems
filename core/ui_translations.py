@@ -89,6 +89,28 @@ UI = {
     'Boshqa loyihalar': ('Other projects', 'Другие проекты'),
     'Videoni ko‘rish': ('Watch video', 'Смотреть видео'),
 
+    'Oldingi keys': ('Previous case', 'Предыдущий кейс'),
+    'Keyingi keys': ('Next case', 'Следующий кейс'),
+    'Keyingi keyslar': ('More case studies', 'Следующие кейсы'),
+    'Soha': ('Industry', 'Отрасль'),
+
+    # ---- Soha ichki sahifasi
+    'Soha haqida': ('About the industry', 'Об отрасли'),
+    'Muammo va yechim': ('Problem and solution', 'Проблема и решение'),
+    'Qanday muammolarni hal qilamiz': ('What problems we solve', 'Какие проблемы мы решаем'),
+    'Qo‘shimcha imkoniyatlar': ('Additional capabilities', 'Дополнительные возможности'),
+    'AI va veb-sayt': ('AI and website', 'AI и сайт'),
+    'Taqdimotlar': ('Presentations', 'Презентации'),
+    'Yechim taqdimoti': ('Solution presentation', 'Презентация решения'),
+    'Taqdimotni ko‘rish': ('View presentation', 'Смотреть презентацию'),
+    'Yangi oynada ochish': ('Open in new tab', 'Открыть в новом окне'),
+    'Yuklab olish': ('Download', 'Скачать'),
+    'Ochish': ('Open', 'Открыть'),
+    'Sohaga oid videolar': ('Industry videos', 'Видео по отрасли'),
+    'Shu sohadagi loyihalarimiz': ('Our projects in this industry', 'Наши проекты в этой отрасли'),
+    'Boshqa sohalar': ('Other industries', 'Другие отрасли'),
+    'Barcha sohalar': ('All industries', 'Все отрасли'),
+
     # ---- Jamoa
     'Bizning jamoa': ('Our team', 'Наша команда'),
     "Jamoa bilan bog'lanish": ('Contact the team', 'Связаться с командой'),

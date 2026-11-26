@@ -5,6 +5,7 @@ import unicodedata
 _VIDEO_FILE = re.compile(r'^(/media/\S+|https?://\S+)\.(mp4|webm|mov)(\?\S*)?$', re.I)
 _YOUTUBE = re.compile(
     r'^(?:https?://)?(?:www\.|m\.)?(?:youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/)|youtu\.be/)([\w-]{11})', re.I)
+_INSTAGRAM = re.compile(r'^(?:https?://)?(?:www\.)?instagram\.com/(?:[\w.]+/)?(reel|reels|p|tv)/([\w-]+)', re.I)
 _VIMEO = re.compile(r'^(?:https?://)?(?:www\.|player\.)?vimeo\.com/(?:video/)?(\d+)', re.I)
 
 
@@ -17,6 +18,11 @@ def parse_video(url):
     m = _YOUTUBE.match(url)
     if m:
         return {'kind': 'youtube', 'id': m.group(1), 'vertical': '/shorts/' in url.lower()}
+    m = _INSTAGRAM.match(url)
+    if m:
+        kind = 'p' if m.group(1).lower() == 'p' else 'reel'
+        return {'kind': 'instagram', 'id': m.group(2), 'embed': f'https://www.instagram.com/{kind}/{m.group(2)}/embed/',
+                'vertical': True}
     m = _VIMEO.match(url)
     if m:
         return {'kind': 'vimeo', 'id': m.group(1)}

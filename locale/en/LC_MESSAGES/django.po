@@ -221,6 +221,63 @@ msgstr "Other projects"
 msgid "Videoni ko‘rish"
 msgstr "Watch video"
 
+msgid "Oldingi keys"
+msgstr "Previous case"
+
+msgid "Keyingi keys"
+msgstr "Next case"
+
+msgid "Keyingi keyslar"
+msgstr "More case studies"
+
+msgid "Soha"
+msgstr "Industry"
+
+msgid "Soha haqida"
+msgstr "About the industry"
+
+msgid "Muammo va yechim"
+msgstr "Problem and solution"
+
+msgid "Qanday muammolarni hal qilamiz"
+msgstr "What problems we solve"
+
+msgid "Qo‘shimcha imkoniyatlar"
+msgstr "Additional capabilities"
+
+msgid "AI va veb-sayt"
+msgstr "AI and website"
+
+msgid "Taqdimotlar"
+msgstr "Presentations"
+
+msgid "Yechim taqdimoti"
+msgstr "Solution presentation"
+
+msgid "Taqdimotni ko‘rish"
+msgstr "View presentation"
+
+msgid "Yangi oynada ochish"
+msgstr "Open in new tab"
+
+msgid "Yuklab olish"
+msgstr "Download"
+
+msgid "Ochish"
+msgstr "Open"
+
+msgid "Sohaga oid videolar"
+msgstr "Industry videos"
+
+msgid "Shu sohadagi loyihalarimiz"
+msgstr "Our projects in this industry"
+
+msgid "Boshqa sohalar"
+msgstr "Other industries"
+
+msgid "Barcha sohalar"
+msgstr "All industries"
+
 msgid "Bizning jamoa"
 msgstr "Our team"
 

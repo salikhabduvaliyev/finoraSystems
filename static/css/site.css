@@ -150,3 +150,71 @@ dialog.lbx button{position:fixed;top:16px;right:16px;width:46px;height:46px;bord
 .lang a.on{background:var(--cy);color:#001418}
 @media(max-width:860px){.hd-r{gap:8px}.hd-cta{display:none}}
 @media(max-width:380px){.lang a{padding:5px 7px}}
+
+/* ---- Ichki sahifalar v2: chapda ma'lumot, o'ngda rasm ---- */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.split-tx .dt1{margin-top:8px}
+.split-tx .lead{margin:0}
+.split-tx .tags{margin-top:18px}
+.split-tx .cta{margin-top:26px}
+.split-img{position:relative}
+.split-img .cover{margin:0;border-radius:24px;box-shadow:0 30px 70px #00f5ff1f,0 0 0 1px var(--line)}
+.split-img .cover .fig,.split-img .cover .fig img,.split-img .cover .fig svg{display:block;width:100%}
+.split-img .cover .fig img{aspect-ratio:auto;height:auto;object-fit:contain}
+.logo-badge{position:absolute;left:-18px;bottom:-18px;background:#fff;border-radius:16px;padding:10px 16px;height:64px;display:grid;place-items:center;box-shadow:0 14px 34px #0008;border:1px solid #dbe4f0}
+.logo-badge img{max-height:44px;max-width:140px;object-fit:contain}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;margin:22px 0 0;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.facts>div{background:var(--card);padding:12px 16px}
+.facts dt{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--mt)}
+.facts dd{margin:3px 0 0;font-weight:600;line-height:1.35}
+.facts dd a{color:var(--cy)}
+.facts .hl dd{background:linear-gradient(90deg,#00f5ff,#3ddc97);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+.hl-list{margin:18px 0 0}
+.card.tx.about p{font-size:16.5px;color:#cfe0f5}
+
+/* Oldingi / keyingi keys */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:56px}
+.pn-i{display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 22px;transition:.2s}
+.pn-i:hover{border-color:var(--cy);transform:translateY(-3px)}
+.pn-i small{display:block;color:var(--cy);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.pn-i b{display:block;margin-top:4px;font-size:17px;line-height:1.35}
+.pn-i.nx{text-align:right;grid-column:2}
+
+/* Taqdimotlar */
+.docs{display:grid;gap:16px}
+.doc{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.doc-h{display:flex;align-items:center;gap:14px;padding:14px 18px;flex-wrap:wrap}
+.doc-h b{flex:1;min-width:180px;font-size:16px}
+.doc-ic{display:grid;place-items:center;min-width:46px;height:46px;padding:0 8px;border-radius:12px;background:#ff6b9d1f;color:#ff8fb3;font-weight:800;font-size:12.5px;letter-spacing:.04em}
+.doc-a{display:flex;gap:8px;flex-wrap:wrap}
+.btn.sm{padding:8px 14px;font-size:13.5px;border-radius:10px}
+.doc-v{display:block;width:100%;height:min(76vh,640px);border:0;border-top:1px solid var(--line);background:#fff}
+
+/* AI va veb-sayt — kattaroq */
+.ai.big{margin-top:0}
+.ai.big div{padding:20px 22px;font-size:15px}
+.ai.big b{font-size:13px}
+
+/* Vertikal video (Shorts, Instagram) */
+.vid.vv{width:100%;max-width:360px;height:auto;aspect-ratio:9/16;max-height:none;justify-self:center}
+.vids .vid.vv{justify-self:center}
+.vplay.ig{background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 35%,#d6249f 60%,#285aeb 95%)}
+.vplay.ig .pl{background:#fff;box-shadow:0 0 0 10px #ffffff33,0 14px 40px #0006}
+.igb{position:absolute;left:50%;top:22%;width:58px;height:58px;margin-left:-29px;border:5px solid #fff;border-radius:16px;opacity:.95}
+.igb:before{content:'';position:absolute;inset:11px;border:5px solid #fff;border-radius:50%}
+.igb:after{content:'';position:absolute;right:6px;top:6px;width:6px;height:6px;border-radius:50%;background:#fff}
+.igt{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#fff;font-weight:700;letter-spacing:.04em}
+
+/* Sohalar ro'yxati kartochkalari */
+.card.ind .em{margin-top:2px}
+
+@media(max-width:960px){
+  .split{grid-template-columns:1fr;gap:30px}
+  .split-img{order:-1}
+  .logo-badge{left:12px;bottom:-16px;height:56px}
+}
+@media(max-width:600px){
+  .pn{grid-template-columns:1fr}
+  .pn-i.nx{grid-column:1}
+  .doc-v{height:70vh}
+}

@@ -73,6 +73,7 @@ step "Tarjimalar (UZ / EN / RU)"
 # Ikkalasi ham admin'da qo'lda yozilgan matnlar ustidan yozmaydi.
 "$PY" manage.py update_translation_fields core > /dev/null
 "$PY" manage.py fill_translations
+"$PY" manage.py link_cases   # sohasi belgilanmagan keyslarni yo'nalishi bo'yicha bog'lash
 
 step "Statik fayllar"
 "$PY" manage.py collectstatic --noinput -v 0

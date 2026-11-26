@@ -61,6 +61,8 @@ class Industry(Ordered):
     solutions = models.TextField('Bizning yechim', blank=True, help_text=LINES_HELP)
     ai = models.TextField('AI yechim', blank=True)
     web = models.TextField('Veb-sayt yechimi', blank=True)
+    description = models.TextField('Batafsil tavsif (soha sahifasi uchun)', blank=True,
+                                   help_text="Xatboshilarni bo'sh qator bilan ajrating")
     on_home = models.BooleanField("Bosh sahifada ko'rsatish", default=True)
     in_footer = models.BooleanField("Footerda ko'rsatish", default=False)
 
@@ -70,6 +72,9 @@ class Industry(Ordered):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('industry_detail', kwargs={'pk': self.pk, 'slug': slugify_uz(self.title)})
 
 
 # ---------------------------------------------------------------- Keyslar
@@ -81,6 +86,8 @@ class Case(Ordered):
                              help_text="Bo'lmasa, mijoz nomi matn ko'rinishida chiqadi")
     description = models.TextField('Qisqa tavsif', blank=True, help_text='Kartochkada va keys sahifasi boshida chiqadi')
     direction = models.CharField("Yo'nalish", max_length=150, blank=True)
+    industry = models.ForeignKey('Industry', on_delete=models.SET_NULL, null=True, blank=True, related_name='cases',
+                                 verbose_name='Soha', help_text="Keys shu soha sahifasida ko'rsatiladi")
     tags = models.TextField('Teglar', blank=True, help_text='Har bir qator — alohida teg (Odoo 19, ERP …)')
     year = models.CharField('Yil', max_length=20, blank=True)
     duration = models.CharField('Muddat', max_length=50, blank=True, help_text='Masalan: 3 oy')
@@ -99,7 +106,8 @@ class Case(Ordered):
     t_author = models.CharField('Kim aytgan (ism)', max_length=150, blank=True)
     t_role = models.CharField('Lavozimi', max_length=150, blank=True, help_text='Masalan: Direktor, Kerama City')
     t_photo = models.ImageField('Foto', upload_to='cases/testimonials/', blank=True)
-    t_video_url = models.CharField('Video-otziv havolasi', max_length=300, blank=True, help_text='YouTube yoki Vimeo havolasi')
+    t_video_url = models.CharField('Video-otziv havolasi', max_length=300, blank=True,
+                                   help_text='YouTube, Instagram (Reels yoki post) yoki Vimeo havolasi')
     t_video_file = models.FileField('yoki video fayl', upload_to='cases/videos/', blank=True,
                                     validators=[video_file_validator], help_text='MP4, WEBM yoki MOV')
 
@@ -115,7 +123,7 @@ class Case(Ordered):
 
     def clean(self):
         if self.t_video_url and not parse_video(self.t_video_url):
-            raise ValidationError({'t_video_url': 'YouTube yoki Vimeo havolasini kiriting.'})
+            raise ValidationError({'t_video_url': 'YouTube, Instagram yoki Vimeo havolasini kiriting.'})
 
     @property
     def testimonial_video(self):
@@ -131,7 +139,8 @@ class Case(Ordered):
 
 
 class VideoBase(models.Model):
-    url = models.CharField('YouTube / Vimeo havolasi', max_length=300, blank=True)
+    url = models.CharField('Video havolasi', max_length=300, blank=True,
+                           help_text='YouTube, Instagram (Reels yoki post) yoki Vimeo havolasi')
     file = models.FileField('yoki video fayl', upload_to='videos/', blank=True, validators=[video_file_validator],
                             help_text="MP4, WEBM yoki MOV. Katta videolarni YouTube'ga joylab havolasini qo'ying.")
     sort = models.PositiveIntegerField('Tartib', default=0)
@@ -146,7 +155,7 @@ class VideoBase(models.Model):
         if not self.url and not self.file:
             raise ValidationError('Havola kiriting yoki video fayl yuklang.')
         if self.url and not parse_video(self.url):
-            raise ValidationError({'url': 'YouTube yoki Vimeo havolasini kiriting.'})
+            raise ValidationError({'url': 'YouTube, Instagram yoki Vimeo havolasini kiriting.'})
 
     @property
     def src(self):
@@ -182,6 +191,63 @@ class CaseImage(ImageBase):
 
     class Meta(ImageBase.Meta):
         pass
+
+
+class IndustryVideo(VideoBase):
+    industry = models.ForeignKey(Industry, on_delete=models.CASCADE, related_name='videos')
+
+    class Meta(VideoBase.Meta):
+        pass
+
+
+class IndustryImage(ImageBase):
+    industry = models.ForeignKey(Industry, on_delete=models.CASCADE, related_name='images')
+
+    class Meta(ImageBase.Meta):
+        pass
+
+
+doc_validator = FileExtensionValidator(['pdf', 'ppt', 'pptx'])
+
+
+class Presentation(models.Model):
+    """Soha taqdimoti: PDF sahifada ochiladi, PPT/PPTX yuklab olinadi, yoki tashqi havola (Google Slides, Canva)."""
+    industry = models.ForeignKey(Industry, on_delete=models.CASCADE, related_name='presentations')
+    title = models.CharField('Nomi', max_length=200)
+    file = models.FileField('Fayl (PDF, PPT, PPTX)', upload_to='presentations/', blank=True, validators=[doc_validator],
+                            help_text="PDF saytda to'g'ridan-to'g'ri ochiladi")
+    url = models.URLField('yoki havola', blank=True, help_text='Google Slides, Canva va h.k.')
+    sort = models.PositiveIntegerField('Tartib', default=0)
+
+    class Meta:
+        ordering = ['sort', 'id']
+        verbose_name = 'taqdimot'
+        verbose_name_plural = 'Taqdimotlar'
+
+    def __str__(self):
+        return self.title
+
+    def clean(self):
+        if not self.file and not self.url:
+            raise ValidationError('Fayl yuklang yoki havola kiriting.')
+
+    @property
+    def is_pdf(self):
+        return bool(self.file) and self.file.name.lower().endswith('.pdf')
+
+    @property
+    def ext(self):
+        return self.file.name.rsplit('.', 1)[-1].upper() if self.file else ''
+
+    @property
+    def embed_url(self):
+        """Google Slides havolasini sahifaga joylash ko'rinishiga keltirish."""
+        u = self.url or ''
+        if 'docs.google.com/presentation' in u:
+            return u.split('/edit')[0].split('/pub')[0].rstrip('/') + '/embed'
+        if 'canva.com/design' in u and '/view' in u:
+            return u.split('?')[0] + '?embed'
+        return ''
 
 
 # ---------------------------------------------------------------- Jamoa

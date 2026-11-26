@@ -72,6 +72,11 @@ def video(src, title=''):
         return ''
     if v['kind'] == 'file':
         return format_html("<div class='vid'><video src='{}' controls preload='metadata' playsinline></video></div>", v['src'])
+    if v['kind'] == 'instagram':
+        return format_html(
+            "<div class='vid vv ig'><button type='button' class='vplay ig' data-embed='{}' data-title='{}' "
+            "aria-label='{}: {}'><span class='igb' aria-hidden='true'></span><span class='pl' aria-hidden='true'></span>"
+            "<span class='igt'>Instagram</span></button></div>", v['embed'], title, _('Videoni ko‘rish'), title)
     if v['kind'] == 'youtube':
         embed = f"https://www.youtube-nocookie.com/embed/{v['id']}?autoplay=1&rel=0"
         thumb = format_html("<img src='https://i.ytimg.com/vi/{}/hqdefault.jpg' alt='' loading='lazy'>", v['id'])

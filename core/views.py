@@ -65,8 +65,36 @@ def _detail(request, model, pk, slug, template, name_attr):
     return render(request, template, {'obj': obj, 'others': others[:3 if model is Case else 4]})
 
 
+def industry_detail(request, pk, slug=''):
+    obj = active(Industry).filter(pk=pk).first()
+    if not obj:
+        raise Http404
+    if slug != slugify_uz(obj.title):
+        return redirect(obj.get_absolute_url(), permanent=True)
+    return render(request, 'site/industry_detail.html', {
+        'obj': obj,
+        'cases': obj.cases.filter(active=True),
+        'others': active(Industry).exclude(pk=pk)[:3],
+    })
+
+
 def case_detail(request, pk, slug=''):
-    return _detail(request, Case, pk, slug, 'site/case_detail.html', 'title')
+    obj = active(Case).filter(pk=pk).first()
+    if not obj:
+        raise Http404
+    if slug != slugify_uz(obj.title):
+        return redirect(obj.get_absolute_url(), permanent=True)
+    # Oldingi / keyingi keys va undan keyingilari (ro'yxat aylanma: oxiridan boshiga qaytadi)
+    items = list(active(Case))
+    idx = next(i for i, c in enumerate(items) if c.pk == obj.pk)
+    n = len(items)
+    following = [items[(idx + k) % n] for k in range(1, min(n, 4))]
+    return render(request, 'site/case_detail.html', {
+        'obj': obj,
+        'prev_case': items[idx - 1] if n > 1 else None,
+        'next_case': items[(idx + 1) % n] if n > 1 else None,
+        'others': following,
+    })
 
 
 def member_detail(request, pk, slug=''):

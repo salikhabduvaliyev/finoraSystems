@@ -1,7 +1,7 @@
 """Qaysi maydonlar 3 tilda (uz/en/ru) saqlanishi — django-modeltranslation."""
 from modeltranslation.translator import TranslationOptions, register
 
-from .models import Case, Industry, Service, SiteSettings, Stat, Step, TeamMember, Value, WhyCard
+from .models import Case, Industry, Presentation, Service, SiteSettings, Stat, Step, TeamMember, Value, WhyCard
 
 
 @register(Service)
@@ -11,7 +11,7 @@ class ServiceTR(TranslationOptions):
 
 @register(Industry)
 class IndustryTR(TranslationOptions):
-    fields = ('title', 'label', 'short', 'pains', 'solutions', 'ai', 'web')
+    fields = ('title', 'label', 'short', 'pains', 'solutions', 'ai', 'web', 'description')
 
 
 @register(Case)
@@ -52,3 +52,8 @@ class SiteSettingsTR(TranslationOptions):
               'steps_title', 'steps_sub', 'team_title', 'team_sub', 'cta_title', 'cta_text',
               'founder_bio', 'founder_education', 'founder_experience', 'founder_expertise',
               'footer_about', 'footer_bottom')
+
+
+@register(Presentation)
+class PresentationTR(TranslationOptions):
+    fields = ('title',)
