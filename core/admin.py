@@ -81,7 +81,10 @@ class LeadAdmin(FsAdmin):
 class ServiceAdmin(TrOrderedAdmin):
     list_display = ('title', 'subtitle', 'in_footer', 'active', 'sort')
     search_fields = ('title',)
-    fieldsets = ((None, {'fields': ('title', 'subtitle', 'items', ('in_footer', 'active'), 'sort')}),)
+    fieldsets = (
+        (None, {'fields': ('title', 'subtitle', 'items', ('in_footer', 'active'), 'sort')}),
+        ('Xizmat sahifasi — batafsil', {'fields': ('description', 'image')}),
+    )
 
 
 @admin.register(Industry)

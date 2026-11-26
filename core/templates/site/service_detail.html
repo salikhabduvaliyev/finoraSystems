@@ -1,0 +1,49 @@
+{% extends "site/base.html" %}{% load i18n finora %}
+{% block title %}{{ obj.title }} — {{ s.site_name }}{% endblock %}
+{% block description %}{{ obj.subtitle|default:s.meta_description }}{% endblock %}
+{% block og_title %}{{ obj.title }}{% endblock %}
+{% block content %}
+{% url 'contact' as contact_url %}{% url 'services' as services_url %}
+{% with x=obj items=obj.items|lines %}
+<div class='w dhero'>
+<div class='crumbs' role='navigation' aria-label='{% translate "Yo‘l" %}'><a href='{% url "home" %}'>{% translate "Bosh sahifa" %}</a><span>/</span><a href='{{ services_url }}'>{% translate "Xizmatlar" %}</a><span>/</span><span aria-current='page'>{{ x.title }}</span></div>
+
+<div class='split'>
+  <div class='split-tx'>
+    <div class='eyebrow'>{{ x.subtitle|default:_("Xizmat") }}</div>
+    <h1 class='dt1'>{{ x.title }}</h1>
+    {% if items %}<ul class='l hl-list'>{% for y in items %}<li>{{ y }}</li>{% endfor %}</ul>{% endif %}
+    <div class='cta'><a class='btn p' href='{{ contact_url }}'>{% translate "Konsultatsiya olish" %}</a>
+      {% if presentations %}<a class='btn' href='#taqdimot'>{% translate "Taqdimotni ko‘rish" %}</a>{% elif videos %}<a class='btn' href='#video'>{% translate "Videoni ko‘rish" %}</a>{% endif %}</div>
+  </div>
+  <div class='split-img'>
+    {% if x.image %}<div class='cover'><div class='fig'><img src='{{ x.image.url }}' alt='{{ x.title }}'></div></div>
+    {% elif videos %}<div class='feat-v'>{% with v=videos.0 %}{% video_card v.src v.title v.cover %}{% endwith %}</div>
+    {% else %}<div class='svc-vis' aria-hidden='true'><span class='sv-k'>{{ x.subtitle|default:x.title }}</span><b>{{ x.title }}</b>
+      <div class='sv-chips'>{% for y in items|slice:":4" %}<span>{{ y }}</span>{% endfor %}</div></div>{% endif %}
+  </div>
+</div></div>
+
+<div class='w dbody'>
+{% if x.description %}<section class='dsec'><div class='eyebrow'>{% translate "Xizmat haqida" %}</div><div class='card tx about'>{{ x.description|paras }}</div></section>{% endif %}
+
+{% if presentations %}<section class='dsec' id='taqdimot'><div class='eyebrow'>{% translate "Taqdimotlar" %}</div><h2>{% translate "Xizmat taqdimotlari" %}</h2><div class='dgrid'>
+{% for d in presentations %}<div class='dcard'>
+  <span class='doc-ic' aria-hidden='true'>{% if d.file %}{{ d.ext }}{% else %}↗{% endif %}</span>
+  <div class='dc-t'><b>{{ d.title }}</b></div>
+  <div class='dc-a'>
+    {% if d.is_pdf %}<button type='button' class='btn sm p' data-play='pdf' data-src='{{ d.file.url }}' data-title='{{ d.title }}'>{% translate "Ko‘rish" %}</button><a class='btn sm' href='{{ d.file.url }}' download>{% translate "Yuklab olish" %}</a>
+    {% elif d.file %}<a class='btn sm p' href='{{ d.file.url }}' download>{% translate "Yuklab olish" %}</a>
+    {% elif d.embed_url %}<button type='button' class='btn sm p' data-play='pdf' data-src='{{ d.embed_url }}' data-title='{{ d.title }}'>{% translate "Ko‘rish" %}</button><a class='btn sm' href='{{ d.url }}' target='_blank' rel='noopener'>{% translate "Ochish" %}</a>
+    {% else %}<a class='btn sm p' href='{{ d.url }}' target='_blank' rel='noopener'>{% translate "Ochish" %}</a>{% endif %}
+  </div>
+</div>{% endfor %}
+</div></section>{% endif %}
+
+{% if videos %}<section class='dsec' id='video'><div class='eyebrow'>{% translate "Video" %}</div><h2>{% translate "Xizmat bo‘yicha videolar" %}</h2><div class='vgrid'>{% for v in videos %}{% video_card v.src v.title v.cover %}{% endfor %}</div></section>{% endif %}
+</div>
+
+{% if others %}<section class='alt'><div class='w'><div class='cw'><div><div class='eyebrow'>{% translate "Xizmatlar" %}</div><h2 style='margin:8px 0 0'>{% translate "Boshqa xizmatlar" %}</h2></div><a class='btn' href='{{ services_url }}'>{% translate "Barcha xizmatlar" %}</a></div><div class='grid'>{% for x in others %}{% include "site/partials/service_card.html" %}{% endfor %}</div></div></section>{% endif %}
+{% endwith %}
+{% include "site/partials/cta.html" %}
+{% endblock %}

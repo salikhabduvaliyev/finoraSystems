@@ -278,6 +278,24 @@ msgstr "Other industries"
 msgid "Barcha sohalar"
 msgstr "All industries"
 
+msgid "Xizmat"
+msgstr "Service"
+
+msgid "Xizmat haqida"
+msgstr "About the service"
+
+msgid "Xizmat taqdimotlari"
+msgstr "Service presentations"
+
+msgid "Xizmat bo‘yicha videolar"
+msgstr "Service videos"
+
+msgid "Boshqa xizmatlar"
+msgstr "Other services"
+
+msgid "Barcha xizmatlar"
+msgstr "All services"
+
 msgid "Materiallar"
 msgstr "Resources"
 

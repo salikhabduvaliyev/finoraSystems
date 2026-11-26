@@ -282,3 +282,20 @@ dialog.pmodal::backdrop{background:#020610e6;backdrop-filter:blur(4px)}
   .dcard{flex-wrap:wrap}
   .dc-a{width:100%;justify-content:flex-start}
 }
+
+/* ---- Xizmatlar: kartochka va ichki sahifa ---- */
+a.card.svc{display:flex;flex-direction:column}
+a.card.svc ul.l{flex:1}
+.svc-f{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+.svc-f .more-l{margin:0 0 0 auto}
+a.card.svc:hover h3{color:var(--cy)}
+.svc-vis{position:relative;overflow:hidden;border-radius:24px;padding:34px;min-height:320px;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;
+  background:radial-gradient(420px 260px at 85% 10%,#00f5ff40,transparent),radial-gradient(360px 240px at 0 100%,#3ddc9733,transparent),linear-gradient(145deg,#12294d,#0a1a33);
+  border:1px solid var(--line);box-shadow:0 30px 70px #00f5ff1a}
+.svc-vis:before{content:'';position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;border:2px solid #00f5ff33;box-shadow:0 0 0 30px #00f5ff0d,0 0 0 62px #00f5ff08}
+.sv-k{position:relative;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cy)}
+.svc-vis b{position:relative;font-size:clamp(26px,3vw,36px);line-height:1.15}
+.sv-chips{position:relative;display:flex;flex-wrap:wrap;gap:8px}
+.sv-chips span{padding:7px 12px;border-radius:99px;background:#ffffff10;border:1px solid #ffffff1f;font-size:13.5px;color:#cfe0f5}
+.feat-v .vthumb{border-radius:22px;box-shadow:0 30px 70px #00f5ff1f}
+.feat-v .vtitle{font-size:16px}

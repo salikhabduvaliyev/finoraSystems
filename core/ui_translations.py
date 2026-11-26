@@ -111,6 +111,14 @@ UI = {
     'Boshqa sohalar': ('Other industries', 'Другие отрасли'),
     'Barcha sohalar': ('All industries', 'Все отрасли'),
 
+    # ---- Xizmat ichki sahifasi
+    'Xizmat': ('Service', 'Услуга'),
+    'Xizmat haqida': ('About the service', 'Об услуге'),
+    'Xizmat taqdimotlari': ('Service presentations', 'Презентации услуги'),
+    'Xizmat bo‘yicha videolar': ('Service videos', 'Видео об услуге'),
+    'Boshqa xizmatlar': ('Other services', 'Другие услуги'),
+    'Barcha xizmatlar': ('All services', 'Все услуги'),
+
     # ---- Xizmatlar: materiallar
     'Materiallar': ('Resources', 'Материалы'),
     'Taqdimotlar va videolar': ('Presentations and videos', 'Презентации и видео'),

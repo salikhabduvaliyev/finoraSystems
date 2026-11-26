@@ -7,7 +7,7 @@ from .models import (Case, CaseVideo, Industry, IndustryVideo, MemberVideo, Pres
 
 @register(Service)
 class ServiceTR(TranslationOptions):
-    fields = ('title', 'subtitle', 'items')
+    fields = ('title', 'subtitle', 'items', 'description')
 
 
 @register(Industry)

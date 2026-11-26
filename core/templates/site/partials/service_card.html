@@ -1,0 +1,6 @@
+{% load i18n finora %}<a class='card svc' href='{{ x.get_absolute_url }}' id='xizmat-{{ x.id }}'>
+<div class='em'>{{ x.subtitle }}</div><h3>{{ x.title }}</h3>
+<ul class='l'>{% for y in x.items|lines %}<li>{{ y }}</li>{% endfor %}</ul>
+<div class='svc-f'>{% with np=x.presentations.all|length nv=x.videos.all|length %}{% if np %}<span class='chip'><span aria-hidden='true'>📄</span> {% translate "Taqdimot" %} · {{ np }}</span>{% endif %}{% if nv %}<span class='chip'><span aria-hidden='true'>▶</span> {% translate "Video" %} · {{ nv }}</span>{% endif %}{% endwith %}
+<span class='more-l'>{% translate "Batafsil ko‘rish" %} →</span></div>
+</a>

@@ -9,7 +9,7 @@ SOCIAL_NAMES = [('telegram', 'Telegram'), ('instagram', 'Instagram'), ('linkedin
                 ('youtube', 'YouTube'), ('facebook', 'Facebook')]
 
 # Menyu bandi -> qaysi sahifalar unga tegishli (faol holat uchun)
-NAV = [('home', ('home',)), ('services', ('services',)), ('industries', ('industries', 'industry_detail')),
+NAV = [('home', ('home',)), ('services', ('services', 'service_detail')), ('industries', ('industries', 'industry_detail')),
        ('cases', ('cases', 'case_detail')), ('team', ('team', 'member_detail')), ('contact', ('contact',))]
 
 LANG_SHORT = {'uz': 'UZ', 'en': 'EN', 'ru': 'RU'}
@@ -36,9 +36,10 @@ def social_url(kind, value):
 def lang_url(request, path, code):
     """Joriy sahifaning boshqa tildagi manzili. Keys/a'zo sahifalarida slug ham o'sha tilda bo'ladi."""
     match = request.resolver_match
-    if match and match.url_name in ('case_detail', 'member_detail', 'industry_detail'):
-        from .models import Case, Industry, TeamMember  # noqa: PLC0415
-        model = {'case_detail': Case, 'member_detail': TeamMember, 'industry_detail': Industry}[match.url_name]
+    if match and match.url_name in ('case_detail', 'member_detail', 'industry_detail', 'service_detail'):
+        from .models import Case, Industry, Service, TeamMember  # noqa: PLC0415
+        model = {'case_detail': Case, 'member_detail': TeamMember, 'industry_detail': Industry,
+                 'service_detail': Service}[match.url_name]
         obj = model.objects.filter(pk=match.kwargs.get('pk'), active=True).first()
         if obj:
             with translation.override(code):

@@ -17,6 +17,11 @@
    "items_uz": "Ombor va savdo\nIshlab chiqarish\nMaosh va hisobotlar",
    "items_en": "Warehouse and sales\nManufacturing\nPayroll and reports",
    "items_ru": "Склад и продажи\nПроизводство\nЗарплата и отчёты",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
+   "image": "",
    "in_footer": true
   }
  },
@@ -38,6 +43,11 @@
    "items_uz": "Savdo voronkalari\nSkript va KPI\nSotuvchilarni o'qitish",
    "items_en": "Sales funnels\nScripts and KPIs\nSales team training",
    "items_ru": "Воронки продаж\nСкрипты и KPI\nОбучение менеджеров по продажам",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
+   "image": "",
    "in_footer": true
   }
  },
@@ -59,6 +69,11 @@
    "items_uz": "Jarayon xaritasi\nReglament\nAvtomatlashtirish",
    "items_en": "Process map\nRegulations\nAutomation",
    "items_ru": "Карта процессов\nРегламенты\nАвтоматизация",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
+   "image": "",
    "in_footer": true
   }
  },
@@ -80,6 +95,11 @@
    "items_uz": "Xodimlar davomati\nKirish nazorati\nERP integratsiya",
    "items_en": "Employee attendance\nAccess control\nERP integration",
    "items_ru": "Учёт посещаемости сотрудников\nКонтроль доступа\nИнтеграция с ERP",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
+   "image": "",
    "in_footer": true
   }
  },
@@ -101,6 +121,11 @@
    "items_uz": "Savdo boti\nQo'llab-quvvatlash\nCRM bilan ulash",
    "items_en": "Sales bot\nCustomer support\nCRM integration",
    "items_ru": "Бот продаж\nПоддержка клиентов\nИнтеграция с CRM",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
+   "image": "",
    "in_footer": true
   }
  },
@@ -122,6 +147,11 @@
    "items_uz": "To'lov va POS API\nMobil ilova (iOS/Android)\nLMS va portal",
    "items_en": "Payment and POS API\nMobile app (iOS/Android)\nLMS and portals",
    "items_ru": "Платёжные и POS API\nМобильное приложение (iOS/Android)\nLMS и порталы",
+   "description": "",
+   "description_uz": null,
+   "description_en": null,
+   "description_ru": null,
+   "image": "",
    "in_footer": true
   }
  },
@@ -1085,18 +1115,18 @@
    "bio_uz": "",
    "bio_en": "",
    "bio_ru": "",
-   "skills": "",
-   "skills_uz": "",
-   "skills_en": "",
-   "skills_ru": "",
+   "skills": "ERP joriy etish\r\nBiznes jarayonlar va KPI\r\nMoysklad",
+   "skills_uz": "ERP joriy etish\r\nBiznes jarayonlar va KPI\r\nMoysklad",
+   "skills_en": "ERP Implementation\r\nBusiness Processes and KPI\r\nMoysklad",
+   "skills_ru": "Внедрение ERP-системы\r\nБизнес-процессы и KPI\r\nМойсклад",
    "experience": "",
    "experience_uz": "",
    "experience_en": "",
    "experience_ru": "",
    "education": "TATU: Dasturiy injiniring (2021–2025)\r\nCodial o'quv markazi (2023. Python Backend Developer)",
    "education_uz": "TATU: Dasturiy injiniring (2021–2025)\r\nCodial o'quv markazi (2023. Python Backend Developer)",
-   "education_en": "TUIT: Software Engineering (2021–2025)\nCodial training center (2023, Python Backend Developer)",
-   "education_ru": "ТУИТ: Программная инженерия (2021–2025)\nУчебный центр Codial (2023, Python Backend Developer)",
+   "education_en": "TUIT: Software Engineering (2021–2025)\r\nCodial training center (2023, Python Backend Developer)",
+   "education_ru": "ТУИТ: Программная инженерия (2021–2025)\r\nУчебный центр Codial (2023, Python Backend Developer)",
    "achievements": "",
    "achievements_uz": "",
    "achievements_en": "",

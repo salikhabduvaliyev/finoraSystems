@@ -16,6 +16,7 @@ DETAIL = r'/(?P<pk>\d+)(?:-(?P<slug>[\w-]*))?/?$'
 site_patterns = [
     path('', views.home, name='home'),
     re_path(format_lazy('^{}/?$', seg('xizmatlar')), views.services, name='services'),
+    re_path(format_lazy('^{}' + DETAIL, seg('xizmatlar')), views.service_detail, name='service_detail'),
     re_path(format_lazy('^{}/?$', seg('sohalar')), views.industries, name='industries'),
     re_path(format_lazy('^{}' + DETAIL, seg('sohalar')), views.industry_detail, name='industry_detail'),
     re_path(format_lazy('^{}/?$', seg('keyslar')), views.cases, name='cases'),

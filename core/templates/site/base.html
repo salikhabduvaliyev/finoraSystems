@@ -11,7 +11,7 @@
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ logo_url }}">
 {% for l in languages %}<link rel="alternate" hreflang="{{ l.code }}" href="{{ request.scheme }}://{{ request.get_host }}{{ l.url }}">
 {% endfor %}<link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
-<link rel="stylesheet" href="{% static 'css/site.css' %}?v=6">
+<link rel="stylesheet" href="{% static 'css/site.css' %}?v=7">
 </head><body>
 {% include "svg/defs.svg" %}
 <div id='pg'></div><header><div class="w nav"><a href="{% url 'home' %}" aria-label="{{ s.site_name }} — {% translate 'Bosh sahifa' %}"><img src="{{ logo_url }}" alt="{{ s.site_name }}"></a>
@@ -22,7 +22,7 @@
 <footer><div class='w'><div class='fg'><div class='fb'><img src='{{ logo_url }}' alt='{{ s.site_name }}'><p>{{ s.footer_about }}</p>
 {% if socials %}<div class='so'>{% for kind, name, url in socials %}<a href='{{ url }}' target='_blank' rel='noopener' aria-label='{{ name }}' title='{{ name }}'>{% include "site/partials/social_icon.html" %}</a>{% endfor %}</div>{% endif %}</div>
 <div class='fcol'><h4>{% translate "Sahifalar" %}</h4>{% for href, label, on in nav %}<a href='{{ href }}'>{{ label }}</a>{% endfor %}</div>
-{% if footer_services %}<div class='fcol'><h4>{% translate "Xizmatlar" %}</h4>{% url 'services' as services_url %}{% for x in footer_services %}<a href='{{ services_url }}#xizmat-{{ x.id }}'>{{ x.title }}</a>{% endfor %}</div>{% endif %}
+{% if footer_services %}<div class='fcol'><h4>{% translate "Xizmatlar" %}</h4>{% for x in footer_services %}<a href='{{ x.get_absolute_url }}'>{{ x.title }}</a>{% endfor %}</div>{% endif %}
 {% if footer_industries %}<div class='fcol'><h4>{% translate "Sohalar" %}</h4>{% for x in footer_industries %}<a href='{{ x.get_absolute_url }}'>{{ x.title }}</a>{% endfor %}</div>{% endif %}
 <div class='fcol'><h4>{% translate "Aloqa" %}</h4>{% if s.address %}<span>📍 {{ s.address }}</span>{% endif %}{% if s.phone %}<a href='{{ s.phone|tel }}'>📞 {{ s.phone }}</a>{% endif %}{% if s.email %}<a href='mailto:{{ s.email }}'>✉ {{ s.email }}</a>{% endif %}{% if tg_handle %}<a href='https://t.me/{{ tg_handle }}' target='_blank' rel='noopener'>✈ Telegram: @{{ tg_handle }}</a>{% endif %}<a class='btn p' href='{% url "contact" %}' style='margin-top:12px;color:#001418'>{% translate "Bepul audit olish" %}</a></div></div>
 <div class='fbt'><span>© {% now "Y" %} {{ s.site_name }}. {% translate "Barcha huquqlar himoyalangan." %}</span><span>{{ s.footer_bottom }}</span></div></div></footer><button id='up' aria-label='{% translate "Tepaga" %}'>↑</button>

@@ -37,16 +37,21 @@ def home(request):
 
 
 def services(request):
-    services = list(active(Service).prefetch_related('presentations', 'videos'))
-    presentations = Presentation.objects.select_related('service').filter(
-        Q(service__isnull=True) | Q(service__active=True))
-    videos = ServiceVideo.objects.select_related('service').filter(service__active=True)
-    with_media = {p.service_id for p in presentations} | {v.service_id for v in videos}
-    return render(request, 'site/services.html', {
-        'services': services,
-        'presentations': presentations,
-        'videos': videos,
-        'media_services': [x for x in services if x.pk in with_media],
+    return render(request, 'site/services.html',
+                  {'services': active(Service).prefetch_related('presentations', 'videos')})
+
+
+def service_detail(request, pk, slug=''):
+    obj = active(Service).filter(pk=pk).first()
+    if not obj:
+        raise Http404
+    if slug != slugify_uz(obj.title):
+        return redirect(obj.get_absolute_url(), permanent=True)
+    return render(request, 'site/service_detail.html', {
+        'obj': obj,
+        'presentations': obj.presentations.all(),
+        'videos': obj.videos.all(),
+        'others': active(Service).exclude(pk=pk)[:3],
     })
 
 

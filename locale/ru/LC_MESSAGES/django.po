@@ -278,6 +278,24 @@ msgstr "Другие отрасли"
 msgid "Barcha sohalar"
 msgstr "Все отрасли"
 
+msgid "Xizmat"
+msgstr "Услуга"
+
+msgid "Xizmat haqida"
+msgstr "Об услуге"
+
+msgid "Xizmat taqdimotlari"
+msgstr "Презентации услуги"
+
+msgid "Xizmat bo‘yicha videolar"
+msgstr "Видео об услуге"
+
+msgid "Boshqa xizmatlar"
+msgstr "Другие услуги"
+
+msgid "Barcha xizmatlar"
+msgstr "Все услуги"
+
 msgid "Materiallar"
 msgstr "Материалы"
 

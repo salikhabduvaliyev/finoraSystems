@@ -41,6 +41,10 @@ class Service(Ordered):
     title = models.CharField('Nomi', max_length=200)
     subtitle = models.CharField('Qisqa izoh', max_length=200, blank=True, help_text='Masalan: Odoo va МойСклад')
     items = models.TextField('Punktlar', blank=True, help_text=LINES_HELP)
+    description = models.TextField('Batafsil tavsif (xizmat sahifasi uchun)', blank=True,
+                                   help_text="Xatboshilarni bo'sh qator bilan ajrating")
+    image = models.ImageField('Muqova rasmi (ixtiyoriy)', upload_to='services/', blank=True,
+                              help_text="Xizmat sahifasining o'ng tomonida chiqadi")
     in_footer = models.BooleanField("Footerda ko'rsatish", default=True)
 
     class Meta(Ordered.Meta):
@@ -49,6 +53,9 @@ class Service(Ordered):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('service_detail', kwargs={'pk': self.pk, 'slug': slugify_uz(self.title)})
 
 
 class Industry(Ordered):
